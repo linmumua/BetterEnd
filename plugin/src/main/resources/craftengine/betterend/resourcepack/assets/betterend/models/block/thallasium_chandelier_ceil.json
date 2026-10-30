@@ -1,0 +1,7 @@
+{
+  "parent": "betterend:block/chandelier_ceil",
+  "textures": {
+    "ceil": "betterend:block/thallasium_chandelier_ceil",
+    "floor": "betterend:block/thallasium_chandelier_floor"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "betterend:block/bulb_lantern_floor",
+  "textures": {
+    "glow": "betterend:block/bulb_vine_lantern_bulb_magenta",
+    "metal": "betterend:block/iron_bulb_vine_lantern_metal"
+  }
+}

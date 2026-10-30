@@ -1,0 +1,97 @@
+# The only plugin descriptor. Only paper-plugin.yml can declare a bootstrapper
+# (PluginFileType.java:28-45), and only a bootstrapper can register the biome datapack early enough
+# for the worldgen registries (LifecycleEvents.java:42). PluginFileType.guessType iterates
+# List.of(PAPER, SPIGOT) and returns the FIRST match (:47, :59-68), so a plugin.yml beside this file
+# would never be read - it was deleted rather than left as a trap for whoever edits it next.
+# This plugin cannot run on plain Spigot regardless: it needs Paper's BiomeProvider, the lifecycle
+# datapack API and DragonBattle.
+#
+# `folia-supported` is a Folia-only key: it is absent from all of Paper 26.1.2 and PaperPluginMeta
+# declares no such field. Keeping it here is still correct. PaperPluginMeta.create() deserializes
+# with a plain Configurate ObjectMapper (node.require(PaperPluginMeta.java:118)), which binds the
+# fields it declares and ignores every other node - the same reason it can read `author` by hand at
+# :121 with no `author` field. So Paper ignores this line and Folia reads it; without it Folia
+# refuses to load the plugin at all, and plugin.yml's copy is shadowed by this file.
+name: BetterEnd
+version: '${version}'
+description: >-
+  Folia 26.3 服务端插件：把「Better End」模组的末地地形、27 个末地群系、洞穴、矿物、九种树木与植被
+  移植到 Paper/Folia，并整合 DnT（Dungeons and Taverns）末地城堡、飞船、战利品与附魔；所有方块、
+  物品、模型、配方与翻译由 CraftEngine 提供。原「Better End」模组由 Team BetterX 创作。
+# `authors` / `contributors` 都是 PaperPluginMeta 的真实字段（PaperPluginMeta.java:58-59），均为普通列表。
+# `authors` 是本插件的作者；`contributors` 署名原始模组与 DnT 的作者/贡献者（本项目重新实现了其世界内容）。
+# Paper 会把旧式单数 `author` 追加进 `authors`（PaperPluginMeta.java:122-127），故此处不使用该旧键。
+authors:
+  - linmumua
+contributors:
+  # 上游 Better End Java 移植作者
+  - HuiDu_OwO
+  # 原始「Better End」模组（Team BetterX）作者与贡献者
+  - Quiqueck
+  - paulevs
+  - Bulldog83
+  - Edos
+  - Yuki
+  - Seaward
+  - Firel
+  # DnT 末地城堡（Dungeons and Taverns，All Rights Reserved）作者与贡献者，详见随包 credits.txt
+  - Nova Wostra
+  - Walls
+  - Konci
+  - Badooga
+  - Whity Lee
+# 源码来源（仅作署名说明，不是本项目的官网）：
+#   Better End 上游 Java 移植：https://github.com/IOVEYOUMC0/BetterEnd-Plugin
+#   Better End 模组源码：https://github.com/quiqueck/BetterEnd
+#   DnT / Dungeons and Taverns：见 "DnT End Castle" 包内 credits.txt
+main: dev.mumu.betterend.BetterEndPlugin
+bootstrapper: dev.mumu.betterend.biome.BiomeDatapack
+api-version: '26.3'
+load: STARTUP
+folia-supported: true
+# 命令在代码里通过 LifecycleEvents.COMMANDS 注册：PaperPluginMeta 根本不声明 commands 字段
+# （name/main/bootstrapper/loader/provides/hasOpenClassloader/version/description/authors/
+# contributors/website/prefix/load/permissions/apiVersion/foliaSupported/dependencies 就是全部），
+# 该文件由 Configurate 的 ObjectMapper 反序列化，未声明的节点会被静默忽略，写在这里也不会生效。
+#
+# 权限必须在这里声明（而不是只写在 Brigadier 的 requires 里）：未在描述符或权限插件中注册的
+# 节点，hasPermission 会落到服务器自身的 permissions.default-permission 设置上，把默认值改成
+# 允许的服务器会让所有玩家都能执行 reload。default: op 让它是真实、可分配、默认紧的权限。
+permissions:
+  betterend.command.reload:
+    description: 允许执行 /betterend reload（重新读取 config.yml、补全缺失键、补释放 CraftEngine 资源）。
+    default: op
+  # 与 reload 分开：upgrade 会写方块（迁移旧布局），reload 只读配置。共用节点会让「能重载」隐含「能改世界」。
+  betterend.command.upgrade:
+    description: 允许执行 /betterend upgrade preview|apply|reanchor（旧布局检查与显式迁移）。
+    default: op
+dependencies:
+  server:
+    CraftEngine:
+      load: BEFORE
+      required: true
+      join-classpath: true
+  # CraftEngine must also be a BOOTSTRAP dependency, and load BEFORE ours.
+  #
+  # BE's bootstrapper (BiomeDatapack) raises CraftEngine's in-memory block capacity, and its
+  # DATAPACK_DISCOVERY handler runs before CraftEngine's own -- but for that handler to even resolve
+  # CraftEngine's classes it must see them during the bootstrap phase. Paper builds the bootstrap
+  # phase's dependency graph from this section ONLY (BootstrapProviderStorage.createDependencyTree()
+  # returns a BootstrapMetaDependencyTree, whose registerDependencies adds edges solely from
+  # PaperPluginMeta.getBootstrapDependencies()), and BE's classloader includes CraftEngine's only when
+  # it is a transitive dependency in that graph (PaperPluginClassLoader.refreshClassloaderDependencyTree
+  # -> DependencyContext.isTransitiveDependency). Without this entry the bootstrapper would see a
+  # DIFFERENT / absent CraftEngine class and the capacity write would fail its read-back check.
+  #
+  # load: BEFORE makes CraftEngine's bootstrapper run first, so its Config is already loaded
+  # (PaperCraftEngineBootstrap.bootstrap calls CraftEngine.setUpConfigAndLocale, which constructs the
+  # Config and calls loadFullSettings) by the time ours runs. join-classpath is included for parity with
+  # the server entry above.
+  #
+  # The server entry is kept: it is what orders CraftEngine to enable before BetterEnd and what joins
+  # CraftEngine's classes for the normal plugin phase (CraftEngineBridge).
+  bootstrap:
+    CraftEngine:
+      load: BEFORE
+      required: true
+      join-classpath: true

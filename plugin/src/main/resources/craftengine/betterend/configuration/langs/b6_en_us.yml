@@ -1,0 +1,82 @@
+# B6 -- lantern display names, verbatim from the mod
+# (Reference/BetterEnd/src/main/resources/assets/betterend/lang/en_us.json). Do not prettify.
+# Two sections, both suffixed b6 so they cannot collide with another batch: AbstractPackManager
+# .java:674-683 selects the parser from the text BEFORE '#', and TranslationManagerImpl
+# .addClientTranslation (:351-368) accumulates into the same lang map instead of replacing it.
+# `block_name:betterend:<id>` is rewritten to block.betterend.<id> by ClientLangData.java:14-59.
+
+lang#b6_items:
+  en_us:
+    # Bulb lanterns -- iron
+    item.betterend.iron_bulb_lantern: Iron Bulb Lantern
+
+    # Bulb lanterns -- terminite
+    item.betterend.terminite_bulb_lantern: Terminite Bulb Lantern
+
+    # Bulb lanterns -- thallasium
+    item.betterend.thallasium_bulb_lantern: Thallasium Bulb Lantern
+
+    # Stone lanterns
+    item.betterend.andesite_lantern: Andesite Lantern
+    item.betterend.azure_jadestone_lantern: Azure Jadestone Lantern
+    item.betterend.blackstone_lantern: Blackstone Lantern
+    item.betterend.diorite_lantern: Diorite Lantern
+    item.betterend.end_stone_lantern: End Stone Lantern
+    item.betterend.flavolite_lantern: Flavolite Lantern
+    item.betterend.granite_lantern: Granite Lantern
+    item.betterend.purple_lantern: Purple Lantern
+    item.betterend.quartz_lantern: Quartz Lantern
+    item.betterend.sandy_jadestone_lantern: Sandy Jadestone Lantern
+    item.betterend.sulphuric_rock_lantern: Sulphuric Rock Lantern
+    item.betterend.umbralith_lantern: Umbralith Lantern
+    item.betterend.violecite_lantern: Violecite Lantern
+    item.betterend.virid_jadestone_lantern: Virid Jadestone Lantern
+
+    # Chandeliers
+    item.betterend.gold_chandelier: Gold Chandelier
+    item.betterend.iron_chandelier: Iron Chandelier
+    item.betterend.terminite_chandelier: Terminite Chandelier
+    item.betterend.thallasium_chandelier: Thallasium Chandelier
+
+    # Plant-derived light blocks
+    item.betterend.amaranita_lantern: Amaranita Lantern
+    item.betterend.filalux_lantern: Filalux Lantern
+    item.betterend.glowing_pillar_luminophor: Glowing Pillar Luminophor
+
+lang#b6_blocks:
+  en_us:
+    # Bulb lanterns -- iron
+    block_name:betterend:iron_bulb_lantern: Iron Bulb Lantern
+
+    # Bulb lanterns -- terminite
+    block_name:betterend:terminite_bulb_lantern: Terminite Bulb Lantern
+
+    # Bulb lanterns -- thallasium
+    block_name:betterend:thallasium_bulb_lantern: Thallasium Bulb Lantern
+
+    # Stone lanterns
+    block_name:betterend:andesite_lantern: Andesite Lantern
+    block_name:betterend:azure_jadestone_lantern: Azure Jadestone Lantern
+    block_name:betterend:blackstone_lantern: Blackstone Lantern
+    block_name:betterend:diorite_lantern: Diorite Lantern
+    block_name:betterend:end_stone_lantern: End Stone Lantern
+    block_name:betterend:flavolite_lantern: Flavolite Lantern
+    block_name:betterend:granite_lantern: Granite Lantern
+    block_name:betterend:purple_lantern: Purple Lantern
+    block_name:betterend:quartz_lantern: Quartz Lantern
+    block_name:betterend:sandy_jadestone_lantern: Sandy Jadestone Lantern
+    block_name:betterend:sulphuric_rock_lantern: Sulphuric Rock Lantern
+    block_name:betterend:umbralith_lantern: Umbralith Lantern
+    block_name:betterend:violecite_lantern: Violecite Lantern
+    block_name:betterend:virid_jadestone_lantern: Virid Jadestone Lantern
+
+    # Chandeliers
+    block_name:betterend:gold_chandelier: Gold Chandelier
+    block_name:betterend:iron_chandelier: Iron Chandelier
+    block_name:betterend:terminite_chandelier: Terminite Chandelier
+    block_name:betterend:thallasium_chandelier: Thallasium Chandelier
+
+    # Plant-derived light blocks
+    block_name:betterend:amaranita_lantern: Amaranita Lantern
+    block_name:betterend:filalux_lantern: Filalux Lantern
+    block_name:betterend:glowing_pillar_luminophor: Glowing Pillar Luminophor

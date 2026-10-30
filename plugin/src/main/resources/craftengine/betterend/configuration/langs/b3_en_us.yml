@@ -1,0 +1,19 @@
+# B3-openable localisation. Names are VERBATIM from the mod's
+# assets/betterend/lang/en_us.json -- not prettified.
+# Section suffixes keep this file from colliding with the other batches':
+# AbstractPackManager.java:674-683 selects the parser from the text BEFORE '#', and
+# TranslationManagerImpl.addClientTranslation (:351-368) accumulates instead of replacing.
+
+lang#b3_items:
+  en_us:
+    item.betterend.terminite_door: Terminite Door
+    item.betterend.terminite_trapdoor: Terminite Trapdoor
+    item.betterend.thallasium_door: Thallasium Door
+    item.betterend.thallasium_trapdoor: Thallasium Trapdoor
+
+lang#b3_blocks:
+  en_us:
+    block_name:betterend:terminite_door: Terminite Door
+    block_name:betterend:terminite_trapdoor: Terminite Trapdoor
+    block_name:betterend:thallasium_door: Thallasium Door
+    block_name:betterend:thallasium_trapdoor: Thallasium Trapdoor

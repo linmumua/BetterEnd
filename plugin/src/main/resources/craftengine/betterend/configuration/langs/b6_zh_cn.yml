@@ -1,0 +1,85 @@
+# B6 (lanterns and chandeliers) client-side localisation -- zh_cn.
+# Simplified Chinese (zh_cn) translation of b6_en_us.yml. Keys, section suffixes and ordering
+# mirror the English file; only human-readable values are translated. Legacy section-sign colour
+# codes are preserved verbatim, and proper nouns (BetterEnd, the music-disc artists) keep their
+# original spelling. Section ids carry a _zh_cn suffix so this file never declares the same
+# `lang#...` id as its English counterpart: AbstractPackManager.java:757-768 picks the parser from
+# the text BEFORE '#', and TranslationManagerImpl.java:524-531 accumulates every section into
+# clientLangData (addClientTranslation, :351-368). The language key must be `zh_cn`, exactly as
+# spelled in internal/lang/processed.json, or addClientTranslation drops it silently (:358-366).
+
+lang#b6_items_zh_cn:
+  zh_cn:
+    # Bulb lanterns -- iron
+    item.betterend.iron_bulb_lantern: 铁灯泡灯笼
+
+    # Bulb lanterns -- terminite
+    item.betterend.terminite_bulb_lantern: 终结金属灯泡灯笼
+
+    # Bulb lanterns -- thallasium
+    item.betterend.thallasium_bulb_lantern: 海蓝金属灯泡灯笼
+
+    # Stone lanterns
+    item.betterend.andesite_lantern: 安山岩灯笼
+    item.betterend.azure_jadestone_lantern: 天蓝玉石灯笼
+    item.betterend.blackstone_lantern: 黑石灯笼
+    item.betterend.diorite_lantern: 闪长岩灯笼
+    item.betterend.end_stone_lantern: 末地石灯笼
+    item.betterend.flavolite_lantern: 黄燧石灯笼
+    item.betterend.granite_lantern: 花岗岩灯笼
+    item.betterend.purple_lantern: 紫珀灯笼
+    item.betterend.quartz_lantern: 石英灯笼
+    item.betterend.sandy_jadestone_lantern: 沙黄玉石灯笼
+    item.betterend.sulphuric_rock_lantern: 硫磺岩灯笼
+    item.betterend.umbralith_lantern: 暗影岩灯笼
+    item.betterend.violecite_lantern: 紫晶石灯笼
+    item.betterend.virid_jadestone_lantern: 翠绿玉石灯笼
+
+    # Chandeliers
+    item.betterend.gold_chandelier: 金吊灯
+    item.betterend.iron_chandelier: 铁吊灯
+    item.betterend.terminite_chandelier: 终结金属吊灯
+    item.betterend.thallasium_chandelier: 海蓝金属吊灯
+
+    # Plant-derived light blocks
+    item.betterend.amaranita_lantern: 紫灵菇灯笼
+    item.betterend.filalux_lantern: 萤光蛾灯笼
+    item.betterend.glowing_pillar_luminophor: 发光柱发光体
+
+lang#b6_blocks_zh_cn:
+  zh_cn:
+    # Bulb lanterns -- iron
+    block_name:betterend:iron_bulb_lantern: 铁灯泡灯笼
+
+    # Bulb lanterns -- terminite
+    block_name:betterend:terminite_bulb_lantern: 终结金属灯泡灯笼
+
+    # Bulb lanterns -- thallasium
+    block_name:betterend:thallasium_bulb_lantern: 海蓝金属灯泡灯笼
+
+    # Stone lanterns
+    block_name:betterend:andesite_lantern: 安山岩灯笼
+    block_name:betterend:azure_jadestone_lantern: 天蓝玉石灯笼
+    block_name:betterend:blackstone_lantern: 黑石灯笼
+    block_name:betterend:diorite_lantern: 闪长岩灯笼
+    block_name:betterend:end_stone_lantern: 末地石灯笼
+    block_name:betterend:flavolite_lantern: 黄燧石灯笼
+    block_name:betterend:granite_lantern: 花岗岩灯笼
+    block_name:betterend:purple_lantern: 紫珀灯笼
+    block_name:betterend:quartz_lantern: 石英灯笼
+    block_name:betterend:sandy_jadestone_lantern: 沙黄玉石灯笼
+    block_name:betterend:sulphuric_rock_lantern: 硫磺岩灯笼
+    block_name:betterend:umbralith_lantern: 暗影岩灯笼
+    block_name:betterend:violecite_lantern: 紫晶石灯笼
+    block_name:betterend:virid_jadestone_lantern: 翠绿玉石灯笼
+
+    # Chandeliers
+    block_name:betterend:gold_chandelier: 金吊灯
+    block_name:betterend:iron_chandelier: 铁吊灯
+    block_name:betterend:terminite_chandelier: 终结金属吊灯
+    block_name:betterend:thallasium_chandelier: 海蓝金属吊灯
+
+    # Plant-derived light blocks
+    block_name:betterend:amaranita_lantern: 紫灵菇灯笼
+    block_name:betterend:filalux_lantern: 萤光蛾灯笼
+    block_name:betterend:glowing_pillar_luminophor: 发光柱发光体

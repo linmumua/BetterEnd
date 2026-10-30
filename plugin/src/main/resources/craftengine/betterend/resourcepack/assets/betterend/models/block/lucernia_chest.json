@@ -1,0 +1,7 @@
+{
+  "parent": "betterend:block/chest_item",
+  "textures": {
+    "texture": "betterend:entity/chest/lucernia_chest",
+    "particle": "betterend:block/lucernia_planks"
+  }
+}

@@ -1,0 +1,82 @@
+# BetterEnd -- batch B5 "flora-b" localisation.
+# Section names carry the batch suffix so no two batch lang files collide: AbstractPackManager.java
+# :674-683 selects the parser from the text BEFORE '#', and TranslationManagerImpl.java:351-368
+# accumulates into clientLangData instead of replacing it, so every `lang#...` section merges.
+# `block_name:betterend:<id>` is rewritten to block.betterend.<id> by ClientLangData.
+# Strings are VERBATIM from the mod's assets/betterend/lang/en_us.json -- not prettified.
+# ("Sulfur Crystal" and "Cave Moss Endstone Stalactite" are the mod's own spellings; kept.)
+# Block items reuse their block's display name, exactly as the live Phase-2 en_us.yml does.
+
+lang#b5_items:
+  en_us:
+    item.betterend.amaranita_cap: Amaranita Cap
+    item.betterend.amaranita_fur: Amaranita Fur
+    item.betterend.amaranita_hymenophore: Amaranita Hymenophore
+    item.betterend.amaranita_hyphae: Amaranita Hyphae
+    item.betterend.amaranita_stem: Amaranita Stem
+    item.betterend.amber_gem: Amber Gem
+    item.betterend.aurant_polypore: Aurant Polypore
+    item.betterend.aurora_crystal: Aurora Crystal
+    item.betterend.bolux_mushroom: Bolux Mushroom
+    item.betterend.bolux_mushroom_cooked: Cooked Bolux Mushroom
+    item.betterend.budding_smaragdant_crystal: Budding Smaragdant Crystal
+    item.betterend.bulb_moss: Bulb Moss
+    item.betterend.crystal_shards: Aurora Crystal Shards
+    item.betterend.crystalline_sulphur: Sulfur
+    item.betterend.cyan_moss: Cyan Moss
+    item.betterend.end_stone_stalactite: End Stone Stalactite
+    item.betterend.end_stone_stalactite_cavemoss: Cave Moss Endstone Stalactite
+    item.betterend.ender_dust: Ender Dust
+    item.betterend.eternal_crystal: Eternal Crystal
+    item.betterend.filalux: Filalux
+    item.betterend.filalux_wings: Filalux Wings
+    item.betterend.glowing_bulb: Glowing Bulb
+    item.betterend.hydrothermal_vent: Hydrothermal Vent
+    item.betterend.jungle_fern: Jungle Fern
+    item.betterend.large_amaranita_mushroom: Large Amaranita Mushroom
+    item.betterend.lumecorn_rod: Lumecorn Rod
+    item.betterend.magnula: Magnula
+    item.betterend.purple_polypore: Purple Polypore
+    item.betterend.rubinea: Rubinea
+    item.betterend.ruscus: Ruscus
+    item.betterend.small_amaranita_mushroom: Small Amaranita Mushroom
+    item.betterend.small_jellyshroom: Small Jellyshroom
+    item.betterend.smaragdant_crystal_shard: Smaragdant Crystal Shard
+    item.betterend.sulphur_crystal: Sulfur Crystal
+    item.betterend.tail_moss: Tail Moss
+    item.betterend.tube_worm: Tube Worm
+    item.betterend.twisted_moss: Twisted Moss
+
+lang#b5_blocks:
+  en_us:
+    block_name:betterend:amaranita_cap: Amaranita Cap
+    block_name:betterend:amaranita_fur: Amaranita Fur
+    block_name:betterend:amaranita_hymenophore: Amaranita Hymenophore
+    block_name:betterend:amaranita_hyphae: Amaranita Hyphae
+    block_name:betterend:amaranita_stem: Amaranita Stem
+    block_name:betterend:aurant_polypore: Aurant Polypore
+    block_name:betterend:aurora_crystal: Aurora Crystal
+    block_name:betterend:bolux_mushroom: Bolux Mushroom
+    block_name:betterend:budding_smaragdant_crystal: Budding Smaragdant Crystal
+    block_name:betterend:bulb_moss: Bulb Moss
+    block_name:betterend:cyan_moss: Cyan Moss
+    block_name:betterend:end_stone_stalactite: End Stone Stalactite
+    block_name:betterend:end_stone_stalactite_cavemoss: Cave Moss Endstone Stalactite
+    block_name:betterend:filalux: Filalux
+    block_name:betterend:filalux_wings: Filalux Wings
+    block_name:betterend:glowing_pillar_roots: Glowing Pillar Roots
+    block_name:betterend:hydrothermal_vent: Hydrothermal Vent
+    block_name:betterend:jungle_fern: Jungle Fern
+    block_name:betterend:large_amaranita_mushroom: Large Amaranita Mushroom
+    block_name:betterend:lumecorn: Lumecorn
+    block_name:betterend:magnula: Magnula
+    block_name:betterend:purple_polypore: Purple Polypore
+    block_name:betterend:rubinea: Rubinea
+    block_name:betterend:ruscus: Ruscus
+    block_name:betterend:small_amaranita_mushroom: Small Amaranita Mushroom
+    block_name:betterend:small_jellyshroom: Small Jellyshroom
+    block_name:betterend:smaragdant_crystal_shard: Smaragdant Crystal Shard
+    block_name:betterend:sulphur_crystal: Sulfur Crystal
+    block_name:betterend:tail_moss: Tail Moss
+    block_name:betterend:tube_worm: Tube Worm
+    block_name:betterend:twisted_moss: Twisted Moss

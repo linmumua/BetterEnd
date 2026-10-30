@@ -1,0 +1,7 @@
+{
+  "parent": "betterend:block/twisted_vine",
+  "textures": {
+    "roots": "betterend:block/twisted_vine_roots",
+    "texture": "betterend:block/twisted_vine"
+  }
+}

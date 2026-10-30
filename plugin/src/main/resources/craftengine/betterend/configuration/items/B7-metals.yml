@@ -1,0 +1,1507 @@
+# B7-metals -- the 79 metal ITEMS (ingots, nuggets, tool/armour parts, tools, armour,
+# smithing templates and the two elytras). The 12 metal BLOCKS are in configuration/blocks/B7-metals.yml.
+#
+# TIERS, verbatim from the mod:
+#   EndToolMaterial.java:5-30   thallasium  320 dur / 7.0 speed  / +1.5 dmg / ench 9  / incorrect_for_iron_tool
+#                               terminite  1230 dur / 8.5 speed  / +3.5 dmg / ench 9  / incorrect_for_diamond_tool
+#                               aeternium  2196 dur / 10.0 speed / +4.5 dmg / ench 10 / incorrect_for_aeternium_tool
+#   EndToolTier.java:10-38      thallasium == IRON level, terminite == DIAMOND, aeternium == NETHERITE,
+#                               each toolValuesWithOffset(<vanilla>, NO_OFFSET).
+#   EndArmorMaterial.java:6-49  defense is (boots, leggings, chestplate, helmet, body):
+#                               thallasium (1,4,5,2) tough 0.0  kb 0.00  durability x16
+#                               terminite  (3,6,7,3) tough 1.0  kb 0.05  durability x25
+#                               aeternium  (4,7,9,4) tough 3.5  kb 0.20  durability x42
+#                               crystalite (3,6,8,3) tough 1.2  kb 0.10  durability x33
+#                               (vanilla ArmorType multipliers: helmet 11, chestplate 16, leggings 15, boots 13)
+#
+# HOW THAT MAPS TO CE:
+#   Every tool and armour piece rides a vanilla base item of the matching tier, so the mining tier,
+#   attack damage, attack speed, enchantability and equip sound come from vanilla for free.
+#   data.max_damage (ItemProcessors.java:56 MaxDamageProcessor) then sets the mod's own durability.
+#   Armour additionally REPLACES minecraft:attribute_modifiers via data.attribute_modifiers
+#   (ItemProcessors.java:39 AttributeModifiersProcessor -> item.attributeModifiers(results)), because
+#   no vanilla armour material matches all four of the mod's tiers.
+#   Custom armour textures come from the equipments section + settings.equipment.asset_id
+#   (AbstractItemManager.java:273 CONFIG_SECTION_NAME = ConfigKeys.of("equipment(s)"),
+#   ItemSettingsModifiers.java:134-158 EQUIPMENT), mirroring CE's own topaz_armor.yml/flame_elytra.yml.
+#
+# KNOWN DEBT (recorded, not faked):
+#   * ENCHANTABILITY is DONE. The old note here claimed CraftEngine had no setting for it; that was
+#     false. ItemProcessors.java:95-99 passes any data: key straight through as a raw component when
+#     DataComponentKeys.contains it, and ENCHANTABLE is listed at DataComponentKeys.java:41. Every
+#     tool and armour piece now carries minecraft:enchantable (tools 9/9/10 EndToolMaterial.java:14/
+#     23/32, armour 17/26/40/30 EndArmorMaterial.java:16/28/40/52). break_power is unrelated -- it is
+#     only the tier gate for CraftEngine's own blocks (BlockStateUtils.java:64).
+#   * Tool mining SPEED still keeps the vanilla base's (6.0/8.0/9.0 vs the mod's 7.0/8.5/10.0).
+#     minecraft:tool is writable by the same passthrough, but it REPLACES the component, so the fix
+#     must also restate both mining rules -- deniesDrops(incorrect_for_<tier>_tool) and
+#     minesAndDrops(mineable/<slot>, speed) per ToolMaterial.java:39 -- with a per-slot BLOCK tag the
+#     instances do not currently pass, and aeternium's is the custom EndTags
+#     INCORRECT_FOR_AETERNIUM_TOOL, which this pack does not ship. Left out until those two land.
+#   * Tool ATTACK DAMAGE keeps the vanilla base's value; the mod's ToolMaterial attackDamageBonus
+#     differs by 0.5 per tier. The seven HAMMERS are the exception and are now correct (see below).
+#   * FIREPROOF: the old note here was wrong about which items need it. thallasium and terminite
+#     armour were never fireproof in the mod (EquipmentSet.java:250-268 builds them with a plain
+#     new Item(...); only AeterniumSet.java:87-89 adds .fireResistant()), so the pack is already
+#     correct for all 16 armour pieces. The two ELYTRAS are the real gap: EndEquipmentItems.java:83,
+#     :107 pass fireproof=true and neither is. One minecraft:damage_resistant key each, and the
+#     version gate is moot -- this plugin already requires 1.20.5+.
+#   * Repair items: the vanilla base's own repair ingredient applies (iron/diamond/netherite ingot),
+#     not the mod's <metal>_forged_plate. CE's anvil_repair_item exists (ItemSettingsModifiers.java:68)
+#     but the direction of its target list is not established by any shipped example, so it is left
+#     out rather than guessed.
+#   * crystalite_helmet's bonus is the mod's own betterend:generic.blindness_resistance attribute
+#     (CrystaliteHelmet.java:12-22). A custom attribute needs a CE attributes: declaration plus a
+#     damage rule to consume it; not portable as a drop-in and left out.
+#   * The 7 smith hammers still ride the tier's SWORD for durability, tier and enchantability, but
+#     their COMBAT NUMBERS are no longer the sword's -- see betterend:b7/hammer. What is still not
+#     carried: MineableTags.HAMMER mining behaviour (no CE mechanism), the LeveledAnvil they forge on
+#     (out of scope), their +0.2/+0.3 attack knockback, and membership in minecraft:swords, which
+#     grants sweep and sword enchants the mod withholds.
+#   * SPEARS: thallasium/terminite/aeternium _spear and _spear_tip -- 6 items and their 3
+#     smithing_transform + 3 bclib:smithing recipes -- are NOT ported. ToolValues.SpearTuning is nine
+#     floats (ToolTiers.java:86/105/124) with no CraftEngine analogue. Explicit skip, not an oversight;
+#     79 shipped + 6 = the mod's 85.
+#   * INGOT SOURCES: only thallasium is obtainable (its four furnace recipes are in
+#     blocks/dust_wastelands.yml). terminite_ingot and aeternium_ingot are bclib:alloying, for which
+#     CraftEngine registers no serializer and ships no smelter block, so most of this file is
+#     unreachable in survival until an alloying replacement lands. See blocks/B7-metals.yml:649-655.
+#   * The 8 smithing templates ride minecraft:paper, NOT a vanilla smithing template. A real
+#     SmithingTemplateItem draws "Applies to: Diamond Equipment / Ingredients: Netherite Ingot" from
+#     final Component fields on the item class (SmithingTemplateItem.java:29-32,:51-53, rendered by
+#     appendHoverText :93-100), not from data components, so CE cannot override them -- all 8 showed
+#     the netherite upgrade text. paper has no hardcoded tooltip lines, so data.lore below rebuilds
+#     vanilla's exact layout with the mod's own strings. The template slot still accepts them:
+#     CustomSmithingTransformRecipe.matches tests it with a plain Ingredient, and the slot's filter
+#     is RecipePropertySet.SMITHING_TEMPLATE, derived from the loaded recipes (SmithingMenu.java:63,
+#     :70-72) which CE rebuilds via RecipeManagerProxy.finalizeRecipeLoading.
+#     LOST: the ghost-slot hints (base_slot_description / additions_slot_description) -- those are
+#     drawn by SmithingTemplateItem's own slot-icon fields, unreachable from any item component.
+
+templates:
+  # Flat crafting resource / tool part: texture + name + browser category, no vanilla base
+  # (CE's default-material is nether_brick, config.yml:290 -- same as the live pack's ender_shard).
+  betterend:b7/part:
+    category: betterend:metals
+    data:
+      item_name: '<!i><white><lang:item.betterend.${item_id}></white>'
+    texture: betterend:item/${item_id}
+  # Tool on a vanilla tier base; only the mod's durability is overridden.
+  betterend:b7/tool:
+    material: ${base}
+    category: betterend:metals
+    settings:
+      tags:
+        - betterend:${metal}_tools
+        - minecraft:${tool_tag}
+    data:
+      item_name: '<!i><white><lang:item.betterend.${item_id}></white>'
+      max_damage: ${durability}
+      # EndToolMaterial.java:14/23/32 -- the vanilla base's value (iron 14 / diamond 10 /
+      # netherite 15) is wrong for all three. Passed through raw by ItemProcessors.java:95-99
+      # because DataComponentKeys.java:41 lists ENCHANTABLE.
+      minecraft:enchantable:
+        value: ${ench}
+    texture: betterend:item/${item_id}
+  # Smith hammer. Rides the tier's sword for durability and enchantability, but REPLACES the sword's
+  # combat numbers with the mod's hammer values, which are far heavier and far slower.
+  #   ToolTiers.java:26/45/64/83/102/121  ToolValues(attackDamage, attackSpeed, disableBlockingSeconds)
+  #   HammerTraitBuilder.java:70          toolDef.tool(material, HAMMER, dmg, speed, disableSeconds)
+  #   ToolMaterial.java:43                ATTACK_DAMAGE = attackDamageBaseline + material.attackDamageBonus
+  #                                       ATTACK_SPEED  = attackSpeedBaseline (raw; the tooltip adds 4.0)
+  # ${dmg} is therefore the SUM already computed per instance, not the raw ToolValues number.
+  # ToolMaterial.java:39 gives tools Weapon(2, N) -- two durability per swing, where a sword takes one.
+  betterend:b7/hammer:
+    material: ${base}
+    category: betterend:metals
+    settings:
+      tags:
+        - betterend:hammers
+        - minecraft:${tool_tag}
+    data:
+      item_name: '<!i><white><lang:item.betterend.${item_id}></white>'
+      minecraft:attribute_modifiers:
+        - type: minecraft:attack_damage
+          id: minecraft:base_attack_damage
+          slot: mainhand
+          operation: add_value
+          amount: ${dmg}
+        - type: minecraft:attack_speed
+          id: minecraft:base_attack_speed
+          slot: mainhand
+          operation: add_value
+          amount: ${speed}
+      minecraft:weapon:
+        item_damage_per_attack: 2
+        disable_blocking_for_seconds: ${disable}
+    texture: betterend:item/${item_id}
+  # Armour piece: vanilla base for slot/sound/enchantability, mod numbers for everything visible.
+  betterend:b7/armor:
+    material: ${base}
+    category: betterend:metals
+    settings:
+      tags:
+        - betterend:${metal}_armor
+      equipment:
+        asset_id: betterend:${asset}
+        slot: ${slot}
+    data:
+      item_name: '<!i><white><lang:item.betterend.${item_id}></white>'
+      max_damage: ${durability}
+      attribute_modifiers:
+        - type: minecraft:armor
+          id: betterend:armor.${slot}
+          slot: ${slot}
+          operation: add_value
+          amount: ${armor}
+        - type: minecraft:armor_toughness
+          id: betterend:armor_toughness.${slot}
+          slot: ${slot}
+          operation: add_value
+          amount: ${toughness}
+        - type: minecraft:knockback_resistance
+          id: betterend:knockback_resistance.${slot}
+          slot: ${slot}
+          operation: add_value
+          amount: ${knockback}
+      # EndArmorMaterial.java:16/28/40/52 enchantmentValue.
+      minecraft:enchantable:
+        value: ${ench}
+    texture: betterend:item/${item_id}
+  # Smithing template, see the header note on the paper base. ${upgrade} is the mod's lang-key stem
+  # (item.betterend.smithing_template.<upgrade>.*), which is NOT always item_id minus a suffix, so
+  # every instance passes it explicitly. Line order/colours copy SmithingTemplateItem.appendHoverText.
+  betterend:b7/smithing_template:
+    material: paper
+    category: betterend:metals
+    data:
+      item_name: '<!i><white><lang:item.betterend.${item_id}></white>'
+      lore:
+        - '<!i><gray><lang:item.minecraft.smithing_template>'
+        - '<!i>'
+        - '<!i><gray><lang:item.minecraft.smithing_template.applies_to>'
+        - '<!i><blue> <lang:item.betterend.smithing_template.${upgrade}.applies_to>'
+        - '<!i><gray><lang:item.minecraft.smithing_template.ingredients>'
+        - '<!i><blue> <lang:item.betterend.smithing_template.${upgrade}.ingredients>'
+    texture: betterend:item/${item_id}
+
+items:
+  # --- resources -------------------------------------------------------------------
+  # ToolsWithHeadsSet.java:70-73: the ingot carries minecraft:beacon_payment_items.
+  betterend:thallasium_ingot:
+    template: betterend:b7/part
+    arguments:
+      item_id: thallasium_ingot
+    merges:
+      settings:
+        tags:
+          - betterend:thallasium_ingots
+          - minecraft:beacon_payment_items
+  betterend:terminite_ingot:
+    template: betterend:b7/part
+    arguments:
+      item_id: terminite_ingot
+    merges:
+      settings:
+        tags:
+          - betterend:terminite_ingots
+          - minecraft:beacon_payment_items
+  betterend:aeternium_ingot:
+    template: betterend:b7/part
+    arguments:
+      item_id: aeternium_ingot
+    merges:
+      settings:
+        tags:
+          - betterend:aeternium_ingots
+          - minecraft:beacon_payment_items
+  # AeterniumSet.java:6-18 passes withNuggets=false -- there is no aeternium_nugget.
+  betterend:thallasium_nugget:
+    template: betterend:b7/part
+    arguments:
+      item_id: thallasium_nugget
+    merges:
+      settings:
+        tags:
+          - betterend:thallasium_nuggets
+  betterend:terminite_nugget:
+    template: betterend:b7/part
+    arguments:
+      item_id: terminite_nugget
+    merges:
+      settings:
+        tags:
+          - betterend:terminite_nuggets
+  # ToolsWithHeadsSet.java:75-78: the forged plate is the material's repair item
+  # (tags/item/<metal>/repair.json holds exactly this one id).
+  betterend:thallasium_forged_plate:
+    template: betterend:b7/part
+    arguments:
+      item_id: thallasium_forged_plate
+    merges:
+      settings:
+        tags:
+          - betterend:thallasium_repair
+  betterend:terminite_forged_plate:
+    template: betterend:b7/part
+    arguments:
+      item_id: terminite_forged_plate
+    merges:
+      settings:
+        tags:
+          - betterend:terminite_repair
+  betterend:aeternium_forged_plate:
+    template: betterend:b7/part
+    arguments:
+      item_id: aeternium_forged_plate
+    merges:
+      settings:
+        tags:
+          - betterend:aeternium_repair
+  # --- tool parts (forged on a LeveledAnvil in the mod; see the recipe note at the bottom) ---
+  betterend:thallasium_shovel_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: thallasium_shovel_head
+  betterend:thallasium_pickaxe_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: thallasium_pickaxe_head
+  betterend:thallasium_axe_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: thallasium_axe_head
+  betterend:thallasium_hoe_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: thallasium_hoe_head
+  betterend:thallasium_hammer_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: thallasium_hammer_head
+  betterend:thallasium_sword_blade:
+    template: betterend:b7/part
+    arguments:
+      item_id: thallasium_sword_blade
+  betterend:thallasium_sword_handle:
+    template: betterend:b7/part
+    arguments:
+      item_id: thallasium_sword_handle
+  betterend:terminite_shovel_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: terminite_shovel_head
+  betterend:terminite_pickaxe_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: terminite_pickaxe_head
+  betterend:terminite_axe_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: terminite_axe_head
+  betterend:terminite_hoe_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: terminite_hoe_head
+  betterend:terminite_hammer_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: terminite_hammer_head
+  betterend:terminite_sword_blade:
+    template: betterend:b7/part
+    arguments:
+      item_id: terminite_sword_blade
+  betterend:terminite_sword_handle:
+    template: betterend:b7/part
+    arguments:
+      item_id: terminite_sword_handle
+  betterend:aeternium_shovel_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: aeternium_shovel_head
+  betterend:aeternium_pickaxe_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: aeternium_pickaxe_head
+  betterend:aeternium_axe_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: aeternium_axe_head
+  betterend:aeternium_hoe_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: aeternium_hoe_head
+  betterend:aeternium_hammer_head:
+    template: betterend:b7/part
+    arguments:
+      item_id: aeternium_hammer_head
+  betterend:aeternium_sword_blade:
+    template: betterend:b7/part
+    arguments:
+      item_id: aeternium_sword_blade
+  betterend:aeternium_sword_handle:
+    template: betterend:b7/part
+    arguments:
+      item_id: aeternium_sword_handle
+  # --- misc crafting parts ---------------------------------------------------------
+  betterend:leather_stripe:
+    template: betterend:b7/part
+    arguments:
+      item_id: leather_stripe
+  betterend:leather_wrapped_stick:
+    template: betterend:b7/part
+    arguments:
+      item_id: leather_wrapped_stick
+
+  # --- smithing templates ----------------------------------------------------------
+  betterend:thallasium_upgrade_smithing_template:
+    template: betterend:b7/smithing_template
+    arguments:
+      item_id: thallasium_upgrade_smithing_template
+      upgrade: thallasium_upgrade
+  betterend:terminite_upgrade_smithing_template:
+    template: betterend:b7/smithing_template
+    arguments:
+      item_id: terminite_upgrade_smithing_template
+      upgrade: terminite_upgrade
+  betterend:aeternium_upgrade_smithing_template:
+    template: betterend:b7/smithing_template
+    arguments:
+      item_id: aeternium_upgrade_smithing_template
+      upgrade: aeternium_upgrade
+  betterend:netherite_upgrade_smithing_template:
+    template: betterend:b7/smithing_template
+    arguments:
+      item_id: netherite_upgrade_smithing_template
+      upgrade: netherite_upgrade
+  betterend:plate_upgrade_smithing_template:
+    template: betterend:b7/smithing_template
+    arguments:
+      item_id: plate_upgrade_smithing_template
+      upgrade: plate_upgrade
+  betterend:handle_attachment_smithing_template:
+    template: betterend:b7/smithing_template
+    arguments:
+      item_id: handle_attachment_smithing_template
+      upgrade: handle_attachment
+  betterend:leather_handle_attachment_smithing_template:
+    template: betterend:b7/smithing_template
+    arguments:
+      item_id: leather_handle_attachment_smithing_template
+      upgrade: leather_handle_attachment
+  betterend:tool_assembly_smithing_template:
+    template: betterend:b7/smithing_template
+    arguments:
+      item_id: tool_assembly_smithing_template
+      upgrade: tool_assembly
+
+  # --- tools -----------------------------------------------------------------------
+  betterend:thallasium_pickaxe:
+    template: betterend:b7/tool
+    arguments:
+      item_id: thallasium_pickaxe
+      metal: thallasium
+      base: iron_pickaxe
+      tool_tag: pickaxes
+      durability: 320
+      ench: 9
+  betterend:thallasium_axe:
+    template: betterend:b7/tool
+    arguments:
+      item_id: thallasium_axe
+      metal: thallasium
+      base: iron_axe
+      tool_tag: axes
+      durability: 320
+      ench: 9
+  betterend:thallasium_shovel:
+    template: betterend:b7/tool
+    arguments:
+      item_id: thallasium_shovel
+      metal: thallasium
+      base: iron_shovel
+      tool_tag: shovels
+      durability: 320
+      ench: 9
+  betterend:thallasium_hoe:
+    template: betterend:b7/tool
+    arguments:
+      item_id: thallasium_hoe
+      metal: thallasium
+      base: iron_hoe
+      tool_tag: hoes
+      durability: 320
+      ench: 9
+  betterend:thallasium_sword:
+    template: betterend:b7/tool
+    arguments:
+      item_id: thallasium_sword
+      metal: thallasium
+      base: iron_sword
+      tool_tag: swords
+      durability: 320
+      ench: 9
+  betterend:terminite_pickaxe:
+    template: betterend:b7/tool
+    arguments:
+      item_id: terminite_pickaxe
+      metal: terminite
+      base: diamond_pickaxe
+      tool_tag: pickaxes
+      durability: 1230
+      ench: 9
+  betterend:terminite_axe:
+    template: betterend:b7/tool
+    arguments:
+      item_id: terminite_axe
+      metal: terminite
+      base: diamond_axe
+      tool_tag: axes
+      durability: 1230
+      ench: 9
+  betterend:terminite_shovel:
+    template: betterend:b7/tool
+    arguments:
+      item_id: terminite_shovel
+      metal: terminite
+      base: diamond_shovel
+      tool_tag: shovels
+      durability: 1230
+      ench: 9
+  betterend:terminite_hoe:
+    template: betterend:b7/tool
+    arguments:
+      item_id: terminite_hoe
+      metal: terminite
+      base: diamond_hoe
+      tool_tag: hoes
+      durability: 1230
+      ench: 9
+  betterend:terminite_sword:
+    template: betterend:b7/tool
+    arguments:
+      item_id: terminite_sword
+      metal: terminite
+      base: diamond_sword
+      tool_tag: swords
+      durability: 1230
+      ench: 9
+  betterend:aeternium_pickaxe:
+    template: betterend:b7/tool
+    arguments:
+      item_id: aeternium_pickaxe
+      metal: aeternium
+      base: netherite_pickaxe
+      tool_tag: pickaxes
+      durability: 2196
+      ench: 10
+  betterend:aeternium_axe:
+    template: betterend:b7/tool
+    arguments:
+      item_id: aeternium_axe
+      metal: aeternium
+      base: netherite_axe
+      tool_tag: axes
+      durability: 2196
+      ench: 10
+  betterend:aeternium_shovel:
+    template: betterend:b7/tool
+    arguments:
+      item_id: aeternium_shovel
+      metal: aeternium
+      base: netherite_shovel
+      tool_tag: shovels
+      durability: 2196
+      ench: 10
+  betterend:aeternium_hoe:
+    template: betterend:b7/tool
+    arguments:
+      item_id: aeternium_hoe
+      metal: aeternium
+      base: netherite_hoe
+      tool_tag: hoes
+      durability: 2196
+      ench: 10
+  betterend:aeternium_sword:
+    template: betterend:b7/tool
+    arguments:
+      item_id: aeternium_sword
+      metal: aeternium
+      base: netherite_sword
+      tool_tag: swords
+      durability: 2196
+      ench: 10
+  # Smith hammers. No vanilla hammer exists and the leveled anvil they belong to is out of scope, so
+  # they ride the tier's sword for durability, tier and enchantability -- but the sword's combat
+  # numbers are overridden, because a sword is roughly half the damage and four times the speed.
+  # ponytail: still in minecraft:swords, so they keep sweep and sword enchantments the mod withholds
+  # (the mod uses MineableTags.HAMMER, which CraftEngine has no equivalent for).
+
+  betterend:thallasium_hammer:
+    template: betterend:b7/hammer
+    arguments:
+      item_id: thallasium_hammer
+      base: iron_sword
+      tool_tag: swords
+      dmg: 9.5
+      speed: -4.3
+      disable: 7
+    merges:
+      data:
+        max_damage: 320
+  betterend:terminite_hammer:
+    template: betterend:b7/hammer
+    arguments:
+      item_id: terminite_hammer
+      base: diamond_sword
+      tool_tag: swords
+      dmg: 10.5
+      speed: -4.0
+      disable: 6
+    merges:
+      data:
+        max_damage: 1230
+  betterend:aeternium_hammer:
+    template: betterend:b7/hammer
+    arguments:
+      item_id: aeternium_hammer
+      base: netherite_sword
+      tool_tag: swords
+      dmg: 12.5
+      speed: -3.2
+      disable: 5
+    merges:
+      data:
+        max_damage: 2196
+  betterend:iron_hammer:
+    template: betterend:b7/hammer
+    arguments:
+      item_id: iron_hammer
+      base: iron_sword
+      tool_tag: swords
+      dmg: 10.0
+      speed: -4.3
+      disable: 7
+  betterend:golden_hammer:
+    template: betterend:b7/hammer
+    arguments:
+      item_id: golden_hammer
+      base: golden_sword
+      tool_tag: swords
+      dmg: 8.0
+      speed: -4.0
+      disable: 6
+  betterend:diamond_hammer:
+    template: betterend:b7/hammer
+    arguments:
+      item_id: diamond_hammer
+      base: diamond_sword
+      tool_tag: swords
+      dmg: 10.0
+      speed: -4.0
+      disable: 6
+  betterend:netherite_hammer:
+    template: betterend:b7/hammer
+    arguments:
+      item_id: netherite_hammer
+      base: netherite_sword
+      tool_tag: swords
+      dmg: 12.0
+      speed: -3.2
+      disable: 5
+  # --- armour ----------------------------------------------------------------------
+  betterend:thallasium_helmet:
+    template: betterend:b7/armor
+    arguments:
+      item_id: thallasium_helmet
+      metal: thallasium
+      asset: thallasium
+      base: chainmail_helmet
+      slot: head
+      durability: 176
+      armor: 2
+      toughness: 0.0
+      knockback: 0.0
+      ench: 17
+  betterend:thallasium_chestplate:
+    template: betterend:b7/armor
+    arguments:
+      item_id: thallasium_chestplate
+      metal: thallasium
+      asset: thallasium
+      base: chainmail_chestplate
+      slot: chest
+      durability: 256
+      armor: 5
+      toughness: 0.0
+      knockback: 0.0
+      ench: 17
+  betterend:thallasium_leggings:
+    template: betterend:b7/armor
+    arguments:
+      item_id: thallasium_leggings
+      metal: thallasium
+      asset: thallasium
+      base: chainmail_leggings
+      slot: legs
+      durability: 240
+      armor: 4
+      toughness: 0.0
+      knockback: 0.0
+      ench: 17
+  betterend:thallasium_boots:
+    template: betterend:b7/armor
+    arguments:
+      item_id: thallasium_boots
+      metal: thallasium
+      asset: thallasium
+      base: chainmail_boots
+      slot: feet
+      durability: 208
+      armor: 1
+      toughness: 0.0
+      knockback: 0.0
+      ench: 17
+  betterend:terminite_helmet:
+    template: betterend:b7/armor
+    arguments:
+      item_id: terminite_helmet
+      metal: terminite
+      asset: terminite
+      base: diamond_helmet
+      slot: head
+      durability: 275
+      armor: 3
+      toughness: 1.0
+      knockback: 0.05
+      ench: 26
+  betterend:terminite_chestplate:
+    template: betterend:b7/armor
+    arguments:
+      item_id: terminite_chestplate
+      metal: terminite
+      asset: terminite
+      base: diamond_chestplate
+      slot: chest
+      durability: 400
+      armor: 7
+      toughness: 1.0
+      knockback: 0.05
+      ench: 26
+  betterend:terminite_leggings:
+    template: betterend:b7/armor
+    arguments:
+      item_id: terminite_leggings
+      metal: terminite
+      asset: terminite
+      base: diamond_leggings
+      slot: legs
+      durability: 375
+      armor: 6
+      toughness: 1.0
+      knockback: 0.05
+      ench: 26
+  betterend:terminite_boots:
+    template: betterend:b7/armor
+    arguments:
+      item_id: terminite_boots
+      metal: terminite
+      asset: terminite
+      base: diamond_boots
+      slot: feet
+      durability: 325
+      armor: 3
+      toughness: 1.0
+      knockback: 0.05
+      ench: 26
+  betterend:aeternium_helmet:
+    template: betterend:b7/armor
+    arguments:
+      item_id: aeternium_helmet
+      metal: aeternium
+      asset: aeternium
+      base: netherite_helmet
+      slot: head
+      durability: 462
+      armor: 4
+      toughness: 3.5
+      knockback: 0.2
+      ench: 40
+  betterend:aeternium_chestplate:
+    template: betterend:b7/armor
+    arguments:
+      item_id: aeternium_chestplate
+      metal: aeternium
+      asset: aeternium
+      base: netherite_chestplate
+      slot: chest
+      durability: 672
+      armor: 9
+      toughness: 3.5
+      knockback: 0.2
+      ench: 40
+  betterend:aeternium_leggings:
+    template: betterend:b7/armor
+    arguments:
+      item_id: aeternium_leggings
+      metal: aeternium
+      asset: aeternium
+      base: netherite_leggings
+      slot: legs
+      durability: 630
+      armor: 7
+      toughness: 3.5
+      knockback: 0.2
+      ench: 40
+  betterend:aeternium_boots:
+    template: betterend:b7/armor
+    arguments:
+      item_id: aeternium_boots
+      metal: aeternium
+      asset: aeternium
+      base: netherite_boots
+      slot: feet
+      durability: 546
+      armor: 4
+      toughness: 3.5
+      knockback: 0.2
+      ench: 40
+  betterend:crystalite_helmet:
+    template: betterend:b7/armor
+    arguments:
+      item_id: crystalite_helmet
+      metal: crystalite
+      asset: crystalite
+      base: netherite_helmet
+      slot: head
+      durability: 418
+      armor: 3
+      toughness: 1.2
+      knockback: 0.0
+      ench: 30
+    # CrystaliteHelmet's own blindness-resistance attribute is not portable; only the set
+    # membership survives.
+    merges:
+      settings:
+        tags:
+          - betterend:crystalite_set
+        equipment_set_part:
+          - slots: [head]
+            sets: [betterend:crystalite]
+  betterend:crystalite_chestplate:
+    template: betterend:b7/armor
+    arguments:
+      item_id: crystalite_chestplate
+      metal: crystalite
+      asset: crystalite
+      base: netherite_chestplate
+      slot: chest
+      durability: 608
+      armor: 8
+      toughness: 1.2
+      knockback: 0.0
+      ench: 30
+    # CrystaliteChestplate.java:16-19 -> HASTE while worn.
+    merges:
+      settings:
+        tags:
+          - betterend:crystalite_set
+        equipment_set_part:
+          - slots: [chest]
+            sets: [betterend:crystalite]
+        equipment_potion_effects:
+          - slot: chest
+            type: minecraft:haste
+            amplifier: 0
+            ambient: true
+            particles: false
+            show_icon: true
+  betterend:crystalite_leggings:
+    template: betterend:b7/armor
+    arguments:
+      item_id: crystalite_leggings
+      metal: crystalite
+      asset: crystalite
+      base: netherite_leggings
+      slot: legs
+      durability: 570
+      armor: 6
+      toughness: 1.2
+      knockback: 0.0
+      ench: 30
+    # CrystaliteLeggings.java:11-20 -> MAX_HEALTH +4 on the legs slot.
+    merges:
+      settings:
+        tags:
+          - betterend:crystalite_set
+        equipment_set_part:
+          - slots: [legs]
+            sets: [betterend:crystalite]
+      data:
+        attribute_modifiers:
+          - type: minecraft:max_health
+            id: betterend:crystalite.max_health
+            slot: legs
+            operation: add_value
+            amount: 4
+  betterend:crystalite_boots:
+    template: betterend:b7/armor
+    arguments:
+      item_id: crystalite_boots
+      metal: crystalite
+      asset: crystalite
+      base: netherite_boots
+      slot: feet
+      durability: 494
+      armor: 3
+      toughness: 1.2
+      knockback: 0.0
+      ench: 30
+    # CrystaliteBoots.java:13-17 -> SPEED while worn.
+    merges:
+      settings:
+        tags:
+          - betterend:crystalite_set
+        equipment_set_part:
+          - slots: [feet]
+            sets: [betterend:crystalite]
+        equipment_potion_effects:
+          - slot: feet
+            type: minecraft:speed
+            amplifier: 0
+            ambient: true
+            particles: false
+            show_icon: true
+
+  # --- elytras ---------------------------------------------------------------------
+  # EndEquipmentItems.java:28-47 and :49-111. Both are chest-slot gliders that also grant armour;
+  # the vanilla elytra has no attribute_modifiers, so writing the component is purely additive.
+  betterend:elytra_armored:
+    material: elytra
+    category: betterend:metals
+    settings:
+      tags:
+        - betterend:elytras
+      equipment:
+        asset_id: betterend:elytra_armored
+        slot: chest
+    data:
+      item_name: '<!i><white><lang:item.betterend.elytra_armored></white>'
+      max_damage: 900
+      attribute_modifiers:
+        - type: minecraft:armor
+          id: betterend:armor.chest
+          slot: chest
+          operation: add_value
+          amount: 7.5
+        - type: minecraft:armor_toughness
+          id: betterend:armor_toughness.chest
+          slot: chest
+          operation: add_value
+          amount: 3.0
+        - type: minecraft:knockback_resistance
+          id: betterend:knockback_resistance.chest
+          slot: chest
+          operation: add_value
+          amount: 0.2
+    textures:
+      - betterend:item/elytra_armored
+      - betterend:item/elytra_armored_broken
+  betterend:elytra_crystalite:
+    material: elytra
+    category: betterend:metals
+    settings:
+      tags:
+        - betterend:elytras
+        - betterend:crystalite_set
+      equipment_set_part:
+        - slots: [chest]
+          sets: [betterend:crystalite]
+      equipment_potion_effects:
+        - slot: chest
+          type: minecraft:haste
+          amplifier: 0
+          ambient: true
+          particles: false
+          show_icon: true
+      equipment:
+        asset_id: betterend:elytra_crystalite
+        slot: chest
+    data:
+      item_name: '<!i><white><lang:item.betterend.elytra_crystalite></white>'
+      max_damage: 650
+      attribute_modifiers:
+        - type: minecraft:armor
+          id: betterend:armor.chest
+          slot: chest
+          operation: add_value
+          amount: 6.5
+        - type: minecraft:armor_toughness
+          id: betterend:armor_toughness.chest
+          slot: chest
+          operation: add_value
+          amount: 1.0
+        - type: minecraft:knockback_resistance
+          id: betterend:knockback_resistance.chest
+          slot: chest
+          operation: add_value
+          amount: 0.1
+    textures:
+      - betterend:item/elytra_crystalite
+      - betterend:item/elytra_crystalite_broken
+
+# Armour/wing render assets. Layer names come from EquipmentLayerType.java:13-15 and the texture
+# value is a plain identifier resolved under textures/entity/equipment/<layer>/
+# (ComponentBasedEquipment.java:117-123 getCorrectTexturePath). Contents copied from the mod's own
+# generated/assets/betterend/equipment/*.json.
+equipments:
+  betterend:thallasium:
+    type: component
+    humanoid: betterend:thallasium
+    humanoid_leggings: betterend:thallasium
+  betterend:terminite:
+    type: component
+    humanoid: betterend:terminite
+    humanoid_leggings: betterend:terminite
+  betterend:aeternium:
+    type: component
+    humanoid: betterend:aeternium
+    humanoid_leggings: betterend:aeternium
+  betterend:crystalite:
+    type: component
+    humanoid: betterend:crystalite
+    humanoid_leggings: betterend:crystalite
+  # elytra_armored.json also draws the aeternium humanoid layers under the wings.
+  betterend:elytra_armored:
+    type: component
+    humanoid: betterend:aeternium
+    humanoid_leggings: betterend:aeternium
+    wings:
+      texture: betterend:elytra_armored
+      use_player_texture: true
+  betterend:elytra_crystalite:
+    type: component
+    wings:
+      texture: betterend:elytra_crystalite
+      use_player_texture: true
+
+# CrystaliteArmor.java:64-67: the full four-piece set (the elytra counts as the chest piece via
+# EndTags.CRYSTALITE_SET) reapplies EndStatusEffects.CRYSTALITE_HEALTH_REGEN, which is
+# MobEffects.REGENERATION amplifier 0, ambient, no particles, icon shown
+# (EndStatusEffects.java:16-23). Section parsed by AbstractAttributeManager.java:396.
+equipment_sets:
+  betterend:crystalite:
+    pieces:
+      # QUOTED ON PURPOSE: snakeyaml-engine resolves a bare `4` to an Integer key, and both
+      # TemplateManagerImpl.preprocessUnknownValue (:101-104) and EquipmentSet.fromConfig (:24-27)
+      # iterate keySet() as String -> ClassCastException at pack load. Integer.parseInt("4") is fine.
+      '4':
+        potion_effects:
+          - type: minecraft:regeneration
+            amplifier: 0
+            ambient: true
+            particles: false
+            show_icon: true
+
+recipes:
+  # Every recipe below is copied from generated/data/betterend/recipe/. Nothing invented.
+  # --- nugget <-> ingot -------------------------------------------------------------
+  betterend:thallasium_ingot_from_nuggets:
+    type: shaped
+    category: misc
+    group: end_metal_nugget
+    pattern: ['###', '###', '###']
+    ingredients:
+      '#': betterend:thallasium_nugget
+    result:
+      id: betterend:thallasium_ingot
+      count: 1
+  betterend:thallasium_nuggets_from_ingot:
+    type: shapeless
+    category: misc
+    group: end_metal_ingot
+    ingredients:
+      - betterend:thallasium_ingot
+    result:
+      id: betterend:thallasium_nugget
+      count: 9
+  betterend:terminite_ingot_from_nuggets:
+    type: shaped
+    category: misc
+    group: end_metal_nugget
+    pattern: ['###', '###', '###']
+    ingredients:
+      '#': betterend:terminite_nugget
+    result:
+      id: betterend:terminite_ingot
+      count: 1
+  betterend:terminite_nuggets_from_ingot:
+    type: shapeless
+    category: misc
+    group: end_metal_ingot
+    ingredients:
+      - betterend:terminite_ingot
+    result:
+      id: betterend:terminite_nugget
+      count: 9
+  # --- leather parts ----------------------------------------------------------------
+  betterend:leather_stripe:
+    type: shapeless
+    category: misc
+    ingredients:
+      - minecraft:leather
+    result:
+      id: betterend:leather_stripe
+      count: 3
+  betterend:leather_wrapped_stick:
+    type: shapeless
+    category: misc
+    ingredients:
+      - minecraft:stick
+      - betterend:leather_stripe
+    result:
+      id: betterend:leather_wrapped_stick
+      count: 1
+  # stripes_to_leather.json -- the reverse of leather_to_stripes.
+  betterend:stripes_to_leather:
+    type: shaped
+    category: misc
+    pattern: ['SSS']
+    ingredients:
+      S: betterend:leather_stripe
+    result:
+      id: minecraft:leather
+      count: 1
+  # --- smithing template copies (copy_*.json), all the same 3x3 shape ----------------
+  betterend:copy_thallasium_upgrade:
+    type: shaped
+    category: misc
+    pattern: ['#S#', '#C#', '###']
+    ingredients:
+      '#': minecraft:stick
+      C: betterend:thallasium_ingot
+      S: betterend:thallasium_upgrade_smithing_template
+    result:
+      id: betterend:thallasium_upgrade_smithing_template
+      count: 2
+  betterend:copy_terminite_upgrade:
+    type: shaped
+    category: misc
+    pattern: ['#S#', '#C#', '###']
+    ingredients:
+      '#': minecraft:stick
+      C: betterend:terminite_ingot
+      S: betterend:terminite_upgrade_smithing_template
+    result:
+      id: betterend:terminite_upgrade_smithing_template
+      count: 2
+  betterend:copy_aeternium_upgrade:
+    type: shaped
+    category: misc
+    pattern: ['#S#', '#C#', '###']
+    ingredients:
+      '#': minecraft:diamond
+      C: minecraft:lapis_block
+      S: betterend:aeternium_upgrade_smithing_template
+    result:
+      id: betterend:aeternium_upgrade_smithing_template
+      count: 2
+  betterend:copy_netherite_upgrade:
+    type: shaped
+    category: misc
+    pattern: ['#S#', '#C#', '###']
+    ingredients:
+      '#': minecraft:diamond
+      C: minecraft:netherrack
+      S: betterend:netherite_upgrade_smithing_template
+    result:
+      id: betterend:netherite_upgrade_smithing_template
+      count: 2
+  betterend:copy_plate_upgrade:
+    type: shaped
+    category: misc
+    pattern: ['#S#', '#C#', '###']
+    ingredients:
+      '#': minecraft:diamond
+      C: minecraft:iron_ingot
+      S: betterend:plate_upgrade_smithing_template
+    result:
+      id: betterend:plate_upgrade_smithing_template
+      count: 2
+  betterend:copy_handle_attachment:
+    type: shaped
+    category: misc
+    pattern: ['#S#', '#C#', '###']
+    ingredients:
+      '#': minecraft:stick
+      C: minecraft:diamond
+      S: betterend:handle_attachment_smithing_template
+    result:
+      id: betterend:handle_attachment_smithing_template
+      count: 2
+  betterend:copy_leather_handle_attachment:
+    type: shaped
+    category: misc
+    pattern: ['#S#', '#C#', '###']
+    ingredients:
+      '#': minecraft:diamond
+      C: minecraft:leather
+      S: betterend:leather_handle_attachment_smithing_template
+    result:
+      id: betterend:leather_handle_attachment_smithing_template
+      count: 2
+  betterend:copy_tool_assembly:
+    type: shaped
+    category: misc
+    pattern: ['#S#', '#C#', '###']
+    ingredients:
+      '#': minecraft:stick
+      C: minecraft:iron_block
+      S: betterend:tool_assembly_smithing_template
+    result:
+      id: betterend:tool_assembly_smithing_template
+      count: 2
+  # --- tools: head + handle under a smithing template -------------------------------
+  # CustomSmithingTransformRecipe.Serializer:196-199 reads template_type / base / addition.
+  betterend:thallasium_pickaxe:
+    type: smithing_transform
+    template_type: betterend:handle_attachment_smithing_template
+    base: betterend:thallasium_pickaxe_head
+    addition: minecraft:stick
+    result:
+      id: betterend:thallasium_pickaxe
+      count: 1
+  betterend:thallasium_axe:
+    type: smithing_transform
+    template_type: betterend:handle_attachment_smithing_template
+    base: betterend:thallasium_axe_head
+    addition: minecraft:stick
+    result:
+      id: betterend:thallasium_axe
+      count: 1
+  betterend:thallasium_shovel:
+    type: smithing_transform
+    template_type: betterend:handle_attachment_smithing_template
+    base: betterend:thallasium_shovel_head
+    addition: minecraft:stick
+    result:
+      id: betterend:thallasium_shovel
+      count: 1
+  betterend:thallasium_hoe:
+    type: smithing_transform
+    template_type: betterend:handle_attachment_smithing_template
+    base: betterend:thallasium_hoe_head
+    addition: minecraft:stick
+    result:
+      id: betterend:thallasium_hoe
+      count: 1
+  betterend:thallasium_hammer:
+    type: smithing_transform
+    template_type: betterend:handle_attachment_smithing_template
+    base: betterend:thallasium_hammer_head
+    addition: minecraft:stick
+    result:
+      id: betterend:thallasium_hammer
+      count: 1
+  betterend:thallasium_sword_handle:
+    type: smithing_transform
+    template_type: betterend:thallasium_upgrade_smithing_template
+    base: minecraft:stick
+    addition: betterend:thallasium_ingot
+    result:
+      id: betterend:thallasium_sword_handle
+      count: 1
+  betterend:thallasium_sword:
+    type: smithing_transform
+    template_type: betterend:tool_assembly_smithing_template
+    base: betterend:thallasium_sword_blade
+    addition: betterend:thallasium_sword_handle
+    result:
+      id: betterend:thallasium_sword
+      count: 1
+  betterend:terminite_pickaxe:
+    type: smithing_transform
+    template_type: betterend:handle_attachment_smithing_template
+    base: betterend:terminite_pickaxe_head
+    addition: minecraft:stick
+    result:
+      id: betterend:terminite_pickaxe
+      count: 1
+  betterend:terminite_axe:
+    type: smithing_transform
+    template_type: betterend:handle_attachment_smithing_template
+    base: betterend:terminite_axe_head
+    addition: minecraft:stick
+    result:
+      id: betterend:terminite_axe
+      count: 1
+  betterend:terminite_shovel:
+    type: smithing_transform
+    template_type: betterend:handle_attachment_smithing_template
+    base: betterend:terminite_shovel_head
+    addition: minecraft:stick
+    result:
+      id: betterend:terminite_shovel
+      count: 1
+  betterend:terminite_hoe:
+    type: smithing_transform
+    template_type: betterend:handle_attachment_smithing_template
+    base: betterend:terminite_hoe_head
+    addition: minecraft:stick
+    result:
+      id: betterend:terminite_hoe
+      count: 1
+  betterend:terminite_hammer:
+    type: smithing_transform
+    template_type: betterend:handle_attachment_smithing_template
+    base: betterend:terminite_hammer_head
+    addition: minecraft:stick
+    result:
+      id: betterend:terminite_hammer
+      count: 1
+  betterend:terminite_sword_handle:
+    type: smithing_transform
+    template_type: betterend:terminite_upgrade_smithing_template
+    base: minecraft:stick
+    addition: betterend:terminite_ingot
+    result:
+      id: betterend:terminite_sword_handle
+      count: 1
+  betterend:terminite_sword:
+    type: smithing_transform
+    template_type: betterend:tool_assembly_smithing_template
+    base: betterend:terminite_sword_blade
+    addition: betterend:terminite_sword_handle
+    result:
+      id: betterend:terminite_sword
+      count: 1
+  betterend:aeternium_pickaxe:
+    type: smithing_transform
+    template_type: betterend:leather_handle_attachment_smithing_template
+    base: betterend:aeternium_pickaxe_head
+    addition: betterend:leather_wrapped_stick
+    result:
+      id: betterend:aeternium_pickaxe
+      count: 1
+  betterend:aeternium_axe:
+    type: smithing_transform
+    template_type: betterend:leather_handle_attachment_smithing_template
+    base: betterend:aeternium_axe_head
+    addition: betterend:leather_wrapped_stick
+    result:
+      id: betterend:aeternium_axe
+      count: 1
+  betterend:aeternium_shovel:
+    type: smithing_transform
+    template_type: betterend:leather_handle_attachment_smithing_template
+    base: betterend:aeternium_shovel_head
+    addition: betterend:leather_wrapped_stick
+    result:
+      id: betterend:aeternium_shovel
+      count: 1
+  betterend:aeternium_hoe:
+    type: smithing_transform
+    template_type: betterend:leather_handle_attachment_smithing_template
+    base: betterend:aeternium_hoe_head
+    addition: betterend:leather_wrapped_stick
+    result:
+      id: betterend:aeternium_hoe
+      count: 1
+  betterend:aeternium_hammer:
+    type: smithing_transform
+    template_type: betterend:leather_handle_attachment_smithing_template
+    base: betterend:aeternium_hammer_head
+    addition: betterend:leather_wrapped_stick
+    result:
+      id: betterend:aeternium_hammer
+      count: 1
+  betterend:aeternium_sword_handle:
+    type: smithing_transform
+    template_type: betterend:aeternium_upgrade_smithing_template
+    base: betterend:leather_wrapped_stick
+    addition: betterend:aeternium_ingot
+    result:
+      id: betterend:aeternium_sword_handle
+      count: 1
+  betterend:aeternium_sword:
+    type: smithing_transform
+    template_type: betterend:tool_assembly_smithing_template
+    base: betterend:aeternium_sword_blade
+    addition: betterend:aeternium_sword_handle
+    result:
+      id: betterend:aeternium_sword
+      count: 1
+  # --- armour -----------------------------------------------------------------------
+  # The mod's '#betterend:<metal>/repair' tag holds exactly one id, the forged plate
+  # (tags/item/<metal>/repair.json), so it is inlined here rather than declared as a CE tag.
+  betterend:thallasium_helmet:
+    type: shaped
+    category: equipment
+    group: helmet
+    pattern: ['###', '# #']
+    ingredients:
+      '#': betterend:thallasium_forged_plate
+    result:
+      id: betterend:thallasium_helmet
+      count: 1
+  betterend:thallasium_chestplate:
+    type: shaped
+    category: equipment
+    group: chestplate
+    pattern: ['# #', '###', '###']
+    ingredients:
+      '#': betterend:thallasium_forged_plate
+    result:
+      id: betterend:thallasium_chestplate
+      count: 1
+  betterend:thallasium_leggings:
+    type: shaped
+    category: equipment
+    group: leggings
+    pattern: ['###', '# #', '# #']
+    ingredients:
+      '#': betterend:thallasium_forged_plate
+    result:
+      id: betterend:thallasium_leggings
+      count: 1
+  betterend:thallasium_boots:
+    type: shaped
+    category: equipment
+    group: boots
+    pattern: ['# #', '# #']
+    ingredients:
+      '#': betterend:thallasium_forged_plate
+    result:
+      id: betterend:thallasium_boots
+      count: 1
+  betterend:terminite_helmet:
+    type: shaped
+    category: equipment
+    group: helmet
+    pattern: ['###', '# #']
+    ingredients:
+      '#': betterend:terminite_forged_plate
+    result:
+      id: betterend:terminite_helmet
+      count: 1
+  betterend:terminite_chestplate:
+    type: shaped
+    category: equipment
+    group: chestplate
+    pattern: ['# #', '###', '###']
+    ingredients:
+      '#': betterend:terminite_forged_plate
+    result:
+      id: betterend:terminite_chestplate
+      count: 1
+  betterend:terminite_leggings:
+    type: shaped
+    category: equipment
+    group: leggings
+    pattern: ['###', '# #', '# #']
+    ingredients:
+      '#': betterend:terminite_forged_plate
+    result:
+      id: betterend:terminite_leggings
+      count: 1
+  betterend:terminite_boots:
+    type: shaped
+    category: equipment
+    group: boots
+    pattern: ['# #', '# #']
+    ingredients:
+      '#': betterend:terminite_forged_plate
+    result:
+      id: betterend:terminite_boots
+      count: 1
+  # Aeternium armour upgrades terminite armour with a forged plate.
+  betterend:aeternium_helmet:
+    type: smithing_transform
+    template_type: betterend:plate_upgrade_smithing_template
+    base: betterend:terminite_helmet
+    addition: betterend:aeternium_forged_plate
+    result:
+      id: betterend:aeternium_helmet
+      count: 1
+  betterend:aeternium_chestplate:
+    type: smithing_transform
+    template_type: betterend:plate_upgrade_smithing_template
+    base: betterend:terminite_chestplate
+    addition: betterend:aeternium_forged_plate
+    result:
+      id: betterend:aeternium_chestplate
+      count: 1
+  betterend:aeternium_leggings:
+    type: smithing_transform
+    template_type: betterend:plate_upgrade_smithing_template
+    base: betterend:terminite_leggings
+    addition: betterend:aeternium_forged_plate
+    result:
+      id: betterend:aeternium_leggings
+      count: 1
+  betterend:aeternium_boots:
+    type: smithing_transform
+    template_type: betterend:plate_upgrade_smithing_template
+    base: betterend:terminite_boots
+    addition: betterend:aeternium_forged_plate
+    result:
+      id: betterend:aeternium_boots
+      count: 1
+  # --- vanilla-tier smith hammers ---------------------------------------------------
+  betterend:iron_hammer:
+    type: shaped
+    category: equipment
+    pattern: ['I I', 'I#I', ' # ']
+    ingredients:
+      '#': minecraft:stick
+      I: minecraft:iron_ingot
+    result:
+      id: betterend:iron_hammer
+      count: 1
+  betterend:golden_hammer:
+    type: shaped
+    category: equipment
+    pattern: ['I I', 'I#I', ' # ']
+    ingredients:
+      '#': minecraft:stick
+      I: minecraft:gold_ingot
+    result:
+      id: betterend:golden_hammer
+      count: 1
+  betterend:diamond_hammer:
+    type: shaped
+    category: equipment
+    pattern: ['I I', 'I#I', ' # ']
+    ingredients:
+      '#': minecraft:stick
+      I: minecraft:diamond
+    result:
+      id: betterend:diamond_hammer
+      count: 1
+  betterend:netherite_hammer:
+    type: smithing_transform
+    template_type: betterend:netherite_upgrade_smithing_template
+    base: betterend:diamond_hammer
+    addition: minecraft:netherite_ingot
+    result:
+      id: betterend:netherite_hammer
+      count: 1
+  # --- armored elytra (armored_elytra.json) -----------------------------------------
+  betterend:elytra_armored:
+    type: smithing_transform
+    template_type: betterend:aeternium_upgrade_smithing_template
+    base: minecraft:elytra
+    addition: betterend:aeternium_ingot
+    result:
+      id: betterend:elytra_armored
+      count: 1
+  # NOT PORTED, by recipe type:
+  #   * every *_head / *_blade / *_forged_plate recipe is bclib:smithing, i.e. a LeveledAnvil
+  #     recipe (anvilLevel / damage / allowedTools). CE registers no anvil recipe serializer and
+  #     has no leveled-anvil behavior, so all 24 part recipes are unreachable and the whole tool
+  #     tree is currently uncraftable. This is the single biggest blocker in B7.
+  #   * crystalite_{helmet,chestplate,leggings,boots} and crystalite_elytra are betterend:infusion
+  #     (the Infusion Ritual). No CE equivalent, so those five have no recipe.
+  #   * the 40 tool/armour -> nugget smelting+blasting recycling recipes are omitted deliberately:
+  #     they are pure convenience and would double the size of this file. Re-add from
+  #     generated/data/betterend/recipe/*_nugget_{smelting,blasting}.json if wanted.

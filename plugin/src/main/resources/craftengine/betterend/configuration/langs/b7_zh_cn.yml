@@ -1,0 +1,130 @@
+# B7 (metals, tools, armour, smithing templates) client-side localisation -- zh_cn.
+# All eight smithing templates keep the mod's single shared display name.
+# Simplified Chinese (zh_cn) translation of b7_en_us.yml. Keys, section suffixes and ordering
+# mirror the English file; only human-readable values are translated. Legacy section-sign colour
+# codes are preserved verbatim, and proper nouns (BetterEnd, the music-disc artists) keep their
+# original spelling. Section ids carry a _zh_cn suffix so this file never declares the same
+# `lang#...` id as its English counterpart: AbstractPackManager.java:757-768 picks the parser from
+# the text BEFORE '#', and TranslationManagerImpl.java:524-531 accumulates every section into
+# clientLangData (addClientTranslation, :351-368). The language key must be `zh_cn`, exactly as
+# spelled in internal/lang/processed.json, or addClientTranslation drops it silently (:358-366).
+
+lang#b7_items_zh_cn:
+  zh_cn:
+    # Resources
+    item.betterend.aeternium_forged_plate: 锻造永恒合金板
+    item.betterend.aeternium_ingot: 永恒合金锭
+    item.betterend.terminite_forged_plate: 锻造终结金属板
+    item.betterend.terminite_ingot: 终结金属锭
+    item.betterend.terminite_nugget: 终结金属粒
+    item.betterend.thallasium_forged_plate: 锻造海蓝金属板
+    item.betterend.thallasium_ingot: 海蓝金属锭
+    item.betterend.thallasium_nugget: 海蓝金属粒
+    item.betterend.leather_stripe: 皮革条
+    item.betterend.leather_wrapped_stick: 皮革包裹的木棍
+
+    # Tool parts
+    item.betterend.aeternium_axe_head: 永恒合金斧头
+    item.betterend.aeternium_hammer_head: 永恒合金锤头
+    item.betterend.aeternium_hoe_head: 永恒合金锄头
+    item.betterend.aeternium_pickaxe_head: 永恒合金镐头
+    item.betterend.aeternium_shovel_head: 永恒合金锹头
+    item.betterend.aeternium_sword_blade: 永恒合金剑刃
+    item.betterend.aeternium_sword_handle: 永恒合金剑柄
+    item.betterend.terminite_axe_head: 终结金属斧头
+    item.betterend.terminite_hammer_head: 终结金属锤头
+    item.betterend.terminite_hoe_head: 终结金属锄头
+    item.betterend.terminite_pickaxe_head: 终结金属镐头
+    item.betterend.terminite_shovel_head: 终结金属锹头
+    item.betterend.terminite_sword_blade: 终结金属剑刃
+    item.betterend.terminite_sword_handle: 终结金属剑柄
+    item.betterend.thallasium_axe_head: 海蓝金属斧头
+    item.betterend.thallasium_hammer_head: 海蓝金属锤头
+    item.betterend.thallasium_hoe_head: 海蓝金属锄头
+    item.betterend.thallasium_pickaxe_head: 海蓝金属镐头
+    item.betterend.thallasium_shovel_head: 海蓝金属锹头
+    item.betterend.thallasium_sword_blade: 海蓝金属剑刃
+    item.betterend.thallasium_sword_handle: 海蓝金属剑柄
+
+    # Smithing templates (the mod gives all eight the same display name)
+    item.betterend.aeternium_upgrade_smithing_template: 锻造模板
+    item.betterend.handle_attachment_smithing_template: 锻造模板
+    item.betterend.leather_handle_attachment_smithing_template: 锻造模板
+    item.betterend.netherite_upgrade_smithing_template: 锻造模板
+    item.betterend.plate_upgrade_smithing_template: 锻造模板
+    item.betterend.terminite_upgrade_smithing_template: 锻造模板
+    item.betterend.thallasium_upgrade_smithing_template: 锻造模板
+    item.betterend.tool_assembly_smithing_template: 锻造模板
+
+    # Tools
+    item.betterend.aeternium_axe: 永恒合金斧
+    item.betterend.aeternium_hammer: 永恒合金锻造锤
+    item.betterend.aeternium_hoe: 永恒合金锄
+    item.betterend.aeternium_pickaxe: 永恒合金镐
+    item.betterend.aeternium_shovel: 永恒合金锹
+    item.betterend.aeternium_sword: 永恒合金剑
+    item.betterend.diamond_hammer: 钻石锻造锤
+    item.betterend.golden_hammer: 金锻造锤
+    item.betterend.iron_hammer: 铁锻造锤
+    item.betterend.netherite_hammer: 下界合金锻造锤
+    item.betterend.terminite_axe: 终结金属斧
+    item.betterend.terminite_hammer: 终结金属锻造锤
+    item.betterend.terminite_hoe: 终结金属锄
+    item.betterend.terminite_pickaxe: 终结金属镐
+    item.betterend.terminite_shovel: 终结金属锹
+    item.betterend.terminite_sword: 终结金属剑
+    item.betterend.thallasium_axe: 海蓝金属斧
+    item.betterend.thallasium_hammer: 海蓝金属锤
+    item.betterend.thallasium_hoe: 海蓝金属锄
+    item.betterend.thallasium_pickaxe: 海蓝金属镐
+    item.betterend.thallasium_shovel: 海蓝金属锹
+    item.betterend.thallasium_sword: 海蓝金属剑
+
+    # Armour and elytras
+    item.betterend.aeternium_boots: 永恒合金靴子
+    item.betterend.aeternium_chestplate: 永恒合金胸甲
+    item.betterend.aeternium_helmet: 永恒合金头盔
+    item.betterend.aeternium_leggings: 永恒合金护腿
+    item.betterend.crystalite_boots: 晶石靴子
+    item.betterend.crystalite_chestplate: 晶石胸甲
+    item.betterend.crystalite_helmet: 晶石头盔
+    item.betterend.crystalite_leggings: 晶石护腿
+    item.betterend.elytra_armored: 装甲鞘翅
+    item.betterend.elytra_crystalite: 晶石鞘翅
+    item.betterend.terminite_boots: 终结金属靴子
+    item.betterend.terminite_chestplate: 终结金属胸甲
+    item.betterend.terminite_helmet: 终结金属头盔
+    item.betterend.terminite_leggings: 终结金属护腿
+    item.betterend.thallasium_boots: 海蓝金属靴子
+    item.betterend.thallasium_chestplate: 海蓝金属胸甲
+    item.betterend.thallasium_helmet: 海蓝金属头盔
+    item.betterend.thallasium_leggings: 海蓝金属护腿
+
+    # Block items -- the item.betterend.<id> key each block item's data.item_name points at.
+    item.betterend.aeternium_block: 永恒合金块
+    item.betterend.amber_block: 琥珀块
+    item.betterend.charcoal_block: 木炭块
+    item.betterend.ender_block: 末影块
+    item.betterend.terminite_bars: 终结金属栏杆
+    item.betterend.terminite_block: 终结金属块
+    item.betterend.terminite_chain: 终结金属锁链
+    item.betterend.terminite_tile: 终结金属瓷砖
+    item.betterend.thallasium_bars: 海蓝金属栏杆
+    item.betterend.thallasium_block: 海蓝金属块
+    item.betterend.thallasium_chain: 海蓝金属锁链
+    item.betterend.thallasium_tile: 海蓝金属瓷砖
+
+lang#b7_blocks_zh_cn:
+  zh_cn:
+    block_name:betterend:aeternium_block: 永恒合金块
+    block_name:betterend:amber_block: 琥珀块
+    block_name:betterend:charcoal_block: 木炭块
+    block_name:betterend:ender_block: 末影块
+    block_name:betterend:terminite_bars: 终结金属栏杆
+    block_name:betterend:terminite_block: 终结金属块
+    block_name:betterend:terminite_chain: 终结金属锁链
+    block_name:betterend:terminite_tile: 终结金属瓷砖
+    block_name:betterend:thallasium_bars: 海蓝金属栏杆
+    block_name:betterend:thallasium_block: 海蓝金属块
+    block_name:betterend:thallasium_chain: 海蓝金属锁链
+    block_name:betterend:thallasium_tile: 海蓝金属瓷砖

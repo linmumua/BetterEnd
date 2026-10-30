@@ -1,0 +1,8 @@
+{
+  "parent": "betterend:block/path",
+  "textures": {
+    "bottom": "minecraft:block/end_stone",
+    "side": "betterend:block/amber_moss_side_1",
+    "top": "betterend:block/amber_moss_path_top"
+  }
+}

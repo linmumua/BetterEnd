@@ -1,0 +1,60 @@
+BetterEnd Folia 26.3 — third-party notices
+
+Better End / BetterEnd-Plugin:
+Copyright (c) 2020 paulevsGitch and the Better End contributors.
+Copyright (c) 2026 HuiDu_OwO.
+Source reference: IOVEYOUMC0/BetterEnd-Plugin commit 561599527bf9d184f88e493ce796cb2ebb23aff0.
+Their MIT copyright notices and terms are retained in LICENSE; the excluded asset list is retained in LICENSE.ASSETS.
+Copyright (c) 2026 linmumua applies to this adaptation, not to third-party assets.
+
+DnT End Castle Standalone v1.3.4:
+The supplied original archive is a local build input, SHA-256
+22d0040e162688d750bbfb122026f9881df42bd5e26f63cb0b5b1f6047c07e98.
+Project license identifier: LicenseRef-All-Rights-Reserved.
+Credits: Nova Wostra, Walls, Konci, Badooga, Whity Lee.
+DnT assets, structures and data are NOT relicensed under this project's MIT license.
+The integration artifact is for the user's local use; no public redistribution authorization is asserted.
+The missing phantom_boss_vanish function is restored from the matching Dungeons and Taverns v4.7.3 implementation;
+source archive SHA-1: 998c6f18e4ed6679235c635637b52075702a5cd6.
+Original credits are also preserved with the bundled DnT resources.
+
+YUNG's Better End Island (structure templates bundled at structures/yung_end_island/):
+Copyright (c) YUNG-GANG / yungnickyoung and the YUNG's Better End Island contributors.
+Licensed under the GNU Lesser General Public License version 3.0 (LGPL-3.0). The full license text is
+bundled with the templates and ships inside the plugin jar at
+structures/yung_end_island/LICENSE-YUNG-Better-End-Island.txt
+(repository copies: common/src/main/resources/structures/yung_end_island/ and tools/yung-better-end-island/LICENSE).
+Source: https://github.com/YUNG-GANG/YUNGs-Better-End-Island
+Pinned version: branch 26.1.2, commit 549ad39efd0761f7c4ca2584d24d5e8ecf922e24 (mod version 4.1.0).
+Version note: the "6.1.1" figure recorded earlier by this project was the YUNG's API version required by
+the mod, not the mod's own version; the pinned commit above is unchanged.
+Bundled files: 36 structure templates, pillar_{bottom,broken,guarded,initial}_1..9.nbt, taken unmodified
+from Common/src/main/resources/data/betterendisland/structure/ at that commit. pillar_broken_8.nbt was
+restored from the same commit, because the originally downloaded set was missing it.
+Integrity: SHA-256 over the C-locale-sorted `sha256sum *.nbt` listing of the 36 files (hash plus
+"*filename" per line, in that textual form) is ebad7a88ece0b5904db35ddc6d0949347c26d517787ce51acde57fef293cbe00.
+Central altar template, bundled alongside the pillars at structures/yung_end_island/tower_initial.nbt:
+tower_initial.nbt, taken unmodified from Common/src/main/resources/data/betterendisland/structure/ at the
+same commit. 49,016 bytes; size 29x27x29; 17,383 block entries of which 13,589 are minecraft:air
+(3,794 non-air: 2,909 end_stone_bricks, 343 obsidian, 207 end_stone_brick_wall, 154 end_stone_brick_stairs,
+115 end_stone_brick_slab, 65 gray_concrete, 1 bell); 0 entities; 0 red_concrete. DataVersion 3955.
+SHA-256: 36d155015ca55d1cbef81e3755a082255c37afafaf2c1e024288424d941ef7cf
+(git blob SHA-1 030885c3f455b3600134ac2e7a43278df705c049, matching the committed blob at that commit).
+tower_initial.nbt is NOT part of the 36-file digest above and carries its own hash on the line above.
+Read-only reference copy: tools/yung-better-end-island/structure/tower_initial.nbt
+Read-only reference copies of the mod's Java sources used to derive the placement rules
+(BetterSpikeFeature.java, the three structure processors, EndSpikeUtils, SpikeCacheLoader) live under
+tools/yung-better-end-island/src/ and are NOT packaged into the plugin jar. The plugin's own Java code
+is an independent implementation; no YUNG source file is compiled into or relicensed by this project.
+
+Compile-only dependencies (not bundled):
+MUCore / Folia / Paper API 26.3: supplied by the server; upstream license notices remain with that distribution.
+CraftEngine 26.10-SNAPSHOT: installed separately; upstream license notices remain with that distribution.
+
+Bundled library:
+SnakeYAML: Apache License 2.0; original dependency license/notice entries must be retained by the Shadow build.
+
+Test-only tools and dependencies are not included in the runtime plugin.
+UltimateAdvancementAPI is not included or required by this adaptation.
+Minecraft is a trademark of Mojang Synergies AB; this project is not affiliated with Mojang, Microsoft,
+PaperMC, Team BetterX, or Dungeons and Taverns.

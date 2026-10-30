@@ -1,0 +1,41 @@
+# Gradle
+.gradle/
+build/
+*/build/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+out/
+
+# 交付产物（走 GitHub Release，不进仓库）
+jars/
+artifacts/
+
+# 上游源码（体积大，按需重新下载）
+upstream/
+
+# 本地工作副本 / 转换前转储 / 备份
+.backup/
+_backup/
+_*-backup-*/
+logs/
+
+# 本地日志与调试输出
+*.log
+hs_err_pid*.log
+replay_pid*.log
+
+# 本地测试服
+run/
+server/
+.narrafork/
+.trash/
+_*-backup-*/
+_removed-*/
+*.zip
+*.rar
+*.7z

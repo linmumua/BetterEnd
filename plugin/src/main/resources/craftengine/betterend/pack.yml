@@ -1,0 +1,5 @@
+author: BetterX
+description: BetterEnd content for CraftEngine
+version: '0.1'
+namespace: betterend
+enable: true

@@ -1,0 +1,162 @@
+# BetterEnd -- batch B4 (flora-a) localisation.
+# Two batch-suffixed sections so no other batch's lang file collides; every `lang#...` section is
+# merged, not replaced (AbstractPackManager.java:674-683 -> TranslationManagerImpl.java:485-533,
+# addClientTranslation accumulates at :351-368).
+# `block_name:betterend:<id>` is rewritten to block.betterend.<id> by ClientLangData.
+# Names are verbatim from the mod's assets/betterend/lang/en_us.json.
+
+lang#b4_items:
+  en_us:
+    item.betterend.aeridium: Aeridium
+    item.betterend.amber_grass: Amber Grass
+    item.betterend.amber_moss: Amber Moss
+    item.betterend.amber_moss_path: Amber Moss Path
+    item.betterend.amber_root_raw: Raw Amber Root
+    item.betterend.blooming_cooksonia: Blooming Cooksonia
+    item.betterend.blossom_berry: Blossom Berry
+    item.betterend.blossom_berry_jelly: Blossom Berry Jelly
+    item.betterend.bubble_coral: Bubble Coral
+    item.betterend.bushy_grass: Bushy Grass
+    item.betterend.cave_bush: Cave Bush
+    item.betterend.cave_grass: Cave Grass
+    item.betterend.cave_moss: Cave Moss
+    item.betterend.cave_moss_path: Cave Moss Path
+    item.betterend.cave_pumpkin: Cave Pumpkin
+    item.betterend.cave_pumpkin_pie: Cave Pumpkin Pie
+    item.betterend.charnia_cyan: Cyan Charnia
+    item.betterend.charnia_green: Green Charnia
+    item.betterend.charnia_light_blue: Light Blue Charnia
+    item.betterend.charnia_orange: Orange Charnia
+    item.betterend.charnia_purple: Purple Charnia
+    item.betterend.charnia_red: Red Charnia
+    item.betterend.chorus_grass: Chorus Grass
+    item.betterend.chorus_mushroom_cooked: Cooked Chorus Mushroom
+    item.betterend.chorus_mushroom_raw: Raw Chorus Mushroom
+    item.betterend.chorus_nylium: Chorus Nylium
+    item.betterend.chorus_nylium_path: Chorus Nylium Path
+    item.betterend.clawfern: Clawfern
+    item.betterend.creeping_moss: Creeping Moss
+    item.betterend.crystal_grass: Crystal Grass
+    item.betterend.crystal_moss: Crystal Moss
+    item.betterend.crystal_moss_path: Crystal Moss Path
+    item.betterend.enchanted_petal: Enchanted Petal
+    item.betterend.end_lily_leaf: End Lily Leaf
+    item.betterend.end_lily_leaf_dried: End Lily Leaf Dried
+    item.betterend.end_moss: End Moss
+    item.betterend.end_moss_path: End Moss Path
+    item.betterend.end_mycelium: End Mycelium
+    item.betterend.end_mycelium_path: End Mycelium Path
+    item.betterend.flamaea: Flamaea
+    item.betterend.flammalix: Flammalix
+    item.betterend.fracturn: Fracturn
+    item.betterend.globulagus: Globulagus
+    item.betterend.hydralux_petal: Hydralux Petal
+    item.betterend.inflexia: Inflexia
+    item.betterend.jungle_grass: Jungle Grass
+    item.betterend.jungle_moss: Jungle Moss
+    item.betterend.jungle_moss_path: Jungle Moss Path
+    item.betterend.lamellarium: Lamellarium
+    item.betterend.lanceleaf: Lanceleaf
+    item.betterend.lutebus: Lutebus
+    item.betterend.murkweed: Murkweed
+    item.betterend.needlegrass: Needlegrass
+    item.betterend.orango: Orango
+    item.betterend.pallidium_full: Pallidium (Full Cover)
+    item.betterend.pallidium_heavy: Pallidium (Heavy Cover)
+    item.betterend.pallidium_thin: Pallidium (Thin Cover)
+    item.betterend.pallidium_tiny: Pallidium (Tiny Cover)
+    item.betterend.pink_moss: Pink Moss
+    item.betterend.pink_moss_path: Pink Moss Path
+    item.betterend.pond_anemone: Pond Anemone
+    item.betterend.rutiscus: Rutiscus
+    item.betterend.rutiscus_path: Rutiscus Path
+    item.betterend.salteago: Salteago
+    item.betterend.sangnum: Sangnum
+    item.betterend.sangnum_path: Sangnum Path
+    item.betterend.shadow_berry: Shadow Berry Seeds
+    item.betterend.shadow_berry_cooked: Shadow Berry Cooked
+    item.betterend.shadow_berry_jelly: Shadow Berry Jelly
+    item.betterend.shadow_berry_raw: Shadow Berry
+    item.betterend.shadow_grass: Shadow Grass
+    item.betterend.shadow_grass_path: Shadow Grass Path
+    item.betterend.shadow_plant: Shadow Plant
+    item.betterend.sweet_berry_jelly: Sweet Berry Jelly
+    item.betterend.tenanea_flowers: Tenanea Flowers
+    item.betterend.twisted_umbrella_moss: Twisted Umbrella Moss
+    item.betterend.twisted_umbrella_moss_tall: Twisted Umbrella Moss Tall
+    item.betterend.umbrella_moss: Umbrella Moss
+    item.betterend.umbrella_moss_tall: Tall Umbrella Moss
+    item.betterend.vaiolush_fern: Vaiolush Fern
+
+lang#b4_blocks:
+  en_us:
+    block_name:betterend:aeridium: Aeridium
+    block_name:betterend:amber_grass: Amber Grass
+    block_name:betterend:amber_moss: Amber Moss
+    block_name:betterend:amber_moss_path: Amber Moss Path
+    block_name:betterend:blooming_cooksonia: Blooming Cooksonia
+    block_name:betterend:bubble_coral: Bubble Coral
+    block_name:betterend:bushy_grass: Bushy Grass
+    block_name:betterend:cave_bush: Cave Bush
+    block_name:betterend:cave_grass: Cave Grass
+    block_name:betterend:cave_moss: Cave Moss
+    block_name:betterend:cave_moss_path: Cave Moss Path
+    block_name:betterend:cave_pumpkin: Cave Pumpkin
+    block_name:betterend:charnia_cyan: Cyan Charnia
+    block_name:betterend:charnia_green: Green Charnia
+    block_name:betterend:charnia_light_blue: Light Blue Charnia
+    block_name:betterend:charnia_orange: Orange Charnia
+    block_name:betterend:charnia_purple: Purple Charnia
+    block_name:betterend:charnia_red: Red Charnia
+    block_name:betterend:chorus_grass: Chorus Grass
+    block_name:betterend:chorus_nylium: Chorus Nylium
+    block_name:betterend:chorus_nylium_path: Chorus Nylium Path
+    block_name:betterend:clawfern: Clawfern
+    block_name:betterend:creeping_moss: Creeping Moss
+    block_name:betterend:crystal_grass: Crystal Grass
+    block_name:betterend:crystal_moss: Crystal Moss
+    block_name:betterend:crystal_moss_path: Crystal Moss Path
+    block_name:betterend:end_lily: End Lily
+    block_name:betterend:end_lotus_flower: Endlotus Flower
+    block_name:betterend:end_lotus_leaf: Endlotus Leaf
+    block_name:betterend:end_moss: End Moss
+    block_name:betterend:end_moss_path: End Moss Path
+    block_name:betterend:end_mycelium: End Mycelium
+    block_name:betterend:end_mycelium_path: End Mycelium Path
+    block_name:betterend:flamaea: Flamaea
+    block_name:betterend:flammalix: Flammalix
+    block_name:betterend:fracturn: Fracturn
+    block_name:betterend:globulagus: Globulagus
+    block_name:betterend:hydralux: Hydralux
+    block_name:betterend:inflexia: Inflexia
+    block_name:betterend:jungle_grass: Jungle Grass
+    block_name:betterend:jungle_moss: Jungle Moss
+    block_name:betterend:jungle_moss_path: Jungle Moss Path
+    block_name:betterend:lamellarium: Lamellarium
+    block_name:betterend:lanceleaf: Lanceleaf
+    block_name:betterend:lutebus: Lutebus
+    block_name:betterend:murkweed: Murkweed
+    block_name:betterend:needlegrass: Needlegrass
+    block_name:betterend:orango: Orango
+    block_name:betterend:pallidium_full: Pallidium (Full Cover)
+    block_name:betterend:pallidium_heavy: Pallidium (Heavy Cover)
+    block_name:betterend:pallidium_thin: Pallidium (Thin Cover)
+    block_name:betterend:pallidium_tiny: Pallidium (Tiny Cover)
+    block_name:betterend:pink_moss: Pink Moss
+    block_name:betterend:pink_moss_path: Pink Moss Path
+    block_name:betterend:pond_anemone: Pond Anemone
+    block_name:betterend:rutiscus: Rutiscus
+    block_name:betterend:rutiscus_path: Rutiscus Path
+    block_name:betterend:salteago: Salteago
+    block_name:betterend:sangnum: Sangnum
+    block_name:betterend:sangnum_path: Sangnum Path
+    block_name:betterend:shadow_berry: Shadow Berry Seeds
+    block_name:betterend:shadow_grass: Shadow Grass
+    block_name:betterend:shadow_grass_path: Shadow Grass Path
+    block_name:betterend:shadow_plant: Shadow Plant
+    block_name:betterend:tenanea_flowers: Tenanea Flowers
+    block_name:betterend:twisted_umbrella_moss: Twisted Umbrella Moss
+    block_name:betterend:twisted_umbrella_moss_tall: Twisted Umbrella Moss Tall
+    block_name:betterend:umbrella_moss: Umbrella Moss
+    block_name:betterend:umbrella_moss_tall: Tall Umbrella Moss
+    block_name:betterend:vaiolush_fern: Vaiolush Fern

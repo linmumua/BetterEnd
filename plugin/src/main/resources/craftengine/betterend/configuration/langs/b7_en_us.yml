@@ -1,0 +1,128 @@
+# B7-metals client-side localisation. Names are VERBATIM from the mod's
+# assets/betterend/lang/en_us.json -- not prettified (note 'Aeternium Smith Hammer',
+# and that all eight smithing templates really are just called 'Smithing Template').
+#
+# Section names carry the batch suffix so no two batch lang files collide: only the text
+# BEFORE '#' selects the parser (AbstractPackManager.java:674-683), and LangParser.parseSection
+# (TranslationManagerImpl.java:524-532) accumulates via addTranslations rather than replacing.
+# 'block_name:betterend:<id>' is rewritten to block.betterend.<id> by ClientLangData.
+
+lang#b7_items:
+  en_us:
+    # Resources
+    item.betterend.aeternium_forged_plate: Aeternium Forged Plate
+    item.betterend.aeternium_ingot: Aeternium Ingot
+    item.betterend.terminite_forged_plate: Terminite Forged Plate
+    item.betterend.terminite_ingot: Terminite Ingot
+    item.betterend.terminite_nugget: Terminite Nugget
+    item.betterend.thallasium_forged_plate: Thallasium Forged Plate
+    item.betterend.thallasium_ingot: Thallasium Ingot
+    item.betterend.thallasium_nugget: Thallasium Nugget
+    item.betterend.leather_stripe: Leather Stripe
+    item.betterend.leather_wrapped_stick: Leather Wrapped Stick
+
+    # Tool parts
+    item.betterend.aeternium_axe_head: Aeternium Axe Head
+    item.betterend.aeternium_hammer_head: Aeternium Hammer Head
+    item.betterend.aeternium_hoe_head: Aeternium Hoe Head
+    item.betterend.aeternium_pickaxe_head: Aeternium Pickaxe Head
+    item.betterend.aeternium_shovel_head: Aeternium Shovel Head
+    item.betterend.aeternium_sword_blade: Aeternium Sword Blade
+    item.betterend.aeternium_sword_handle: Aeternium Sword Handle
+    item.betterend.terminite_axe_head: Terminite Axe Head
+    item.betterend.terminite_hammer_head: Terminite Hammer Head
+    item.betterend.terminite_hoe_head: Terminite Hoe Head
+    item.betterend.terminite_pickaxe_head: Terminite Pickaxe Head
+    item.betterend.terminite_shovel_head: Terminite Shovel Head
+    item.betterend.terminite_sword_blade: Terminite Sword Blade
+    item.betterend.terminite_sword_handle: Terminite Sword Handle
+    item.betterend.thallasium_axe_head: Thallasium Axe Head
+    item.betterend.thallasium_hammer_head: Thallasium Hammer Head
+    item.betterend.thallasium_hoe_head: Thallasium Hoe Head
+    item.betterend.thallasium_pickaxe_head: Thallasium Pickaxe Head
+    item.betterend.thallasium_shovel_head: Thallasium Shovel Head
+    item.betterend.thallasium_sword_blade: Thallasium Sword Blade
+    item.betterend.thallasium_sword_handle: Thallasium Sword Handle
+
+    # Smithing templates (the mod gives all eight the same display name)
+    item.betterend.aeternium_upgrade_smithing_template: Smithing Template
+    item.betterend.handle_attachment_smithing_template: Smithing Template
+    item.betterend.leather_handle_attachment_smithing_template: Smithing Template
+    item.betterend.netherite_upgrade_smithing_template: Smithing Template
+    item.betterend.plate_upgrade_smithing_template: Smithing Template
+    item.betterend.terminite_upgrade_smithing_template: Smithing Template
+    item.betterend.thallasium_upgrade_smithing_template: Smithing Template
+    item.betterend.tool_assembly_smithing_template: Smithing Template
+
+    # Tools
+    item.betterend.aeternium_axe: Aeternium Axe
+    item.betterend.aeternium_hammer: Aeternium Smith Hammer
+    item.betterend.aeternium_hoe: Aeternium Hoe
+    item.betterend.aeternium_pickaxe: Aeternium Pickaxe
+    item.betterend.aeternium_shovel: Aeternium Shovel
+    item.betterend.aeternium_sword: Aeternium Sword
+    item.betterend.diamond_hammer: Diamond Smith Hammer
+    item.betterend.golden_hammer: Golden Smith Hammer
+    item.betterend.iron_hammer: Iron Smith Hammer
+    item.betterend.netherite_hammer: Netherite Smith Hammer
+    item.betterend.terminite_axe: Terminite Axe
+    item.betterend.terminite_hammer: Terminite Smith Hammer
+    item.betterend.terminite_hoe: Terminite Hoe
+    item.betterend.terminite_pickaxe: Terminite Pickaxe
+    item.betterend.terminite_shovel: Terminite Shovel
+    item.betterend.terminite_sword: Terminite Sword
+    item.betterend.thallasium_axe: Thallasium Axe
+    item.betterend.thallasium_hammer: Thallasium Hammer
+    item.betterend.thallasium_hoe: Thallasium Hoe
+    item.betterend.thallasium_pickaxe: Thallasium Pickaxe
+    item.betterend.thallasium_shovel: Thallasium Shovel
+    item.betterend.thallasium_sword: Thallasium Sword
+
+    # Armour and elytras
+    item.betterend.aeternium_boots: Aeternium Boots
+    item.betterend.aeternium_chestplate: Aeternium Chestplate
+    item.betterend.aeternium_helmet: Aeternium Helmet
+    item.betterend.aeternium_leggings: Aeternium Leggings
+    item.betterend.crystalite_boots: Crystalite Boots
+    item.betterend.crystalite_chestplate: Crystalite Chestplate
+    item.betterend.crystalite_helmet: Crystalite Helmet
+    item.betterend.crystalite_leggings: Crystalite Leggings
+    item.betterend.elytra_armored: Armored Elytra
+    item.betterend.elytra_crystalite: Crystalite Elytra
+    item.betterend.terminite_boots: Terminite Boots
+    item.betterend.terminite_chestplate: Terminite Chestplate
+    item.betterend.terminite_helmet: Terminite Helmet
+    item.betterend.terminite_leggings: Terminite Leggings
+    item.betterend.thallasium_boots: Thallasium Boots
+    item.betterend.thallasium_chestplate: Thallasium Chestplate
+    item.betterend.thallasium_helmet: Thallasium Helmet
+    item.betterend.thallasium_leggings: Thallasium Leggings
+
+    # Block items -- the item.betterend.<id> key each block item's data.item_name points at.
+    item.betterend.aeternium_block: Aeternium Block
+    item.betterend.amber_block: Amber Block
+    item.betterend.charcoal_block: Charcoal Block
+    item.betterend.ender_block: Ender Block
+    item.betterend.terminite_bars: Terminite Bars
+    item.betterend.terminite_block: Terminite Block
+    item.betterend.terminite_chain: Terminite Chain
+    item.betterend.terminite_tile: Terminite Tile
+    item.betterend.thallasium_bars: Thallasium Bars
+    item.betterend.thallasium_block: Thallasium Block
+    item.betterend.thallasium_chain: Thallasium Chain
+    item.betterend.thallasium_tile: Thallasium Tile
+
+lang#b7_blocks:
+  en_us:
+    block_name:betterend:aeternium_block: Aeternium Block
+    block_name:betterend:amber_block: Amber Block
+    block_name:betterend:charcoal_block: Charcoal Block
+    block_name:betterend:ender_block: Ender Block
+    block_name:betterend:terminite_bars: Terminite Bars
+    block_name:betterend:terminite_block: Terminite Block
+    block_name:betterend:terminite_chain: Terminite Chain
+    block_name:betterend:terminite_tile: Terminite Tile
+    block_name:betterend:thallasium_bars: Thallasium Bars
+    block_name:betterend:thallasium_block: Thallasium Block
+    block_name:betterend:thallasium_chain: Thallasium Chain
+    block_name:betterend:thallasium_tile: Thallasium Tile

@@ -1,0 +1,61 @@
+# Asset licensing
+
+Two different licenses apply to the assets in this repository, and only one of them comes from
+upstream.
+
+## 1. Upstream "Better End" assets (MIT)
+
+The original mod ("Better End", <https://github.com/quiqueck/BetterEnd>) states its license as
+`MIT (CC BY-NC-SA 4.0 for some Assets)`. Its `LICENSE` file puts everything in the repository
+under the MIT License, Copyright (c) 2020 paulevsGitch, except the files listed in upstream's
+`LICENSE.ASSETS`.
+
+Assets taken from upstream keep that MIT license. They are redistributed here with the upstream
+copyright notice preserved, which is what the [LICENSE](LICENSE) file in this repository does.
+
+## 2. The CC BY-NC-SA 4.0 assets are deliberately excluded
+
+Upstream's `LICENSE.ASSETS` lists exactly three files under **CC BY-NC-SA 4.0**, with the
+attribution "Team BetterX":
+
+| Upstream path | SHA-256 |
+|---|---|
+| `src/main/resources/assets/betterend/textures/gui/infusion.png` | `7DF6D46943CAD8E58ABB524A2BB0BDD1E3E9B5E43EC089C353F008DAC16AD216` |
+| `src/main/resources/assets/betterend/icon_updater.png` | `DC4D55E13E7129285B94A8164A39CBF74AF577CBC38098A59B2764CA05B1C705` |
+| `src/main/resources/assets/betterend/lang/de_de.json` | `F823FBC5274F5870BD716792515BA7B45863D4A0B8E23C4A228C7AD352EF9495` |
+
+**None of these three files is present in this repository, in the bundled CraftEngine pack, or in
+the built plugin jar.** The exclusion was verified by hashing every file in the project and
+comparing the digests against the three above: zero matches. Re-running the check after any future
+asset import is recommended:
+
+```powershell
+$restricted = @(
+  '7DF6D46943CAD8E58ABB524A2BB0BDD1E3E9B5E43EC089C353F008DAC16AD216',
+  'DC4D55E13E7129285B94A8164A39CBF74AF577CBC38098A59B2764CA05B1C705',
+  'F823FBC5274F5870BD716792515BA7B45863D4A0B8E23C4A228C7AD352EF9495'
+)
+Get-ChildItem -Recurse -File | Where-Object {
+  $restricted -contains (Get-FileHash $_.FullName -Algorithm SHA256).Hash
+}
+```
+
+Because the CC BY-NC-SA material is non-commercial and share-alike, it is not relicensable under
+this repository's MIT terms, so it was not carried over. Nothing in this port needs those files:
+the infusion GUI texture belongs to a GUI-driven infusion ritual that is not ported yet, the
+updater icon belongs to the mod's auto-updater, and the German translation was replaced by the
+port's own CraftEngine language files.
+
+## 3. What is bundled instead
+
+* `plugin/src/main/resources/craftengine/betterend/resourcepack/assets/betterend/textures/`
+  -- 906 PNGs. 873 of them are byte-identical to upstream mod textures (MIT); the remaining 33 were
+  drawn or adjusted for this port.
+* `.../resourcepack/assets/betterend/models/` -- block and item models, most of them rewritten for
+  CraftEngine's model system. 915 of the 1614 files in the bundled pack are byte-identical to
+  upstream mod assets, all of them MIT-licensed.
+* CraftEngine configuration YAML, the biome datapack JSON, the port's Java code and its language
+  files are written for this port.
+
+If you are an upstream contributor and would like an asset removed from this repository, open an
+issue at <https://github.com/IOVEYOUMC0/BetterEnd-Plugin/issues>.

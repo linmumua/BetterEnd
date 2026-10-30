@@ -1,0 +1,271 @@
+# B8 (storage, furniture, pedestals, flower pots, misc items) -- zh_cn.
+# Simplified Chinese (zh_cn) translation of b8_en_us.yml. Keys, section suffixes and ordering
+# mirror the English file; only human-readable values are translated. Legacy section-sign colour
+# codes are preserved verbatim, and proper nouns (BetterEnd, the music-disc artists) keep their
+# original spelling. Section ids carry a _zh_cn suffix so this file never declares the same
+# `lang#...` id as its English counterpart: AbstractPackManager.java:757-768 picks the parser from
+# the text BEFORE '#', and TranslationManagerImpl.java:524-531 accumulates every section into
+# clientLangData (addClientTranslation, :351-368). The language key must be `zh_cn`, exactly as
+# spelled in internal/lang/processed.json, or addClientTranslation drops it silently (:358-366).
+
+lang#b8_items_zh_cn:
+  zh_cn:
+    # The 10 wood families' furniture
+    item.betterend.dragon_tree_chest: 龙树箱子
+    item.betterend.dragon_tree_barrel: 龙树木桶
+    item.betterend.dragon_tree_bookshelf: 龙树书架
+    item.betterend.dragon_tree_crafting_table: 龙树工作台
+    item.betterend.dragon_tree_ladder: 龙树梯子
+    item.betterend.end_lotus_chest: 末地莲箱子
+    item.betterend.end_lotus_barrel: 末地莲木桶
+    item.betterend.end_lotus_bookshelf: 末地莲书架
+    item.betterend.end_lotus_crafting_table: 末地莲工作台
+    item.betterend.end_lotus_ladder: 末地莲梯子
+    item.betterend.helix_tree_chest: 螺旋树箱子
+    item.betterend.helix_tree_barrel: 螺旋树木桶
+    item.betterend.helix_tree_bookshelf: 螺旋树书架
+    item.betterend.helix_tree_crafting_table: 螺旋树工作台
+    item.betterend.helix_tree_ladder: 螺旋树梯子
+    item.betterend.jellyshroom_chest: 果冻菇箱子
+    item.betterend.jellyshroom_barrel: 果冻菇木桶
+    item.betterend.jellyshroom_bookshelf: 果冻菇书架
+    item.betterend.jellyshroom_crafting_table: 果冻菇工作台
+    item.betterend.jellyshroom_ladder: 果冻菇梯子
+    item.betterend.lacugrove_chest: 湖沼树箱子
+    item.betterend.lacugrove_barrel: 湖沼树木桶
+    item.betterend.lacugrove_bookshelf: 湖沼树书架
+    item.betterend.lacugrove_crafting_table: 湖沼树工作台
+    item.betterend.lacugrove_ladder: 湖沼树梯子
+    item.betterend.lucernia_chest: 月华树箱子
+    item.betterend.lucernia_barrel: 月华树木桶
+    item.betterend.lucernia_bookshelf: 月华树书架
+    item.betterend.lucernia_crafting_table: 月华树工作台
+    item.betterend.lucernia_ladder: 月华树梯子
+    item.betterend.mossy_glowshroom_chest: 苔藓荧光菇箱子
+    item.betterend.mossy_glowshroom_barrel: 苔藓荧光菇木桶
+    item.betterend.mossy_glowshroom_bookshelf: 苔藓荧光菇书架
+    item.betterend.mossy_glowshroom_crafting_table: 苔藓荧光菇工作台
+    item.betterend.mossy_glowshroom_ladder: 苔藓荧光菇梯子
+    item.betterend.pythadendron_chest: 蟒根树箱子
+    item.betterend.pythadendron_barrel: 蟒根树木桶
+    item.betterend.pythadendron_bookshelf: 蟒根树书架
+    item.betterend.pythadendron_crafting_table: 蟒根树工作台
+    item.betterend.pythadendron_ladder: 蟒根树梯子
+    item.betterend.tenanea_chest: 泰纳尼亚树箱子
+    item.betterend.tenanea_barrel: 泰纳尼亚树木桶
+    item.betterend.tenanea_bookshelf: 泰纳尼亚树书架
+    item.betterend.tenanea_crafting_table: 泰纳尼亚树工作台
+    item.betterend.tenanea_ladder: 泰纳尼亚树梯子
+    item.betterend.umbrella_tree_chest: 伞树箱子
+    item.betterend.umbrella_tree_barrel: 伞树木桶
+    item.betterend.umbrella_tree_bookshelf: 伞树书架
+    item.betterend.umbrella_tree_crafting_table: 伞树工作台
+    item.betterend.umbrella_tree_ladder: 伞树梯子
+
+    # Pedestals
+    item.betterend.andesite_pedestal: 安山岩基座
+    item.betterend.azure_jadestone_pedestal: 天蓝玉石基座
+    item.betterend.diorite_pedestal: 闪长岩基座
+    item.betterend.flavolite_pedestal: 黄燧石基座
+    item.betterend.granite_pedestal: 花岗岩基座
+    item.betterend.purple_pedestal: 紫珀基座
+    item.betterend.quartz_pedestal: 石英基座
+    item.betterend.sandy_jadestone_pedestal: 沙黄玉石基座
+    item.betterend.smaragdant_crystal_pedestal: 绿柱石基座
+    item.betterend.sulphuric_rock_pedestal: 硫磺岩基座
+    item.betterend.umbralith_pedestal: 暗影岩基座
+    item.betterend.violecite_pedestal: 紫晶石基座
+    item.betterend.virid_jadestone_pedestal: 翠绿玉石基座
+    item.betterend.eternal_pedestal: 永恒基座
+    item.betterend.infusion_pedestal: 注魔基座
+
+    # Flower pots
+    item.betterend.azure_jadestone_flower_pot: 天蓝玉石花盆
+    item.betterend.end_stone_flower_pot: 末地石花盆
+    item.betterend.flavolite_flower_pot: 黄燧石花盆
+    item.betterend.sandy_jadestone_flower_pot: 沙黄玉石花盆
+    item.betterend.sulphuric_rock_flower_pot: 硫磺岩花盆
+    item.betterend.umbralith_flower_pot: 暗影岩花盆
+    item.betterend.violecite_flower_pot: 紫晶石花盆
+    item.betterend.virid_jadestone_flower_pot: 翠绿玉石花盆
+
+    # Hydralux petal blocks
+    item.betterend.hydralux_petal_block: 水光莲花瓣方块
+    item.betterend.hydralux_petal_block_white: 白色花瓣方块
+    item.betterend.hydralux_petal_block_orange: 橙色花瓣方块
+    item.betterend.hydralux_petal_block_magenta: 品红色花瓣方块
+    item.betterend.hydralux_petal_block_light_blue: 淡蓝色花瓣方块
+    item.betterend.hydralux_petal_block_yellow: 黄色花瓣方块
+    item.betterend.hydralux_petal_block_lime: 黄绿色花瓣方块
+    item.betterend.hydralux_petal_block_pink: 粉红色花瓣方块
+    item.betterend.hydralux_petal_block_gray: 灰色花瓣方块
+    item.betterend.hydralux_petal_block_light_gray: 淡灰色花瓣方块
+    item.betterend.hydralux_petal_block_cyan: 青色花瓣方块
+    item.betterend.hydralux_petal_block_purple: 紫色花瓣方块
+    item.betterend.hydralux_petal_block_blue: 蓝色花瓣方块
+    item.betterend.hydralux_petal_block_brown: 棕色花瓣方块
+    item.betterend.hydralux_petal_block_green: 绿色花瓣方块
+    item.betterend.hydralux_petal_block_red: 红色花瓣方块
+    item.betterend.hydralux_petal_block_black: 黑色花瓣方块
+
+    # Decorative blocks
+    item.betterend.emerald_ice: 绿宝石冰
+    item.betterend.dense_emerald_ice: 密实绿宝石冰
+    item.betterend.ancient_emerald_ice: 远古绿宝石冰
+    item.betterend.dense_snow: 密实雪
+    item.betterend.end_stone_brick_cracked: 裂纹末地石砖
+    item.betterend.end_stone_brick_weathered: 风化末地石砖
+    item.betterend.menger_sponge: 门格海绵
+    item.betterend.menger_sponge_wet: 湿门格海绵
+    item.betterend.neon_cactus_block: 霓虹仙人掌方块
+    item.betterend.smaragdant_crystal: 绿柱石水晶
+    item.betterend.smaragdant_crystal_bricks: 绿柱石砖
+    item.betterend.smaragdant_crystal_polished: 磨制绿柱石
+    item.betterend.smaragdant_crystal_tiles: 绿柱石瓷砖
+    item.betterend.smaragdant_crystal_pillar: 绿柱石柱
+    item.betterend.silk_moth_hive: 蚕蛾巢
+    item.betterend.flavolite_runed: 符文黄燧石
+
+    # Items with no block
+    item.betterend.enchanted_membrane: 附魔膜
+    item.betterend.end_fish_raw: 末地鱼
+    item.betterend.end_fish_cooked: 熟末地鱼
+    item.betterend.gelatine: 明胶
+    item.betterend.guidebook: 《末地入门手册》
+    item.betterend.silk_fiber: 丝纤维
+    item.betterend.silk_moth_matrix: 蚕蛾基质
+    item.betterend.music_disc_ender_hollow: §b音乐唱片§r
+    item.betterend.music_disc_endseeker: §b音乐唱片§r
+    item.betterend.music_disc_eo_dracona: §b音乐唱片§r
+    item.betterend.music_disc_grasping_at_stars: §b音乐唱片§r
+    item.betterend.music_disc_moonlit_undercurrents: §b音乐唱片§r
+    item.betterend.music_disc_strange_and_alien: §b音乐唱片§r
+
+    # The 6 music-disc description lines. The manifest keeps these next to their discs; they are
+    # tooltip fragments, not items. b8_misc.yml renders them as the discs' lore, which is the
+    # only place they can appear without a minecraft:jukebox_song registry entry.
+    item.betterend.music_disc_ender_hollow.desc: §5noqwww§r - §f末地幽谷§r
+    item.betterend.music_disc_endseeker.desc: §5Firel§r - §f寻末者§r
+    item.betterend.music_disc_eo_dracona.desc: §5Firel§r - §f龙之黎明§r
+    item.betterend.music_disc_grasping_at_stars.desc: §5Firel§r - §f摘星§r
+    item.betterend.music_disc_moonlit_undercurrents.desc: §5noqwww§r - §f月下暗流§r
+    item.betterend.music_disc_strange_and_alien.desc: §5Firel§r - §f陌生异域§r
+
+lang#b8_blocks_zh_cn:
+  zh_cn:
+    # The 10 wood families' furniture
+    block_name:betterend:dragon_tree_chest: 龙树箱子
+    block_name:betterend:dragon_tree_barrel: 龙树木桶
+    block_name:betterend:dragon_tree_bookshelf: 龙树书架
+    block_name:betterend:dragon_tree_crafting_table: 龙树工作台
+    block_name:betterend:dragon_tree_ladder: 龙树梯子
+    block_name:betterend:end_lotus_chest: 末地莲箱子
+    block_name:betterend:end_lotus_barrel: 末地莲木桶
+    block_name:betterend:end_lotus_bookshelf: 末地莲书架
+    block_name:betterend:end_lotus_crafting_table: 末地莲工作台
+    block_name:betterend:end_lotus_ladder: 末地莲梯子
+    block_name:betterend:helix_tree_chest: 螺旋树箱子
+    block_name:betterend:helix_tree_barrel: 螺旋树木桶
+    block_name:betterend:helix_tree_bookshelf: 螺旋树书架
+    block_name:betterend:helix_tree_crafting_table: 螺旋树工作台
+    block_name:betterend:helix_tree_ladder: 螺旋树梯子
+    block_name:betterend:jellyshroom_chest: 果冻菇箱子
+    block_name:betterend:jellyshroom_barrel: 果冻菇木桶
+    block_name:betterend:jellyshroom_bookshelf: 果冻菇书架
+    block_name:betterend:jellyshroom_crafting_table: 果冻菇工作台
+    block_name:betterend:jellyshroom_ladder: 果冻菇梯子
+    block_name:betterend:lacugrove_chest: 湖沼树箱子
+    block_name:betterend:lacugrove_barrel: 湖沼树木桶
+    block_name:betterend:lacugrove_bookshelf: 湖沼树书架
+    block_name:betterend:lacugrove_crafting_table: 湖沼树工作台
+    block_name:betterend:lacugrove_ladder: 湖沼树梯子
+    block_name:betterend:lucernia_chest: 月华树箱子
+    block_name:betterend:lucernia_barrel: 月华树木桶
+    block_name:betterend:lucernia_bookshelf: 月华树书架
+    block_name:betterend:lucernia_crafting_table: 月华树工作台
+    block_name:betterend:lucernia_ladder: 月华树梯子
+    block_name:betterend:mossy_glowshroom_chest: 苔藓荧光菇箱子
+    block_name:betterend:mossy_glowshroom_barrel: 苔藓荧光菇木桶
+    block_name:betterend:mossy_glowshroom_bookshelf: 苔藓荧光菇书架
+    block_name:betterend:mossy_glowshroom_crafting_table: 苔藓荧光菇工作台
+    block_name:betterend:mossy_glowshroom_ladder: 苔藓荧光菇梯子
+    block_name:betterend:pythadendron_chest: 蟒根树箱子
+    block_name:betterend:pythadendron_barrel: 蟒根树木桶
+    block_name:betterend:pythadendron_bookshelf: 蟒根树书架
+    block_name:betterend:pythadendron_crafting_table: 蟒根树工作台
+    block_name:betterend:pythadendron_ladder: 蟒根树梯子
+    block_name:betterend:tenanea_chest: 泰纳尼亚树箱子
+    block_name:betterend:tenanea_barrel: 泰纳尼亚树木桶
+    block_name:betterend:tenanea_bookshelf: 泰纳尼亚树书架
+    block_name:betterend:tenanea_crafting_table: 泰纳尼亚树工作台
+    block_name:betterend:tenanea_ladder: 泰纳尼亚树梯子
+    block_name:betterend:umbrella_tree_chest: 伞树箱子
+    block_name:betterend:umbrella_tree_barrel: 伞树木桶
+    block_name:betterend:umbrella_tree_bookshelf: 伞树书架
+    block_name:betterend:umbrella_tree_crafting_table: 伞树工作台
+    block_name:betterend:umbrella_tree_ladder: 伞树梯子
+
+    # Pedestals
+    block_name:betterend:andesite_pedestal: 安山岩基座
+    block_name:betterend:azure_jadestone_pedestal: 天蓝玉石基座
+    block_name:betterend:diorite_pedestal: 闪长岩基座
+    block_name:betterend:flavolite_pedestal: 黄燧石基座
+    block_name:betterend:granite_pedestal: 花岗岩基座
+    block_name:betterend:purple_pedestal: 紫珀基座
+    block_name:betterend:quartz_pedestal: 石英基座
+    block_name:betterend:sandy_jadestone_pedestal: 沙黄玉石基座
+    block_name:betterend:smaragdant_crystal_pedestal: 绿柱石基座
+    block_name:betterend:sulphuric_rock_pedestal: 硫磺岩基座
+    block_name:betterend:umbralith_pedestal: 暗影岩基座
+    block_name:betterend:violecite_pedestal: 紫晶石基座
+    block_name:betterend:virid_jadestone_pedestal: 翠绿玉石基座
+    block_name:betterend:eternal_pedestal: 永恒基座
+    block_name:betterend:infusion_pedestal: 注魔基座
+
+    # Flower pots
+    block_name:betterend:azure_jadestone_flower_pot: 天蓝玉石花盆
+    block_name:betterend:end_stone_flower_pot: 末地石花盆
+    block_name:betterend:flavolite_flower_pot: 黄燧石花盆
+    block_name:betterend:sandy_jadestone_flower_pot: 沙黄玉石花盆
+    block_name:betterend:sulphuric_rock_flower_pot: 硫磺岩花盆
+    block_name:betterend:umbralith_flower_pot: 暗影岩花盆
+    block_name:betterend:violecite_flower_pot: 紫晶石花盆
+    block_name:betterend:virid_jadestone_flower_pot: 翠绿玉石花盆
+
+    # Hydralux petal blocks
+    block_name:betterend:hydralux_petal_block: 水光莲花瓣方块
+    block_name:betterend:hydralux_petal_block_white: 白色花瓣方块
+    block_name:betterend:hydralux_petal_block_orange: 橙色花瓣方块
+    block_name:betterend:hydralux_petal_block_magenta: 品红色花瓣方块
+    block_name:betterend:hydralux_petal_block_light_blue: 淡蓝色花瓣方块
+    block_name:betterend:hydralux_petal_block_yellow: 黄色花瓣方块
+    block_name:betterend:hydralux_petal_block_lime: 黄绿色花瓣方块
+    block_name:betterend:hydralux_petal_block_pink: 粉红色花瓣方块
+    block_name:betterend:hydralux_petal_block_gray: 灰色花瓣方块
+    block_name:betterend:hydralux_petal_block_light_gray: 淡灰色花瓣方块
+    block_name:betterend:hydralux_petal_block_cyan: 青色花瓣方块
+    block_name:betterend:hydralux_petal_block_purple: 紫色花瓣方块
+    block_name:betterend:hydralux_petal_block_blue: 蓝色花瓣方块
+    block_name:betterend:hydralux_petal_block_brown: 棕色花瓣方块
+    block_name:betterend:hydralux_petal_block_green: 绿色花瓣方块
+    block_name:betterend:hydralux_petal_block_red: 红色花瓣方块
+    block_name:betterend:hydralux_petal_block_black: 黑色花瓣方块
+
+    # Decorative blocks
+    block_name:betterend:emerald_ice: 绿宝石冰
+    block_name:betterend:dense_emerald_ice: 密实绿宝石冰
+    block_name:betterend:ancient_emerald_ice: 远古绿宝石冰
+    block_name:betterend:dense_snow: 密实雪
+    block_name:betterend:end_stone_brick_cracked: 裂纹末地石砖
+    block_name:betterend:end_stone_brick_weathered: 风化末地石砖
+    block_name:betterend:menger_sponge: 门格海绵
+    block_name:betterend:menger_sponge_wet: 湿门格海绵
+    block_name:betterend:neon_cactus_block: 霓虹仙人掌方块
+    block_name:betterend:smaragdant_crystal: 绿柱石水晶
+    block_name:betterend:smaragdant_crystal_bricks: 绿柱石砖
+    block_name:betterend:smaragdant_crystal_polished: 磨制绿柱石
+    block_name:betterend:smaragdant_crystal_tiles: 绿柱石瓷砖
+    block_name:betterend:smaragdant_crystal_pillar: 绿柱石柱
+    block_name:betterend:silk_moth_hive: 蚕蛾巢
+    block_name:betterend:flavolite_runed: 符文黄燧石
+

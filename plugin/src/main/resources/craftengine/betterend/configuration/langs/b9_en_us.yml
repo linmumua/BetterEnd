@@ -1,0 +1,94 @@
+# BetterEnd B9 -- advancement titles and descriptions.
+#
+# These are client-side translation keys, not server strings. The plugin builds its
+# UltimateAdvancementAPI tab with TranslatableComponent(<key>), so every player's own client
+# resolves the text from the resource pack -- add a `zh_cn:` block below and Chinese clients get
+# Chinese with no server change.
+#
+# The key shape is the mod's own: advancements.betterend.<id>.title / .description. Strings are
+# verbatim from assets/betterend/lang/en_us.json. Do not prettify.
+#
+# Every one of the mod's 29 advancements is here, including the ones the port currently gates off
+# (they need the eternal portal, the end village, the infusion ritual, the leveled anvil or the
+# End Stone Smelter). Shipping their text now means unlocking a subsystem later needs no lang work.
+#
+# Section names are suffixed with the batch so no two batch files collide: AbstractPackManager
+# .java:674-683 selects the parser from the text BEFORE '#', so this reaches
+# TranslationManagerImpl.LangParser and parseSection accumulates into clientLangData rather than
+# replacing it.
+
+lang#b9_advancements:
+  en_us:
+    # The two every player earns
+    advancements.betterend.root.title: "BetterEnd"
+    advancements.betterend.root.description: "Enter a world that has a better End"
+    advancements.betterend.enter_end.title: "Face the Void"
+    advancements.betterend.enter_end.description: "Discover the BetterEnd"
+
+    # Eternal portal -- gated off until the structure is ported
+    advancements.betterend.portal.title: "On Eternal Paths"
+    advancements.betterend.portal.description: "Discover a portal lost for eternity"
+    advancements.betterend.portal_on.title: "Eternal Light"
+    advancements.betterend.portal_on.description: "Light an eternal Portal"
+    advancements.betterend.portal_travel.title: "Eternal Ways"
+    advancements.betterend.portal_travel.description: "Travel on ancient paths and use an eternal portal"
+
+    # Biomes and the village
+    advancements.betterend.all_the_biomes.title: "A New Ending"
+    advancements.betterend.all_the_biomes.description: "Visit all BetterEnd Biomes"
+    advancements.betterend.village.title: "Countryside"
+    advancements.betterend.village.description: "Enter a village in the End"
+
+    # Elytras, infusion, smithing templates
+    advancements.betterend.all_elytras.title: "Airshow"
+    advancements.betterend.all_elytras.description: "Own all Elytra variants"
+    advancements.betterend.infusion.title: "Old Rituals"
+    advancements.betterend.infusion.description: "Obtain an Infusion Pedestal"
+    advancements.betterend.infusion_finished.title: "Neverending Magic"
+    advancements.betterend.infusion_finished.description: "Be close to an Infusion Ritual when it is finished"
+    advancements.betterend.all_the_templates.title: "End Smith"
+    advancements.betterend.all_the_templates.description: "Find all Smithing Templates"
+
+    # Hammers and anvils
+    advancements.betterend.hammer.title: "Hammered"
+    advancements.betterend.hammer.description: "Get a Hammer, any Hammer"
+    advancements.betterend.thallasium_anvil.title: "Thallasium Smithing"
+    advancements.betterend.thallasium_anvil.description: "Craft a Thallasium Anvil"
+    advancements.betterend.terminite_anvil.title: "Terminite Smithing"
+    advancements.betterend.terminite_anvil.description: "Craft a Terminite Anvil"
+    advancements.betterend.aeternium_anvil.title: "The End of all Smithing"
+    advancements.betterend.aeternium_anvil.description: "Craft an Aeternium Anvil"
+
+    # Thallasium
+    advancements.betterend.thallasium_plate.title: "Plated Thallasium"
+    advancements.betterend.thallasium_plate.description: "Forge a Thallasium Plate on an anvil"
+    advancements.betterend.thallasium_tool_head.title: "Heading to Thallasium"
+    advancements.betterend.thallasium_tool_head.description: "Find or Craft a Thallasium Tool Head"
+    advancements.betterend.thallasium_tool.title: "Thallasium Tooling"
+    advancements.betterend.thallasium_tool.description: "Assemble a Thallasium Tool or Sword"
+    advancements.betterend.thallasium_armor.title: "Dressed in Thallasium"
+    advancements.betterend.thallasium_armor.description: "Get hold of any Thallasium Armor Piece"
+
+    # Terminite
+    advancements.betterend.terminite_plate.title: "Plated Terminite"
+    advancements.betterend.terminite_plate.description: "Forge a Terminite Plate on an anvil"
+    advancements.betterend.terminite_tool_head.title: "Head over Terminite"
+    advancements.betterend.terminite_tool_head.description: "Find or Craft a Terminite Tool Head"
+    advancements.betterend.terminite_tool.title: "Terminite Tooling"
+    advancements.betterend.terminite_tool.description: "Assemble a Terminite Tool or Sword"
+    advancements.betterend.terminite_armor.title: "Shining with Terminite"
+    advancements.betterend.terminite_armor.description: "Get hold of any Terminite Armor Piece"
+
+    # Aeternium
+    advancements.betterend.aeternium_hammer_head.title: "Top of all Hammers"
+    advancements.betterend.aeternium_hammer_head.description: "Craft an Aeternium Hammer Head"
+    advancements.betterend.aeternium_hammer.title: "A Good Hammer"
+    advancements.betterend.aeternium_hammer.description: "Assemble an Aeternium Hammer"
+    advancements.betterend.aeternium_plate.title: "Tough Plating"
+    advancements.betterend.aeternium_plate.description: "Forge an Aeternium Plate"
+    advancements.betterend.aeternium_tool_head.title: "Top of all Tools"
+    advancements.betterend.aeternium_tool_head.description: "Find or Craft a Aeternium Tool Head"
+    advancements.betterend.aeternium_tool.title: "Aeternium Assemble"
+    advancements.betterend.aeternium_tool.description: "Assemble a Aeternium Tool or Sword"
+    advancements.betterend.aeternium_armor.title: "Tough as can be"
+    advancements.betterend.aeternium_armor.description: "Get hold of any Aeternium Armor Piece"

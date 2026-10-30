@@ -1,0 +1,11 @@
+# Line endings: LF in the repository, native on checkout.
+* text=auto
+
+# Binaries: never diff, never convert.
+*.png binary
+*.jar binary
+*.ogg binary
+# Structure NBT shipped in plugin/src/main/resources/datapacks/echoes-end-structures: gzip-compressed,
+# and a CRLF conversion would corrupt every one of them. git would currently guess "binary" from the
+# NUL bytes, but guessing is not a guarantee worth resting a worldgen file on.
+*.nbt binary

@@ -1,0 +1,216 @@
+# BetterEnd -- server configuration.
+#
+# As you can see, there is not much to configure here, and that is deliberate.
+#
+#   * Blocks, items, recipes, drops, hardness, tool levels, textures, models and
+#     translations are NOT here. They are CraftEngine's, and you already edit them at
+#       plugins/CraftEngine/resources/betterend/configuration/*.yml
+#   * Which worlds use this generator is NOT here either. That is bukkit.yml:
+#       worlds:
+#         <world name>:
+#           generator: BetterEnd:betterend
+#   * World spawn, difficulty, gamerules and view distance are the server's, not ours.
+#
+# Most of the values below are read ONCE while the plugin loads, because they are baked into the
+# world: the generator's density field is memoised per world seed for the life of the world, the
+# per-chunk feature counts are captured by the populators, and the biomes are frozen when the
+# datapack registers. See the terrain warning below.
+#
+# `/betterend reload` asynchronously validates this file and messages.yml; overlapping reloads are refused.
+# Monster damage and message text apply live, and the reload's own pack step re-completes the bundled
+# CraftEngine files. Terrain/feature/registry changes are reported as requiring a full restart;
+# existing chunks are never regenerated. Missing files/keys are restored without replacing valid user values.
+# Completed CE files are on disk only: CE must re-read them, and worldgen changes still need a restart.
+# Permission: betterend.command.reload (default: op).
+#
+# Any key you delete falls back to the default shown here, so a file written by an older
+# version keeps working: new keys simply appear with their defaults. When an update adds a
+# key, it is added with the default below and YOUR values are never touched; the old file
+# is copied to config.yml.bak first, and only if something actually changed.
+#
+# config-version is that bookkeeping. Do not edit it by hand: a higher number than the
+# plugin knows means the file was written by a newer BetterEnd, which is reported and
+# otherwise left alone.
+config-version: 2
+
+# BetterEnd ships two CraftEngine packs -- "betterend" (terrain, blocks, items, the
+# resource pack) and "dnt_end_castle" (the End Castle content, kept separate so its
+# minecraft: item/model overrides cannot collide with the main pack). Both are released
+# into plugins/CraftEngine/resources/ the first time, in one atomic step.
+#
+# Releasing is idempotent: an existing pack folder is only completed with the files that are
+# MISSING, so it is safe to boot the same build again and a -SNAPSHOT update cannot clobber
+# your edits. Named fixes may additionally replace a file ONLY when its bytes match a
+# recorded old bundled default; the old bytes are backed up outside CE's resource tree
+# first. Custom/unknown contents are kept and reported, never overwritten.
+
+
+# ==============================================================================
+#  COMBAT.  Applies only in worlds this plugin generates -- which world uses the
+#  generator is bukkit.yml's business, and another plugin's End is not yours to
+#  rescale, so the world is asked at hit time.
+#
+#  This is the ONLY section a reload can apply to a running server: the factor is
+#  read on every hit instead of being baked into the world.
+# ==============================================================================
+end-damage:
+
+  # Multiplier on damage a PLAYER TAKES from a monster in our worlds. Damage a
+  # player DEALS to monsters is never touched.
+  #
+  #   1.0      off -- the damage event is left completely alone (not even rewritten
+  #            with the same number), so other plugins' listeners see vanilla input.
+  #   1.5      (default) the End hits 50% harder.
+  #                                                          Range 1.0 .. 10.0
+  #
+  # "Monster" means any hostile mob -- Bukkit's Enemy. That is deliberately WIDER
+  # than Bukkit's Monster interface, which on 26.3 misses several things living in
+  # the End: shulker, ender dragon, phantom, slime, magma cube, ghast and hoglin are
+  # all Enemy but not Monster. Enderman, endermite and every ordinary hostile mob
+  # are both. A projectile counts as whatever fired it, so a shulker bullet or a
+  # dragon fireball is boosted as if the mob had hit you directly.
+  #
+  # Deliberately NOT boosted, so you do not have to find out the hard way:
+  #   * the dragon's body and wing hits -- those arrive as a separate dragon PART
+  #     entity, not as the dragon itself;
+  #   * the dragon's breath -- an area cloud with no attacking entity at all;
+  #   * end crystal explosions -- a block, not a mob.
+  #
+  # The factor multiplies the RAW hit; armour, resistance, blocking and absorption
+  # are then recomputed by the server against that bigger hit, so your gear still
+  # matters and nothing is applied twice. Out-of-range values are clamped to the
+  # range shown and logged.
+  monster-multiplier: 1.5
+
+
+# ==============================================================================
+#  TERRAIN.  READ THIS BEFORE CHANGING ANYTHING IN THIS SECTION.
+#
+#  Every key under 'generator:' feeds the density field the End is carved out of.
+#  A chunk is written to the region files once and is never regenerated.
+#
+#  If you change any of these AFTER a world has been generated, every new chunk is
+#  cut from a different field, and you get a hard cliff -- a seam -- along the
+#  border of everything that already existed. Nothing detects it and nothing
+#  repairs it short of deleting the world.
+#
+#  Set these before the world is created, or leave them alone.
+#
+#  `/betterend reload` cannot apply anything in this section or in features: below:
+#  both were captured when the world's generator was built. The reload says so by
+#  name instead of pretending, and a restart is the only way to pick a change up.
+# ==============================================================================
+generator:
+
+  # The one island pinned at (0, 64, 0) at 1.3x scale: the spawn island. Every OTHER island
+  # is placed at random and averages y=70. It is always generated, and the 1024-block radius
+  # around (0,0) in which no random island may be placed always applies -- that is what the
+  # mod does: one flag gates both (IslandLayer.java:89), so neither is configurable here.
+
+  # Three overlapping layers of islands. Each is a lattice of cells; one island may be
+  # placed per cell, jittered inside it. Every key here is TERRAIN -- see the warning above.
+  #
+  #   distance          cell size in blocks: how far apart islands of this layer sit.
+  #                     Larger = fewer, further apart.       Range 1 .. 8192
+  #   scale             island size multiplier. Larger = bigger islands.
+  #                                                          Range 0.1 .. 1024
+  #   average-height    island centre height as a fraction of 128, so 0.546875 = y 70.
+  #                                                          Range 0.0 .. 1.0
+  #   height-variation  half the spread around that height, same units, so 0.078125
+  #                     = +-10 blocks. Range 0.0 .. 1.0, but note that pushing centres
+  #                     below y=0 or above y=101 puts them where nothing generates.
+  #   coverage          how many cells actually get an island. HIGHER means MORE
+  #                     islands (0.5 is roughly half the cells).
+  #                                                          Range 0.0 .. 1.0
+  #
+  # Out-of-range values are clamped to the range shown and logged at startup; they do
+  # not stop the server. These defaults are the mod's, exactly.
+  layers:
+    big:
+      distance: 300.0
+      scale: 200.0
+      average-height: 0.546875
+      height-variation: 0.078125
+      coverage: 0.5
+    medium:
+      distance: 150.0
+      scale: 100.0
+      average-height: 0.546875
+      height-variation: 0.15625
+      coverage: 0.5
+    small:
+      distance: 60.0
+      scale: 50.0
+      average-height: 0.546875
+      height-variation: 0.234375
+      coverage: 0.5
+
+
+# Per-chunk ore placement. These are read when a chunk is populated, so a change only
+# affects chunks that have not been generated yet -- it will not seam the landscape, but
+# it does mean older parts of your world keep the old ore density. 0 disables an ore.
+features:
+  # Flavolite layers per chunk, in dust wastelands and neon oasis only (plus the vanilla
+  # end barrens, which the mod injects it into). Each one is a flood fill through solid end
+  # stone and is the most expensive thing BetterEnd does per chunk, so this is capped at 64.
+  flavolite-layers-per-chunk: 6
+  # Thallasium ore veins per chunk. Range 0 .. 256.
+  thallasium-veins-per-chunk: 24
+  # Ender ore veins per chunk. Range 0 .. 256.
+  ender-veins-per-chunk: 12
+
+  # The three ores that only appear in one or two biomes. Each is placed exactly like the
+  # three above, but its chunk is skipped unless the biome is one the mod lists it in.
+  #
+  # Violecite layers per chunk, in chorus forest and shadow forest only. The same flood fill
+  # as flavolite and half again as wide, so it shares the cap of 64.
+  violecite-layers-per-chunk: 8
+  # Amber ore veins per chunk, in amber land only. The mod's count really is 60: most of them
+  # land in the void between islands and place nothing at all. Range 0 .. 256.
+  amber-veins-per-chunk: 60
+  # Dragon bone veins per chunk, in dragon graveyards only. That biome is a tenth as common as
+  # the others, which makes this the rarest ore in the End. Range 0 .. 256.
+  dragon-bone-veins-per-chunk: 24
+
+
+# ==============================================================================
+#  ADVANCEMENTS.  Inactive in this build -- kept so your file keeps loading.
+#
+#  CraftEngine is the ONLY prerequisite now. The advancement tab used to be built
+#  through the UltimateAdvancementAPI plugin; that integration was removed, so the
+#  key below is read but does nothing yet. It is left here (rather than deleted) so
+#  an existing file still loads clean, and it comes back to life with the
+#  subsystem it describes.
+#
+#  The mod has 29 advancements; most need the eternal portal, the end village, the
+#  infusion ritual, the leveled anvil or the End Stone Smelter, none of which are
+#  ported yet, so registering them would mean rows nobody could ever complete.
+# ==============================================================================
+advancements:
+
+  # Reserved. When the tab is rebuilt, this is how often each online player would be
+  # checked for "am I in the End", "which biome am I standing in" and inventory.
+  #                                                            Range 1 .. 1200 ticks
+  sample-interval-ticks: 20
+
+
+# ------------------------------------------------------------------------------
+# NOT CONFIGURABLE YET -- these exist in the original mod but the features they
+# control are not ported, so there is nothing for a key to switch off. They are
+# listed here only so you are not left wondering; adding them now would just be a
+# knob that does nothing. Each arrives with its feature:
+#
+#   generate-obsidian-platform  the arrival platform (no End-teleport handling yet)
+#   has-portal / replace-portal the exit portal      (no dragon fight ported)
+#   has-pillars / replace-pillars  the obsidian spikes (vanilla places these itself; a
+#                               plugin cannot, see VanillaEndCore)
+#   biome-size-caves            End cave biome SIZE  (the biomes are painted and BOTH carvers run --
+#                               round caverns and tunnels; only the size knob is missing)
+#   end-city-fail-chance        End cities           (structures are off entirely)
+#
+# And these are deliberately never coming, because something else already owns them:
+#   the dragon fight and world spawn  -> Bukkit / your world manager
+#   chorus plant appearance           -> the CraftEngine resource pack
+#   which worlds use this generator   -> bukkit.yml
+#   the world seed                    -> Bukkit
+# ------------------------------------------------------------------------------

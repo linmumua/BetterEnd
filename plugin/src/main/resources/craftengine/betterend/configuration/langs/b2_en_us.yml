@@ -1,0 +1,55 @@
+# BetterEnd B2 -- leaves and saplings.
+# Section names are suffixed with the batch so no two batch lang files collide:
+# AbstractPackManager.java:674-683 selects the parser from the text BEFORE '#', and
+# TranslationManagerImpl.addClientTranslation (:351-368) accumulates instead of replacing.
+# Names are verbatim from assets/betterend/lang/en_us.json. Do not prettify.
+
+lang#b2_items:
+  en_us:
+    # Cube leaves
+    item.betterend.pythadendron_leaves: Pythadendron Leaves
+    item.betterend.lacugrove_leaves: Lacugrove Leaves
+    item.betterend.dragon_tree_leaves: Dragon Tree Leaves
+    item.betterend.tenanea_leaves: Tenanea Leaves
+    item.betterend.helix_tree_leaves: Helix Tree Leaves
+    item.betterend.lucernia_leaves: Lucernia Leaves
+
+    # Fur leaves
+    item.betterend.tenanea_outer_leaves: Tenanea Outer Leaves
+    item.betterend.lucernia_outer_leaves: Lucernia Outer Leaves
+    item.betterend.glowing_pillar_leaves: Glowing Pillar Leaves
+
+    # Saplings
+    item.betterend.mossy_glowshroom_sapling: Mossy Glowshroom Sapling
+    item.betterend.pythadendron_sapling: Pythadendron Sapling
+    item.betterend.lacugrove_sapling: Lacugrove Sapling
+    item.betterend.dragon_tree_sapling: Dragon Tree Sapling
+    item.betterend.tenanea_sapling: Tenanea Sapling
+    item.betterend.helix_tree_sapling: Helix Tree Sapling
+    item.betterend.umbrella_tree_sapling: Umbrella Tree Sapling
+    item.betterend.lucernia_sapling: Lucernia Sapling
+    item.betterend.hydralux_sapling: Hydralux Sapling
+
+lang#b2_blocks:
+  en_us:
+    # 'block_name:' is rewritten to block.betterend.<id> by ClientLangData -- byte-identical to the mod's key.
+    block_name:betterend:pythadendron_leaves: Pythadendron Leaves
+    block_name:betterend:lacugrove_leaves: Lacugrove Leaves
+    block_name:betterend:dragon_tree_leaves: Dragon Tree Leaves
+    block_name:betterend:tenanea_leaves: Tenanea Leaves
+    block_name:betterend:helix_tree_leaves: Helix Tree Leaves
+    block_name:betterend:lucernia_leaves: Lucernia Leaves
+
+    block_name:betterend:tenanea_outer_leaves: Tenanea Outer Leaves
+    block_name:betterend:lucernia_outer_leaves: Lucernia Outer Leaves
+    block_name:betterend:glowing_pillar_leaves: Glowing Pillar Leaves
+
+    block_name:betterend:mossy_glowshroom_sapling: Mossy Glowshroom Sapling
+    block_name:betterend:pythadendron_sapling: Pythadendron Sapling
+    block_name:betterend:lacugrove_sapling: Lacugrove Sapling
+    block_name:betterend:dragon_tree_sapling: Dragon Tree Sapling
+    block_name:betterend:tenanea_sapling: Tenanea Sapling
+    block_name:betterend:helix_tree_sapling: Helix Tree Sapling
+    block_name:betterend:umbrella_tree_sapling: Umbrella Tree Sapling
+    block_name:betterend:lucernia_sapling: Lucernia Sapling
+    block_name:betterend:hydralux_sapling: Hydralux Sapling

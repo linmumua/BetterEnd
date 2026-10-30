@@ -1,0 +1,263 @@
+# BetterEnd client-side localisation (stones, woods, ores, tooltips, categories) -- zh_cn.
+# Simplified Chinese (zh_cn) translation of en_us.yml. Keys, section suffixes and ordering
+# mirror the English file; only human-readable values are translated. Legacy section-sign colour
+# codes are preserved verbatim, and proper nouns (BetterEnd, the music-disc artists) keep their
+# original spelling. Section ids carry a _zh_cn suffix so this file never declares the same
+# `lang#...` id as its English counterpart: AbstractPackManager.java:757-768 picks the parser from
+# the text BEFORE '#', and TranslationManagerImpl.java:524-531 accumulates every section into
+# clientLangData (addClientTranslation, :351-368). The language key must be `zh_cn`, exactly as
+# spelled in internal/lang/processed.json, or addClientTranslation drops it silently (:358-366).
+
+lang#items_zh_cn:
+  zh_cn:
+    # Flavolite
+    item.betterend.flavolite: 黄燧石
+    item.betterend.flavolite_polished: 磨制黄燧石
+    item.betterend.flavolite_tiles: 黄燧石瓷砖
+    item.betterend.flavolite_brick: 黄燧石砖
+    item.betterend.flavolite_pillar: 黄燧石柱
+
+    # Violecite
+    item.betterend.violecite: 紫晶石
+    item.betterend.violecite_polished: 磨制紫晶石
+    item.betterend.violecite_tiles: 紫晶石瓷砖
+    item.betterend.violecite_brick: 紫晶石砖
+    item.betterend.violecite_pillar: 紫晶石柱
+
+    # Sulphuric Rock
+    item.betterend.sulphuric_rock: 硫磺岩
+    item.betterend.sulphuric_rock_polished: 磨制硫磺岩
+    item.betterend.sulphuric_rock_tiles: 硫磺岩瓷砖
+    item.betterend.sulphuric_rock_brick: 硫磺岩砖
+    item.betterend.sulphuric_rock_pillar: 硫磺岩柱
+
+    # Virid Jadestone
+    item.betterend.virid_jadestone: 翠绿玉石
+    item.betterend.virid_jadestone_polished: 磨制翠绿玉石
+    item.betterend.virid_jadestone_tiles: 翠绿玉石瓷砖
+    item.betterend.virid_jadestone_brick: 翠绿玉石砖
+    item.betterend.virid_jadestone_pillar: 翠绿玉石柱
+
+    # Azure Jadestone
+    item.betterend.azure_jadestone: 天蓝玉石
+    item.betterend.azure_jadestone_polished: 磨制天蓝玉石
+    item.betterend.azure_jadestone_tiles: 天蓝玉石瓷砖
+    item.betterend.azure_jadestone_brick: 天蓝玉石砖
+    item.betterend.azure_jadestone_pillar: 天蓝玉石柱
+
+    # Sandy Jadestone
+    item.betterend.sandy_jadestone: 沙黄玉石
+    item.betterend.sandy_jadestone_polished: 磨制沙黄玉石
+    item.betterend.sandy_jadestone_tiles: 沙黄玉石瓷砖
+    item.betterend.sandy_jadestone_brick: 沙黄玉石砖
+    item.betterend.sandy_jadestone_pillar: 沙黄玉石柱
+
+    # Umbralith
+    item.betterend.umbralith: 暗影岩
+    item.betterend.umbralith_polished: 磨制暗影岩
+    item.betterend.umbralith_tiles: 暗影岩瓷砖
+    item.betterend.umbralith_brick: 暗影岩砖
+    item.betterend.umbralith_pillar: 暗影岩柱
+
+    # Pythadendron
+    item.betterend.pythadendron_log: 蟒根树原木
+    item.betterend.pythadendron_stripped_log: 去皮蟒根树原木
+    item.betterend.pythadendron_bark: 蟒根树木头
+    item.betterend.pythadendron_stripped_bark: 去皮蟒根树木头
+    item.betterend.pythadendron_planks: 蟒根树木板
+
+    # Lacugrove
+    item.betterend.lacugrove_log: 湖沼树原木
+    item.betterend.lacugrove_stripped_log: 去皮湖沼树原木
+    item.betterend.lacugrove_bark: 湖沼树木头
+    item.betterend.lacugrove_stripped_bark: 去皮湖沼树木头
+    item.betterend.lacugrove_planks: 湖沼树木板
+
+    # Dragon Tree
+    item.betterend.dragon_tree_log: 龙树原木
+    item.betterend.dragon_tree_stripped_log: 去皮龙树原木
+    item.betterend.dragon_tree_bark: 龙树木头
+    item.betterend.dragon_tree_stripped_bark: 去皮龙树木头
+    item.betterend.dragon_tree_planks: 龙树木板
+
+    # Tenanea
+    item.betterend.tenanea_log: 泰纳尼亚树原木
+    item.betterend.tenanea_stripped_log: 去皮泰纳尼亚树原木
+    item.betterend.tenanea_bark: 泰纳尼亚树木头
+    item.betterend.tenanea_stripped_bark: 去皮泰纳尼亚树木头
+    item.betterend.tenanea_planks: 泰纳尼亚树木板
+
+    # Helix Tree
+    item.betterend.helix_tree_log: 螺旋树原木
+    item.betterend.helix_tree_stripped_log: 去皮螺旋树原木
+    item.betterend.helix_tree_bark: 螺旋树木头
+    item.betterend.helix_tree_stripped_bark: 去皮螺旋树木头
+    item.betterend.helix_tree_planks: 螺旋树木板
+
+    # Lucernia
+    item.betterend.lucernia_log: 月华树原木
+    item.betterend.lucernia_stripped_log: 去皮月华树原木
+    item.betterend.lucernia_bark: 月华树木头
+    item.betterend.lucernia_stripped_bark: 去皮月华树木头
+    item.betterend.lucernia_planks: 月华树木板
+
+    # Misc blocks
+    item.betterend.mossy_obsidian: 苔藓黑曜石
+    item.betterend.mossy_dragon_bone: 苔藓龙骨
+    item.betterend.brimstone: 硫磺石
+    item.betterend.missing_tile: 缺失瓷砖
+    item.betterend.endstone_dust: 末地石粉
+    item.betterend.dragon_bone_block: 龙骨块
+    item.betterend.ender_ore: 末影矿石
+    item.betterend.amber_ore: 琥珀矿石
+    item.betterend.thallasium_ore: 海蓝金属矿石
+
+    # Plain items
+    item.betterend.ender_shard: 末影碎片
+    item.betterend.raw_amber: 粗琥珀
+    item.betterend.thallasium_raw: 粗海蓝金属
+
+    # Smithing-template tooltips. items/B7-metals.yml rebuilds the vanilla smithing-template
+    # tooltip in data.lore because the 8 templates now ride minecraft:paper (a real
+    # SmithingTemplateItem hardcodes the netherite text on the item class, uncoverridable).
+    # Strings verbatim from the mod's item.betterend.smithing_template.<upgrade>.* keys.
+    # The three title lines the layout also needs -- item.minecraft.smithing_template,
+    # .applies_to, .ingredients -- are deliberately NOT declared: the vanilla client already
+    # ships them, and re-declaring a minecraft: key here would override it pack-wide.
+    item.betterend.smithing_template.thallasium_upgrade.applies_to: 木棍
+    item.betterend.smithing_template.thallasium_upgrade.ingredients: 海蓝金属锭
+    item.betterend.smithing_template.terminite_upgrade.applies_to: 木棍或海蓝金属铁砧
+    item.betterend.smithing_template.terminite_upgrade.ingredients: 终结金属锭
+    item.betterend.smithing_template.aeternium_upgrade.applies_to: 鞘翅或终结金属铁砧
+    item.betterend.smithing_template.aeternium_upgrade.ingredients: 永恒合金锭
+    item.betterend.smithing_template.netherite_upgrade.applies_to: 钻石锤
+    item.betterend.smithing_template.netherite_upgrade.ingredients: 下界合金锭
+    item.betterend.smithing_template.plate_upgrade.applies_to: 终结金属盔甲
+    item.betterend.smithing_template.plate_upgrade.ingredients: 锻造永恒合金板
+    item.betterend.smithing_template.handle_attachment.applies_to: 海蓝金属或终结金属工具头
+    item.betterend.smithing_template.handle_attachment.ingredients: 木棍
+    item.betterend.smithing_template.leather_handle_attachment.applies_to: 永恒合金工具头
+    item.betterend.smithing_template.leather_handle_attachment.ingredients: 皮革包裹的木棍
+    item.betterend.smithing_template.tool_assembly.applies_to: 剑刃
+    item.betterend.smithing_template.tool_assembly.ingredients: 剑柄
+
+lang#blocks_zh_cn:
+  zh_cn:
+    # Flavolite
+    block_name:betterend:flavolite: 黄燧石
+    block_name:betterend:flavolite_polished: 磨制黄燧石
+    block_name:betterend:flavolite_tiles: 黄燧石瓷砖
+    block_name:betterend:flavolite_brick: 黄燧石砖
+    block_name:betterend:flavolite_pillar: 黄燧石柱
+
+    # Violecite
+    block_name:betterend:violecite: 紫晶石
+    block_name:betterend:violecite_polished: 磨制紫晶石
+    block_name:betterend:violecite_tiles: 紫晶石瓷砖
+    block_name:betterend:violecite_brick: 紫晶石砖
+    block_name:betterend:violecite_pillar: 紫晶石柱
+
+    # Sulphuric Rock
+    block_name:betterend:sulphuric_rock: 硫磺岩
+    block_name:betterend:sulphuric_rock_polished: 磨制硫磺岩
+    block_name:betterend:sulphuric_rock_tiles: 硫磺岩瓷砖
+    block_name:betterend:sulphuric_rock_brick: 硫磺岩砖
+    block_name:betterend:sulphuric_rock_pillar: 硫磺岩柱
+
+    # Virid Jadestone
+    block_name:betterend:virid_jadestone: 翠绿玉石
+    block_name:betterend:virid_jadestone_polished: 磨制翠绿玉石
+    block_name:betterend:virid_jadestone_tiles: 翠绿玉石瓷砖
+    block_name:betterend:virid_jadestone_brick: 翠绿玉石砖
+    block_name:betterend:virid_jadestone_pillar: 翠绿玉石柱
+
+    # Azure Jadestone
+    block_name:betterend:azure_jadestone: 天蓝玉石
+    block_name:betterend:azure_jadestone_polished: 磨制天蓝玉石
+    block_name:betterend:azure_jadestone_tiles: 天蓝玉石瓷砖
+    block_name:betterend:azure_jadestone_brick: 天蓝玉石砖
+    block_name:betterend:azure_jadestone_pillar: 天蓝玉石柱
+
+    # Sandy Jadestone
+    block_name:betterend:sandy_jadestone: 沙黄玉石
+    block_name:betterend:sandy_jadestone_polished: 磨制沙黄玉石
+    block_name:betterend:sandy_jadestone_tiles: 沙黄玉石瓷砖
+    block_name:betterend:sandy_jadestone_brick: 沙黄玉石砖
+    block_name:betterend:sandy_jadestone_pillar: 沙黄玉石柱
+
+    # Umbralith
+    block_name:betterend:umbralith: 暗影岩
+    block_name:betterend:umbralith_polished: 磨制暗影岩
+    block_name:betterend:umbralith_tiles: 暗影岩瓷砖
+    block_name:betterend:umbralith_brick: 暗影岩砖
+    block_name:betterend:umbralith_pillar: 暗影岩柱
+
+    # Pythadendron
+    block_name:betterend:pythadendron_log: 蟒根树原木
+    block_name:betterend:pythadendron_stripped_log: 去皮蟒根树原木
+    block_name:betterend:pythadendron_bark: 蟒根树木头
+    block_name:betterend:pythadendron_stripped_bark: 去皮蟒根树木头
+    block_name:betterend:pythadendron_planks: 蟒根树木板
+
+    # Lacugrove
+    block_name:betterend:lacugrove_log: 湖沼树原木
+    block_name:betterend:lacugrove_stripped_log: 去皮湖沼树原木
+    block_name:betterend:lacugrove_bark: 湖沼树木头
+    block_name:betterend:lacugrove_stripped_bark: 去皮湖沼树木头
+    block_name:betterend:lacugrove_planks: 湖沼树木板
+
+    # Dragon Tree
+    block_name:betterend:dragon_tree_log: 龙树原木
+    block_name:betterend:dragon_tree_stripped_log: 去皮龙树原木
+    block_name:betterend:dragon_tree_bark: 龙树木头
+    block_name:betterend:dragon_tree_stripped_bark: 去皮龙树木头
+    block_name:betterend:dragon_tree_planks: 龙树木板
+
+    # Tenanea
+    block_name:betterend:tenanea_log: 泰纳尼亚树原木
+    block_name:betterend:tenanea_stripped_log: 去皮泰纳尼亚树原木
+    block_name:betterend:tenanea_bark: 泰纳尼亚树木头
+    block_name:betterend:tenanea_stripped_bark: 去皮泰纳尼亚树木头
+    block_name:betterend:tenanea_planks: 泰纳尼亚树木板
+
+    # Helix Tree
+    block_name:betterend:helix_tree_log: 螺旋树原木
+    block_name:betterend:helix_tree_stripped_log: 去皮螺旋树原木
+    block_name:betterend:helix_tree_bark: 螺旋树木头
+    block_name:betterend:helix_tree_stripped_bark: 去皮螺旋树木头
+    block_name:betterend:helix_tree_planks: 螺旋树木板
+
+    # Lucernia
+    block_name:betterend:lucernia_log: 月华树原木
+    block_name:betterend:lucernia_stripped_log: 去皮月华树原木
+    block_name:betterend:lucernia_bark: 月华树木头
+    block_name:betterend:lucernia_stripped_bark: 去皮月华树木头
+    block_name:betterend:lucernia_planks: 月华树木板
+
+    # Misc blocks
+    block_name:betterend:mossy_obsidian: 苔藓黑曜石
+    block_name:betterend:mossy_dragon_bone: 苔藓龙骨
+    block_name:betterend:brimstone: 硫磺石
+    block_name:betterend:missing_tile: 缺失瓷砖
+    block_name:betterend:endstone_dust: 末地石粉
+    block_name:betterend:dragon_bone_block: 龙骨块
+    block_name:betterend:ender_ore: 末影矿石
+    block_name:betterend:amber_ore: 琥珀矿石
+    block_name:betterend:thallasium_ore: 海蓝金属矿石
+
+# Server-side only (TranslationParser, TranslationManagerImpl.java:415-482); never written to the
+# resource pack. Resolved by <l10n:...> in categories.yml.
+translations#categories_zh_cn:
+  zh_cn:
+    category.betterend.name: BetterEnd
+    category.betterend.lore: 来自 BetterEnd 模组的方块与物品
+    category.betterend.stones: BetterEnd 石质方块
+    category.betterend.woods: BetterEnd 木质方块
+    category.betterend.misc: BetterEnd 杂项
+    category.betterend.foliage: BetterEnd 枝叶
+    category.betterend.openable: BetterEnd 可开关
+    category.betterend.flora: BetterEnd 植物
+    category.betterend.growths: BetterEnd 菌类
+    category.betterend.lights: BetterEnd 光源
+    category.betterend.metals: BetterEnd 金属
+    category.betterend.furnishings: BetterEnd 家具

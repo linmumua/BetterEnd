@@ -1,0 +1,83 @@
+# B5 (flora-b) client-side localisation -- zh_cn.
+# Simplified Chinese (zh_cn) translation of b5_en_us.yml. Keys, section suffixes and ordering
+# mirror the English file; only human-readable values are translated. Legacy section-sign colour
+# codes are preserved verbatim, and proper nouns (BetterEnd, the music-disc artists) keep their
+# original spelling. Section ids carry a _zh_cn suffix so this file never declares the same
+# `lang#...` id as its English counterpart: AbstractPackManager.java:757-768 picks the parser from
+# the text BEFORE '#', and TranslationManagerImpl.java:524-531 accumulates every section into
+# clientLangData (addClientTranslation, :351-368). The language key must be `zh_cn`, exactly as
+# spelled in internal/lang/processed.json, or addClientTranslation drops it silently (:358-366).
+
+lang#b5_items_zh_cn:
+  zh_cn:
+    item.betterend.amaranita_cap: 紫灵菇菌盖
+    item.betterend.amaranita_fur: 紫灵菇绒毛
+    item.betterend.amaranita_hymenophore: 紫灵菇子实层
+    item.betterend.amaranita_hyphae: 紫灵菇菌丝体
+    item.betterend.amaranita_stem: 紫灵菇菌柄
+    item.betterend.amber_gem: 琥珀宝石
+    item.betterend.aurant_polypore: 橙黄多孔菌
+    item.betterend.aurora_crystal: 极光水晶
+    item.betterend.bolux_mushroom: 波卢菇
+    item.betterend.bolux_mushroom_cooked: 熟波卢菇
+    item.betterend.budding_smaragdant_crystal: 萌芽绿柱石水晶
+    item.betterend.bulb_moss: 球茎苔藓
+    item.betterend.crystal_shards: 极光水晶碎片
+    item.betterend.crystalline_sulphur: 硫磺
+    item.betterend.cyan_moss: 青色苔藓
+    item.betterend.end_stone_stalactite: 末地石钟乳石
+    item.betterend.end_stone_stalactite_cavemoss: 洞穴苔藓末地石钟乳石
+    item.betterend.ender_dust: 末影尘
+    item.betterend.eternal_crystal: 永恒水晶
+    item.betterend.filalux: 萤光蛾
+    item.betterend.filalux_wings: 萤光蛾翅
+    item.betterend.glowing_bulb: 发光球茎
+    item.betterend.hydrothermal_vent: 热液喷口
+    item.betterend.jungle_fern: 丛林蕨
+    item.betterend.large_amaranita_mushroom: 大型紫灵菇
+    item.betterend.lumecorn_rod: 光玉米杆
+    item.betterend.magnula: 紫木兰
+    item.betterend.purple_polypore: 紫色多孔菌
+    item.betterend.rubinea: 绯红花
+    item.betterend.ruscus: 假叶树
+    item.betterend.small_amaranita_mushroom: 小型紫灵菇
+    item.betterend.small_jellyshroom: 小型果冻菇
+    item.betterend.smaragdant_crystal_shard: 绿柱石水晶碎片
+    item.betterend.sulphur_crystal: 硫磺水晶
+    item.betterend.tail_moss: 尾苔
+    item.betterend.tube_worm: 管虫
+    item.betterend.twisted_moss: 扭曲苔藓
+
+lang#b5_blocks_zh_cn:
+  zh_cn:
+    block_name:betterend:amaranita_cap: 紫灵菇菌盖
+    block_name:betterend:amaranita_fur: 紫灵菇绒毛
+    block_name:betterend:amaranita_hymenophore: 紫灵菇子实层
+    block_name:betterend:amaranita_hyphae: 紫灵菇菌丝体
+    block_name:betterend:amaranita_stem: 紫灵菇菌柄
+    block_name:betterend:aurant_polypore: 橙黄多孔菌
+    block_name:betterend:aurora_crystal: 极光水晶
+    block_name:betterend:bolux_mushroom: 波卢菇
+    block_name:betterend:budding_smaragdant_crystal: 萌芽绿柱石水晶
+    block_name:betterend:bulb_moss: 球茎苔藓
+    block_name:betterend:cyan_moss: 青色苔藓
+    block_name:betterend:end_stone_stalactite: 末地石钟乳石
+    block_name:betterend:end_stone_stalactite_cavemoss: 洞穴苔藓末地石钟乳石
+    block_name:betterend:filalux: 萤光蛾
+    block_name:betterend:filalux_wings: 萤光蛾翅
+    block_name:betterend:glowing_pillar_roots: 发光柱根
+    block_name:betterend:hydrothermal_vent: 热液喷口
+    block_name:betterend:jungle_fern: 丛林蕨
+    block_name:betterend:large_amaranita_mushroom: 大型紫灵菇
+    block_name:betterend:lumecorn: 光玉米
+    block_name:betterend:magnula: 紫木兰
+    block_name:betterend:purple_polypore: 紫色多孔菌
+    block_name:betterend:rubinea: 绯红花
+    block_name:betterend:ruscus: 假叶树
+    block_name:betterend:small_amaranita_mushroom: 小型紫灵菇
+    block_name:betterend:small_jellyshroom: 小型果冻菇
+    block_name:betterend:smaragdant_crystal_shard: 绿柱石水晶碎片
+    block_name:betterend:sulphur_crystal: 硫磺水晶
+    block_name:betterend:tail_moss: 尾苔
+    block_name:betterend:tube_worm: 管虫
+    block_name:betterend:twisted_moss: 扭曲苔藓

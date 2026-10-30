@@ -1,0 +1,19 @@
+# B4 (flora-a) client-side localisation -- zh_cn, seed crops.
+# Simplified Chinese (zh_cn) counterpart of b4_seeds_en_us.yml. Keys and ordering mirror the
+# English file; only human-readable values are translated. The section id carries a _zh_cn suffix
+# so this file never declares the same `lang#...` id as its English counterpart:
+# AbstractPackManager.java:757-768 picks the parser from the text BEFORE '#', and
+# TranslationManagerImpl.java:524-531 accumulates every section into clientLangData
+# (addClientTranslation, :351-368). The language key must be `zh_cn`, exactly as spelled in
+# internal/lang/processed.json, or addClientTranslation drops it silently (:358-366).
+# Plant names reuse the spellings already in b4_zh_cn.yml (琥珀根 / 繁花浆果 / 紫颂蘑菇), so the
+# seed item reads as a seed of the crop it grows.
+
+lang#b4_seeds_zh_cn:
+  zh_cn:
+    item.betterend.amber_root_seed: 琥珀根种子
+    item.betterend.blossom_berry_seed: 繁花浆果种子
+    item.betterend.chorus_mushroom_seed: 紫颂蘑菇种子
+    block_name:betterend:amber_root_seed: 琥珀根种子
+    block_name:betterend:blossom_berry_seed: 繁花浆果种子
+    block_name:betterend:chorus_mushroom_seed: 紫颂蘑菇种子

@@ -1,0 +1,464 @@
+# BetterEnd B8-storage -- the wood families' functional furniture.
+# 10 families x 5 shippable ids = 50 blocks. The other 6 ids of each family are recorded as
+# unportable at the bottom of this file.
+#
+# Placement rotation is free: a property literally named `facing` gets mirror/rotate/placement
+# wired up by HardcodedPropertyBlockBehavior (installed in BukkitBlockManager.java:174-177,
+# table at HardcodedPropertyBlockBehavior.java:43-68). 4 values -> horizontal-looking opposite,
+# 6 values -> nearest-looking opposite. No behavior entry is needed for it.
+#
+# Settings: `default:settings/planks` (block_settings.yml:56-65) is the wood base -- sound/wood,
+# burn_data/planks, hardness/planks, solid_1x1x1 and tag minecraft:mineable/axe. `merges:` then
+# raises hardness to the vanilla value each shape actually uses. NEVER `overrides:` -- that is a
+# shallow putAll and would discard the template's own tags.
+#
+# planks_map_color is the mod's own second MapColor argument to
+# EndWoodenComplexMaterial(name, woodColor, planksColor) -- EndWoodBlocks.java:121-365.
+
+config_factory#b8_wood_furniture:
+  instances:
+    - wood: dragon_tree
+      planks_map_color: color_magenta
+      # ladder shape donors: an OPEN trapdoor is a 3px panel on the
+      # side opposite `facing` -- the same box vanilla LadderBlock uses.
+      ld_north: 'exposed_copper_trapdoor[facing=north,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_south: 'exposed_copper_trapdoor[facing=south,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_east: 'exposed_copper_trapdoor[facing=east,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_west: 'exposed_copper_trapdoor[facing=west,half=bottom,open=true,powered=true,waterlogged=false]'
+    - wood: end_lotus
+      planks_map_color: color_cyan
+      # ladder shape donors: an OPEN trapdoor is a 3px panel on the
+      # side opposite `facing` -- the same box vanilla LadderBlock uses.
+      ld_north: 'exposed_copper_trapdoor[facing=north,half=top,open=true,powered=true,waterlogged=false]'
+      ld_south: 'exposed_copper_trapdoor[facing=south,half=top,open=true,powered=true,waterlogged=false]'
+      ld_east: 'exposed_copper_trapdoor[facing=east,half=top,open=true,powered=true,waterlogged=false]'
+      ld_west: 'exposed_copper_trapdoor[facing=west,half=top,open=true,powered=true,waterlogged=false]'
+    - wood: helix_tree
+      planks_map_color: color_orange
+      # ladder shape donors: an OPEN trapdoor is a 3px panel on the
+      # side opposite `facing` -- the same box vanilla LadderBlock uses.
+      ld_north: 'weathered_copper_trapdoor[facing=north,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_south: 'weathered_copper_trapdoor[facing=south,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_east: 'weathered_copper_trapdoor[facing=east,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_west: 'weathered_copper_trapdoor[facing=west,half=bottom,open=true,powered=true,waterlogged=false]'
+    - wood: jellyshroom
+      planks_map_color: color_light_blue
+      # ladder shape donors: an OPEN trapdoor is a 3px panel on the
+      # side opposite `facing` -- the same box vanilla LadderBlock uses.
+      ld_north: 'weathered_copper_trapdoor[facing=north,half=top,open=true,powered=true,waterlogged=false]'
+      ld_south: 'weathered_copper_trapdoor[facing=south,half=top,open=true,powered=true,waterlogged=false]'
+      ld_east: 'weathered_copper_trapdoor[facing=east,half=top,open=true,powered=true,waterlogged=false]'
+      ld_west: 'weathered_copper_trapdoor[facing=west,half=top,open=true,powered=true,waterlogged=false]'
+    - wood: lacugrove
+      planks_map_color: color_yellow
+      # ladder shape donors: an OPEN trapdoor is a 3px panel on the
+      # side opposite `facing` -- the same box vanilla LadderBlock uses.
+      ld_north: 'oxidized_copper_trapdoor[facing=north,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_south: 'oxidized_copper_trapdoor[facing=south,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_east: 'oxidized_copper_trapdoor[facing=east,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_west: 'oxidized_copper_trapdoor[facing=west,half=bottom,open=true,powered=true,waterlogged=false]'
+    - wood: lucernia
+      planks_map_color: color_orange
+      # ladder shape donors: an OPEN trapdoor is a 3px panel on the
+      # side opposite `facing` -- the same box vanilla LadderBlock uses.
+      ld_north: 'oxidized_copper_trapdoor[facing=north,half=top,open=true,powered=true,waterlogged=false]'
+      ld_south: 'oxidized_copper_trapdoor[facing=south,half=top,open=true,powered=true,waterlogged=false]'
+      ld_east: 'oxidized_copper_trapdoor[facing=east,half=top,open=true,powered=true,waterlogged=false]'
+      ld_west: 'oxidized_copper_trapdoor[facing=west,half=top,open=true,powered=true,waterlogged=false]'
+    - wood: mossy_glowshroom
+      planks_map_color: wood
+      # ladder shape donors: an OPEN trapdoor is a 3px panel on the
+      # side opposite `facing` -- the same box vanilla LadderBlock uses.
+      ld_north: 'waxed_copper_trapdoor[facing=north,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_south: 'waxed_copper_trapdoor[facing=south,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_east: 'waxed_copper_trapdoor[facing=east,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_west: 'waxed_copper_trapdoor[facing=west,half=bottom,open=true,powered=true,waterlogged=false]'
+    - wood: pythadendron
+      planks_map_color: color_purple
+      # ladder shape donors: an OPEN trapdoor is a 3px panel on the
+      # side opposite `facing` -- the same box vanilla LadderBlock uses.
+      ld_north: 'waxed_copper_trapdoor[facing=north,half=top,open=true,powered=true,waterlogged=false]'
+      ld_south: 'waxed_copper_trapdoor[facing=south,half=top,open=true,powered=true,waterlogged=false]'
+      ld_east: 'waxed_copper_trapdoor[facing=east,half=top,open=true,powered=true,waterlogged=false]'
+      ld_west: 'waxed_copper_trapdoor[facing=west,half=top,open=true,powered=true,waterlogged=false]'
+    - wood: tenanea
+      planks_map_color: color_pink
+      # ladder shape donors: an OPEN trapdoor is a 3px panel on the
+      # side opposite `facing` -- the same box vanilla LadderBlock uses.
+      ld_north: 'waxed_exposed_copper_trapdoor[facing=north,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_south: 'waxed_exposed_copper_trapdoor[facing=south,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_east: 'waxed_exposed_copper_trapdoor[facing=east,half=bottom,open=true,powered=true,waterlogged=false]'
+      ld_west: 'waxed_exposed_copper_trapdoor[facing=west,half=bottom,open=true,powered=true,waterlogged=false]'
+    - wood: umbrella_tree
+      planks_map_color: color_green
+      # ladder shape donors: an OPEN trapdoor is a 3px panel on the
+      # side opposite `facing` -- the same box vanilla LadderBlock uses.
+      ld_north: 'waxed_exposed_copper_trapdoor[facing=north,half=top,open=true,powered=true,waterlogged=false]'
+      ld_south: 'waxed_exposed_copper_trapdoor[facing=south,half=top,open=true,powered=true,waterlogged=false]'
+      ld_east: 'waxed_exposed_copper_trapdoor[facing=east,half=top,open=true,powered=true,waterlogged=false]'
+      ld_west: 'waxed_exposed_copper_trapdoor[facing=west,half=top,open=true,powered=true,waterlogged=false]'
+  blueprint:
+    items:
+      betterend:${wood}_chest:
+        category: betterend:furnishings
+        settings:
+          fuel_time: 300
+        data:
+          item_name: '<!i><white><lang:item.betterend.${wood}_chest></white>'
+        model: betterend:block/${wood}_chest
+        behavior:
+          type: block_item
+          block: betterend:${wood}_chest
+      betterend:${wood}_barrel:
+        category: betterend:furnishings
+        settings:
+          fuel_time: 300
+        data:
+          item_name: '<!i><white><lang:item.betterend.${wood}_barrel></white>'
+        model: betterend:block/${wood}_barrel
+        behavior:
+          type: block_item
+          block: betterend:${wood}_barrel
+      betterend:${wood}_bookshelf:
+        category: betterend:furnishings
+        settings:
+          fuel_time: 300
+        data:
+          item_name: '<!i><white><lang:item.betterend.${wood}_bookshelf></white>'
+        model: betterend:block/${wood}_bookshelf
+        behavior:
+          type: block_item
+          block: betterend:${wood}_bookshelf
+      betterend:${wood}_crafting_table:
+        category: betterend:furnishings
+        settings:
+          fuel_time: 300
+        data:
+          item_name: '<!i><white><lang:item.betterend.${wood}_crafting_table></white>'
+        model: betterend:block/${wood}_crafting_table
+        behavior:
+          type: block_item
+          block: betterend:${wood}_crafting_table
+      betterend:${wood}_ladder:
+        category: betterend:furnishings
+        settings:
+          fuel_time: 300
+        data:
+          item_name: '<!i><white><lang:item.betterend.${wood}_ladder></white>'
+        model: betterend:block/${wood}_ladder
+        behavior:
+          type: block_item
+          block: betterend:${wood}_ladder
+    blocks:
+      # ---- CHEST ----------------------------------------------------------------
+      # The mod's chest is a block-entity render: generated/.../models/block/<f>_chest.json holds
+      # nothing but a particle texture. CE cannot drive a BER, so the block uses the mod's OWN
+      # static chest mesh, resources/assets/betterend/models/block/chest_item.json (the shape the
+      # mod already ships for the inventory icon), re-parented per family onto that family's
+      # entity chest sheet, textures/entity/chest/<f>_chest.png. The lid therefore never animates.
+      # 27 slots = vanilla chest. simple_storage_block keys verified in
+      # SimpleStorageBlockBehavior.java:173-201 (title / rows / sounds.open / sounds.close /
+      # has_signal / allow_input / allow_output / data_key, plus an OPTIONAL boolean `open`
+      # property, which we do NOT declare: with no lid animation a second appearance would look
+      # identical and cost 4 more visual states).
+      betterend:${wood}_chest:
+        behavior:
+          type: simple_storage_block
+          title: '<lang:block.betterend.${wood}_chest>'
+          rows: 3
+          sounds:
+            open: minecraft:block.chest.open
+            close: minecraft:block.chest.close
+        settings:
+          template:
+            - default:sound/wood
+            - default:hardness/wood
+            - default:settings/transparent_1x1x1
+          merges:
+            hardness: 2.5
+            resistance: 2.5
+            instrument: bass
+            map_color: ${planks_map_color}
+            tags: [minecraft:mineable/axe]
+        loot:
+          template: default:loot_table/self
+        state:
+          properties:
+            facing:
+              type: 4-direction
+              default: north
+          appearances:
+            north:
+              auto_state: solid
+              model: betterend:block/${wood}_chest
+            east:
+              auto_state: solid
+              model:
+                path: betterend:block/${wood}_chest
+                y: 90
+            south:
+              auto_state: solid
+              model:
+                path: betterend:block/${wood}_chest
+                y: 180
+            west:
+              auto_state: solid
+              model:
+                path: betterend:block/${wood}_chest
+                y: 270
+          variants:
+            facing=north:
+              appearance: north
+            facing=east:
+              appearance: east
+            facing=south:
+              appearance: south
+            facing=west:
+              appearance: west
+      # ---- BARREL ---------------------------------------------------------------
+      # Mod blockstate is facing(6) x open(2). The open model only swaps the top texture of a
+      # plain cube_bottom_top, so we keep the 6 facings and drop `open`: 6 states, not 12.
+      betterend:${wood}_barrel:
+        behavior:
+          type: simple_storage_block
+          title: '<lang:block.betterend.${wood}_barrel>'
+          rows: 3
+          sounds:
+            open: minecraft:block.barrel.open
+            close: minecraft:block.barrel.close
+        settings:
+          template: default:settings/planks
+          merges:
+            hardness: 2.5
+            resistance: 2.5
+            map_color: ${planks_map_color}
+        loot:
+          template: default:loot_table/self
+        state:
+          properties:
+            facing:
+              type: 6-direction
+              default: up
+          appearances:
+            up:
+              auto_state: solid
+              model: betterend:block/${wood}_barrel
+            down:
+              auto_state: solid
+              model:
+                path: betterend:block/${wood}_barrel
+                x: 180
+            north:
+              auto_state: solid
+              model:
+                path: betterend:block/${wood}_barrel
+                x: 90
+            east:
+              auto_state: solid
+              model:
+                path: betterend:block/${wood}_barrel
+                x: 90
+                y: 90
+            south:
+              auto_state: solid
+              model:
+                path: betterend:block/${wood}_barrel
+                x: 90
+                y: 180
+            west:
+              auto_state: solid
+              model:
+                path: betterend:block/${wood}_barrel
+                x: 90
+                y: 270
+          variants:
+            facing=up:
+              appearance: up
+            facing=down:
+              appearance: down
+            facing=north:
+              appearance: north
+            facing=east:
+              appearance: east
+            facing=south:
+              appearance: south
+            facing=west:
+              appearance: west
+      # ---- BOOKSHELF ------------------------------------------------------------
+      # cube_column: end == planks, side == the shelf texture. One solid state.
+      # Enchanting power comes from a vanilla block tag that a custom block cannot join, so
+      # these are decorative and craftable, nothing more.
+      betterend:${wood}_bookshelf:
+        settings:
+          template: default:settings/planks
+          merges:
+            hardness: 1.5
+            resistance: 1.5
+            map_color: ${planks_map_color}
+        loot:
+          template: default:loot_table/self
+        state:
+          auto_state: solid
+          model: betterend:block/${wood}_bookshelf
+      # ---- CRAFTING TABLE -------------------------------------------------------
+      # No crafting-table behavior exists; open_window is the documented route.
+      # CommonFunctions.java:25 registers `open_window`; GuiType.java:3-11 lists CRAFTING.
+      # Shaped after CE's own netherite_anvil.yml:18-25, cancel_event included so the held item
+      # is not also placed by the same click.
+      betterend:${wood}_crafting_table:
+        settings:
+          template: default:settings/planks
+          merges:
+            hardness: 2.5
+            resistance: 2.5
+            map_color: ${planks_map_color}
+        events:
+          - on: right_click
+            conditions:
+              - type: expression
+                expression: '!<arg:player.is_sneaking>'
+            functions:
+              - type: open_window
+                gui_type: crafting
+              - type: cancel_event
+        loot:
+          template: default:loot_table/self
+        state:
+          auto_state: solid
+          model: betterend:block/${wood}_crafting_table
+      # ---- LADDER ---------------------------------------------------------------
+      # STILL DECORATIVE: there is no climbable behavior in CE -- the complete registration list
+      # is BukkitBlockBehaviors.java:10-64 and it has no climb/ladder entry, and no settings key
+      # produces one. The 4 facings, the model and the recipe are right; walking up it is not.
+      #
+      # SHAPE FIXED (2026 remap). This used to ride `auto_state: solid` (note_block / mushroom
+      # blocks), so on top of not climbing the ladder you also could not walk into the 13 empty
+      # pixels in front of it -- a 3px wall plate was a full solid cube. Collision is not
+      # overridable (BukkitBlockShape.java:20-26), so the donor has to already be the right shape.
+      # An OPEN vanilla trapdoor is exactly that: a 3px vertical panel on the side opposite
+      # `facing`, the same box and the same facing convention as vanilla LadderBlock (both use the
+      # unrotated model for facing=north with the plate at high z). Each family gets its own
+      # (trapdoor family, half) group of 4 facings, from the non-waxed/waxed copper trapdoors that
+      # internal/mappings.yml:2117+ frees onto their powered=false twins. No AutoStateGroup holds
+      # them and no pack on this server claims them.
+      betterend:${wood}_ladder:
+        settings:
+          template:
+            - default:sound/wood
+            - default:settings/transparent_1x1x1
+          merges:
+            hardness: 0.4
+            resistance: 0.4
+            instrument: bass
+            burnable: true
+            burn_chance: 5
+            fire_spread_chance: 20
+            map_color: ${planks_map_color}
+            push_reaction: destroy
+            tags: [minecraft:mineable/axe]
+        loot:
+          template: default:loot_table/self
+        state:
+          properties:
+            facing:
+              type: 4-direction
+              default: north
+          appearances:
+            north:
+              state: ${ld_north}
+              model: betterend:block/${wood}_ladder
+            east:
+              state: ${ld_east}
+              model:
+                path: betterend:block/${wood}_ladder
+                y: 90
+            south:
+              state: ${ld_south}
+              model:
+                path: betterend:block/${wood}_ladder
+                y: 180
+            west:
+              state: ${ld_west}
+              model:
+                path: betterend:block/${wood}_ladder
+                y: 270
+          variants:
+            facing=north:
+              appearance: north
+            facing=east:
+              appearance: east
+            facing=south:
+              appearance: south
+            facing=west:
+              appearance: west
+    recipes:
+      # Verbatim from generated/data/betterend/recipe/<f>_<shape>.json.
+      betterend:${wood}_chest:
+        type: shaped
+        group: chest
+        pattern:
+          - '###'
+          - '# #'
+          - '###'
+        ingredients:
+          '#': betterend:${wood}_planks
+        result:
+          id: betterend:${wood}_chest
+          count: 1
+      betterend:${wood}_bookshelf:
+        type: shaped
+        category: building
+        group: bookshelf
+        pattern:
+          - '###'
+          - 'PPP'
+          - '###'
+        ingredients:
+          '#': betterend:${wood}_planks
+          P: minecraft:book
+        result:
+          id: betterend:${wood}_bookshelf
+          count: 1
+      betterend:${wood}_crafting_table:
+        type: shaped
+        group: crafting_table
+        pattern:
+          - '##'
+          - '##'
+        ingredients:
+          '#': betterend:${wood}_planks
+        result:
+          id: betterend:${wood}_crafting_table
+          count: 1
+      betterend:${wood}_ladder:
+        type: shaped
+        group: ladder
+        pattern:
+          - 'I I'
+          - 'I#I'
+          - 'I I'
+        ingredients:
+          '#': betterend:${wood}_planks
+          I: minecraft:stick
+        result:
+          id: betterend:${wood}_ladder
+          count: 3
+# NO BARREL RECIPE. <f>_barrel.json needs betterend:<f>_slab as key S, and slabs are unportable
+# in this pass (one whole vanilla slab block per custom slab; the pool has 5 donors for 33 slabs).
+# Inventing a slab-free barrel recipe would outlive the fix that makes slabs possible.
+#
+# UNPORTABLE IN EVERY FAMILY, one line each (10 x 6 = 60 ids, incl. the 3 lucernia_jellyshroom
+# seats recorded in b8_misc.yml):
+#   <f>_taburet / <f>_chair / <f>_bar_stool -- models parent to bclib:block/{taburet,chair,
+#     bar_stool}, which exist nowhere under Reference/. seat_block itself is fine
+#     (SeatBlockBehavior.java:66-74: an optional `facing` property plus a `seats:` list of
+#     "x,y,z [yaw]" entries, SeatConfig.java:8-22); it is purely the mesh that is missing.
+#     Extract those three parents from the bclib jar and all 33 seats ship unchanged.
+#   <f>_composter -- model parents wover:block/composter (missing) AND there is no composter
+#     behavior in BukkitBlockBehaviors.java:10-64. Two independent blockers.
+#   <f>_chiseled_bookshelf -- model parents wover:block/chiseled_bookshelf (missing), and real
+#     slot occupancy would be 64 slot combinations x 4 facings x 10 families = 2560 visual
+#     states against a SOLID pool of 1289. Refused on both counts.
+#   <f>_shelf -- multipart blockstate over minecraft:block/template_shelf_* (the 1.21.9 vanilla
+#     shelf model set) with facing x powered x 4 connection shapes = 32 states per family, 320
+#     total; and a CE appearance list cannot express multipart connection logic at all.

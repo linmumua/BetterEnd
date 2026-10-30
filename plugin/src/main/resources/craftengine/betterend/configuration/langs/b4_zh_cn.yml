@@ -1,0 +1,165 @@
+# B4 (flora-a) client-side localisation -- zh_cn.
+# Simplified Chinese (zh_cn) translation of b4_en_us.yml. Keys, section suffixes and ordering
+# mirror the English file; only human-readable values are translated. Legacy section-sign colour
+# codes are preserved verbatim, and proper nouns (BetterEnd, the music-disc artists) keep their
+# original spelling. Section ids carry a _zh_cn suffix so this file never declares the same
+# `lang#...` id as its English counterpart: AbstractPackManager.java:757-768 picks the parser from
+# the text BEFORE '#', and TranslationManagerImpl.java:524-531 accumulates every section into
+# clientLangData (addClientTranslation, :351-368). The language key must be `zh_cn`, exactly as
+# spelled in internal/lang/processed.json, or addClientTranslation drops it silently (:358-366).
+
+lang#b4_items_zh_cn:
+  zh_cn:
+    item.betterend.aeridium: 气生草
+    item.betterend.amber_grass: 琥珀草
+    item.betterend.amber_moss: 琥珀苔藓
+    item.betterend.amber_moss_path: 琥珀苔藓小径
+    item.betterend.amber_root_raw: 生琥珀根
+    item.betterend.blooming_cooksonia: 盛开库克逊蕨
+    item.betterend.blossom_berry: 繁花浆果
+    item.betterend.blossom_berry_jelly: 繁花浆果冻
+    item.betterend.bubble_coral: 气泡珊瑚
+    item.betterend.bushy_grass: 茂密草丛
+    item.betterend.cave_bush: 洞穴灌木
+    item.betterend.cave_grass: 洞穴草
+    item.betterend.cave_moss: 洞穴苔藓
+    item.betterend.cave_moss_path: 洞穴苔藓小径
+    item.betterend.cave_pumpkin: 洞穴南瓜
+    item.betterend.cave_pumpkin_pie: 洞穴南瓜派
+    item.betterend.charnia_cyan: 青色查尼虫
+    item.betterend.charnia_green: 绿色查尼虫
+    item.betterend.charnia_light_blue: 淡蓝色查尼虫
+    item.betterend.charnia_orange: 橙色查尼虫
+    item.betterend.charnia_purple: 紫色查尼虫
+    item.betterend.charnia_red: 红色查尼虫
+    item.betterend.chorus_grass: 紫颂草
+    item.betterend.chorus_mushroom_cooked: 熟紫颂蘑菇
+    item.betterend.chorus_mushroom_raw: 生紫颂蘑菇
+    item.betterend.chorus_nylium: 紫颂菌岩
+    item.betterend.chorus_nylium_path: 紫颂菌岩小径
+    item.betterend.clawfern: 爪蕨
+    item.betterend.creeping_moss: 蔓延苔藓
+    item.betterend.crystal_grass: 水晶草
+    item.betterend.crystal_moss: 水晶苔藓
+    item.betterend.crystal_moss_path: 水晶苔藓小径
+    item.betterend.enchanted_petal: 附魔花瓣
+    item.betterend.end_lily_leaf: 末地睡莲叶
+    item.betterend.end_lily_leaf_dried: 干末地睡莲叶
+    item.betterend.end_moss: 末地苔藓
+    item.betterend.end_moss_path: 末地苔藓小径
+    item.betterend.end_mycelium: 末地菌丝
+    item.betterend.end_mycelium_path: 末地菌丝小径
+    item.betterend.flamaea: 焰灵草
+    item.betterend.flammalix: 焰穗草
+    item.betterend.fracturn: 断纹草
+    item.betterend.globulagus: 球果草
+    item.betterend.hydralux_petal: 水光莲花瓣
+    item.betterend.inflexia: 弯折草
+    item.betterend.jungle_grass: 丛林草
+    item.betterend.jungle_moss: 丛林苔藓
+    item.betterend.jungle_moss_path: 丛林苔藓小径
+    item.betterend.lamellarium: 褶菌
+    item.betterend.lanceleaf: 枪叶草
+    item.betterend.lutebus: 黄缕草
+    item.betterend.murkweed: 幽冥草
+    item.betterend.needlegrass: 针茅草
+    item.betterend.orango: 橙菇
+    item.betterend.pallidium_full: 覆地藓（全覆盖）
+    item.betterend.pallidium_heavy: 覆地藓（厚覆盖）
+    item.betterend.pallidium_thin: 覆地藓（薄覆盖）
+    item.betterend.pallidium_tiny: 覆地藓（微覆盖）
+    item.betterend.pink_moss: 粉色苔藓
+    item.betterend.pink_moss_path: 粉色苔藓小径
+    item.betterend.pond_anemone: 池中海葵
+    item.betterend.rutiscus: 皱叶草
+    item.betterend.rutiscus_path: 皱叶草小径
+    item.betterend.salteago: 盐地草
+    item.betterend.sangnum: 血苔藓
+    item.betterend.sangnum_path: 血苔藓小径
+    item.betterend.shadow_berry: 暗影浆果种子
+    item.betterend.shadow_berry_cooked: 熟暗影浆果
+    item.betterend.shadow_berry_jelly: 暗影浆果冻
+    item.betterend.shadow_berry_raw: 生暗影浆果
+    item.betterend.shadow_grass: 暗影草
+    item.betterend.shadow_grass_path: 暗影草小径
+    item.betterend.shadow_plant: 暗影植株
+    item.betterend.sweet_berry_jelly: 甜浆果冻
+    item.betterend.tenanea_flowers: 泰纳尼亚花
+    item.betterend.twisted_umbrella_moss: 扭曲伞苔
+    item.betterend.twisted_umbrella_moss_tall: 高扭曲伞苔
+    item.betterend.umbrella_moss: 伞苔
+    item.betterend.umbrella_moss_tall: 高伞苔
+    item.betterend.vaiolush_fern: 堇色蕨
+
+lang#b4_blocks_zh_cn:
+  zh_cn:
+    block_name:betterend:aeridium: 气生草
+    block_name:betterend:amber_grass: 琥珀草
+    block_name:betterend:amber_moss: 琥珀苔藓
+    block_name:betterend:amber_moss_path: 琥珀苔藓小径
+    block_name:betterend:blooming_cooksonia: 盛开库克逊蕨
+    block_name:betterend:bubble_coral: 气泡珊瑚
+    block_name:betterend:bushy_grass: 茂密草丛
+    block_name:betterend:cave_bush: 洞穴灌木
+    block_name:betterend:cave_grass: 洞穴草
+    block_name:betterend:cave_moss: 洞穴苔藓
+    block_name:betterend:cave_moss_path: 洞穴苔藓小径
+    block_name:betterend:cave_pumpkin: 洞穴南瓜
+    block_name:betterend:charnia_cyan: 青色查尼虫
+    block_name:betterend:charnia_green: 绿色查尼虫
+    block_name:betterend:charnia_light_blue: 淡蓝色查尼虫
+    block_name:betterend:charnia_orange: 橙色查尼虫
+    block_name:betterend:charnia_purple: 紫色查尼虫
+    block_name:betterend:charnia_red: 红色查尼虫
+    block_name:betterend:chorus_grass: 紫颂草
+    block_name:betterend:chorus_nylium: 紫颂菌岩
+    block_name:betterend:chorus_nylium_path: 紫颂菌岩小径
+    block_name:betterend:clawfern: 爪蕨
+    block_name:betterend:creeping_moss: 蔓延苔藓
+    block_name:betterend:crystal_grass: 水晶草
+    block_name:betterend:crystal_moss: 水晶苔藓
+    block_name:betterend:crystal_moss_path: 水晶苔藓小径
+    block_name:betterend:end_lily: 末地睡莲
+    block_name:betterend:end_lotus_flower: 末地莲花
+    block_name:betterend:end_lotus_leaf: 末地莲叶
+    block_name:betterend:end_moss: 末地苔藓
+    block_name:betterend:end_moss_path: 末地苔藓小径
+    block_name:betterend:end_mycelium: 末地菌丝
+    block_name:betterend:end_mycelium_path: 末地菌丝小径
+    block_name:betterend:flamaea: 焰灵草
+    block_name:betterend:flammalix: 焰穗草
+    block_name:betterend:fracturn: 断纹草
+    block_name:betterend:globulagus: 球果草
+    block_name:betterend:hydralux: 水光莲
+    block_name:betterend:inflexia: 弯折草
+    block_name:betterend:jungle_grass: 丛林草
+    block_name:betterend:jungle_moss: 丛林苔藓
+    block_name:betterend:jungle_moss_path: 丛林苔藓小径
+    block_name:betterend:lamellarium: 褶菌
+    block_name:betterend:lanceleaf: 枪叶草
+    block_name:betterend:lutebus: 黄缕草
+    block_name:betterend:murkweed: 幽冥草
+    block_name:betterend:needlegrass: 针茅草
+    block_name:betterend:orango: 橙菇
+    block_name:betterend:pallidium_full: 覆地藓（全覆盖）
+    block_name:betterend:pallidium_heavy: 覆地藓（厚覆盖）
+    block_name:betterend:pallidium_thin: 覆地藓（薄覆盖）
+    block_name:betterend:pallidium_tiny: 覆地藓（微覆盖）
+    block_name:betterend:pink_moss: 粉色苔藓
+    block_name:betterend:pink_moss_path: 粉色苔藓小径
+    block_name:betterend:pond_anemone: 池中海葵
+    block_name:betterend:rutiscus: 皱叶草
+    block_name:betterend:rutiscus_path: 皱叶草小径
+    block_name:betterend:salteago: 盐地草
+    block_name:betterend:sangnum: 血苔藓
+    block_name:betterend:sangnum_path: 血苔藓小径
+    block_name:betterend:shadow_berry: 暗影浆果种子
+    block_name:betterend:shadow_grass: 暗影草
+    block_name:betterend:shadow_grass_path: 暗影草小径
+    block_name:betterend:shadow_plant: 暗影植株
+    block_name:betterend:tenanea_flowers: 泰纳尼亚花
+    block_name:betterend:twisted_umbrella_moss: 扭曲伞苔
+    block_name:betterend:twisted_umbrella_moss_tall: 高扭曲伞苔
+    block_name:betterend:umbrella_moss: 伞苔
+    block_name:betterend:umbrella_moss_tall: 高伞苔
+    block_name:betterend:vaiolush_fern: 堇色蕨

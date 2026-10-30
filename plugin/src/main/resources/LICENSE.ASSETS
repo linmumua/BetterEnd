@@ -1,0 +1,26 @@
+Asset licensing for this plugin jar
+===================================
+
+The original "Better End" mod (https://github.com/quiqueck/BetterEnd) licenses its
+source code under the MIT License, Copyright (c) 2020 paulevsGitch, except for the
+files listed in its LICENSE.ASSETS. Upstream's LICENSE.ASSETS names exactly three
+files under CC BY-NC-SA 4.0, with the attribution "Team BetterX":
+
+  * src/main/resources/assets/betterend/textures/gui/infusion.png
+    sha256 7DF6D46943CAD8E58ABB524A2BB0BDD1E3E9B5E43EC089C353F008DAC16AD216
+  * src/main/resources/assets/betterend/icon_updater.png
+    sha256 DC4D55E13E7129285B94A8164A39CBF74AF577CBC38098A59B2764CA05B1C705
+  * src/main/resources/assets/betterend/lang/de_de.json
+    sha256 F823FBC5274F5870BD716792515BA7B45863D4A0B8E23C4A228C7AD352EF9495
+
+NONE of those three files is included in this jar or in the bundled CraftEngine pack.
+They are non-commercial and share-alike, so they cannot be relicensed under the MIT
+terms of this port, and nothing in the port needs them: the infusion GUI belongs to a
+ritual that is not ported yet, icon_updater.png belongs to the mod's auto-updater, and
+the German translation is replaced by this port's own CraftEngine language files.
+
+Everything else taken from upstream -- including the block and item textures and models
+in the bundled resource pack -- keeps the upstream MIT license and notice.
+
+Assets authored for this port, and the CraftEngine configuration, biome datapack and
+Java code, are covered by this project's MIT License (see LICENSE).

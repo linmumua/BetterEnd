@@ -1,0 +1,84 @@
+# B1 (wood families) client-side localisation.
+# Section names are suffixed with the batch so no two batch files collide: AbstractPackManager
+# .java:674-683 selects the parser from the text BEFORE '#', so every `lang#...` section reaches
+# TranslationManagerImpl.LangParser (:485-533) and parseSection (:524-532) accumulates into
+# clientLangData rather than replacing it (:351-368).
+# `block_name:` is rewritten to block.betterend.<id> by ClientLangData.
+# Names are verbatim from the mod's assets/betterend/lang/en_us.json. Do not prettify.
+
+lang#b1_items:
+  en_us:
+    # Mossy Glowshroom
+    item.betterend.mossy_glowshroom_log: Mossy Glowshroom Log
+    item.betterend.mossy_glowshroom_stripped_log: Stripped Mossy Glowshroom Log
+    item.betterend.mossy_glowshroom_bark: Mossy Glowshroom Wood
+    item.betterend.mossy_glowshroom_stripped_bark: Stripped Mossy Glowshroom Wood
+    item.betterend.mossy_glowshroom_planks: Mossy Glowshroom Planks
+    item.betterend.mossy_glowshroom_cap: Mossy Glowshroom Cap
+    item.betterend.mossy_glowshroom_fur: Mossy Glowshroom Fur
+    item.betterend.mossy_glowshroom_hymenophore: Mossy Glowshroom Hymenophore
+
+    # Endlotus
+    item.betterend.end_lotus_log: Endlotus Log
+    item.betterend.end_lotus_stripped_log: Stripped Endlotus Log
+    item.betterend.end_lotus_bark: Endlotus Wood
+    item.betterend.end_lotus_stripped_bark: Stripped Endlotus Wood
+    item.betterend.end_lotus_planks: Endlotus Planks
+    item.betterend.end_lotus_stem: Endlotus Stem
+
+    # Umbrella Tree
+    item.betterend.umbrella_tree_log: Umbrella Tree Log
+    item.betterend.umbrella_tree_stripped_log: Stripped Umbrella Tree Log
+    item.betterend.umbrella_tree_bark: Umbrella Tree Wood
+    item.betterend.umbrella_tree_stripped_bark: Stripped Umbrella Tree Wood
+    item.betterend.umbrella_tree_planks: Umbrella Tree Planks
+    item.betterend.umbrella_tree_membrane: Umbrella Tree Membrane
+    item.betterend.umbrella_tree_cluster: Umbrella Tree Cluster
+    item.betterend.umbrella_tree_cluster_empty: Empty Umbrella Tree Cluster
+    item.betterend.umbrella_cluster_juice: Umbrella Cluster Juice
+
+    # Jellyshroom
+    item.betterend.jellyshroom_log: Jellyshroom Log
+    item.betterend.jellyshroom_stripped_log: Stripped Jellyshroom Log
+    item.betterend.jellyshroom_bark: Jellyshroom Wood
+    item.betterend.jellyshroom_stripped_bark: Stripped Jellyshroom Wood
+    item.betterend.jellyshroom_planks: Jellyshroom Planks
+    item.betterend.jellyshroom_cap_purple: Purple Jellyshroom Cap
+
+lang#b1_blocks:
+  en_us:
+    # Mossy Glowshroom
+    block_name:betterend:mossy_glowshroom_log: Mossy Glowshroom Log
+    block_name:betterend:mossy_glowshroom_stripped_log: Stripped Mossy Glowshroom Log
+    block_name:betterend:mossy_glowshroom_bark: Mossy Glowshroom Wood
+    block_name:betterend:mossy_glowshroom_stripped_bark: Stripped Mossy Glowshroom Wood
+    block_name:betterend:mossy_glowshroom_planks: Mossy Glowshroom Planks
+    block_name:betterend:mossy_glowshroom_cap: Mossy Glowshroom Cap
+    block_name:betterend:mossy_glowshroom_fur: Mossy Glowshroom Fur
+    block_name:betterend:mossy_glowshroom_hymenophore: Mossy Glowshroom Hymenophore
+
+    # Endlotus
+    block_name:betterend:end_lotus_log: Endlotus Log
+    block_name:betterend:end_lotus_stripped_log: Stripped Endlotus Log
+    block_name:betterend:end_lotus_bark: Endlotus Wood
+    block_name:betterend:end_lotus_stripped_bark: Stripped Endlotus Wood
+    block_name:betterend:end_lotus_planks: Endlotus Planks
+    block_name:betterend:end_lotus_stem: Endlotus Stem
+
+    # Umbrella Tree
+    block_name:betterend:umbrella_tree_log: Umbrella Tree Log
+    block_name:betterend:umbrella_tree_stripped_log: Stripped Umbrella Tree Log
+    block_name:betterend:umbrella_tree_bark: Umbrella Tree Wood
+    block_name:betterend:umbrella_tree_stripped_bark: Stripped Umbrella Tree Wood
+    block_name:betterend:umbrella_tree_planks: Umbrella Tree Planks
+    block_name:betterend:umbrella_tree_membrane: Umbrella Tree Membrane
+    block_name:betterend:umbrella_tree_cluster: Umbrella Tree Cluster
+    block_name:betterend:umbrella_tree_cluster_empty: Empty Umbrella Tree Cluster
+
+    # Jellyshroom
+    block_name:betterend:jellyshroom_log: Jellyshroom Log
+    block_name:betterend:jellyshroom_stripped_log: Stripped Jellyshroom Log
+    block_name:betterend:jellyshroom_bark: Jellyshroom Wood
+    block_name:betterend:jellyshroom_stripped_bark: Stripped Jellyshroom Wood
+    block_name:betterend:jellyshroom_planks: Jellyshroom Planks
+    block_name:betterend:jellyshroom_cap_purple: Purple Jellyshroom Cap

@@ -1,0 +1,107 @@
+# BetterEnd 文本消息（中文，MiniMessage 格式）。
+#
+# 所有以人类可读形式输出的文字都集中在这里：控制台行，以及之后的游戏内提示。
+# 值使用 MiniMessage 语法（<red>、<gradient:...>、<bold> 等），可被资源包/客户端解析。
+#
+# 与 config.yml 同一套升级规则：这里也带 config-version；插件更新新增的键会以默认值补上，
+# 你改过的值不会被覆盖，改动前旧文件会备份为 messages.yml.bak。
+#
+# 3：新增 /betterend help 的可点击命令行，以及 reload 的 messages.yml、CraftEngine 就绪状态与
+#    资源包升级/保留提示。旧键全部保留，你改过的文案不受影响。
+config-version: 3
+
+# 通用前缀：勾选你想要的前缀写法，直接拼进每条消息即可（MiniMessage 不嵌套自定义标签）。
+prefix: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> "
+
+plugin:
+  # 插件启用成功时打印到控制台。
+  enabled: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <green>已启用</green><gray>：</gray><white>末地地形、群系、植被与树木、DnT 城堡已就绪。</white>"
+
+config:
+  # config.yml 无效（类型错误 / 解析失败）时：插件不启用。
+  # 注意：Paper/Folia 会为该世界回退原版生成器，可能把原版地形写进区域文件，请在生成世界前停止服务器并修正。
+  # 原文件不会被改动。
+  invalid: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <red>config.yml 无效，BetterEnd 不可用；Paper/Folia 可能回退原版生成器，请停止服务器并修正 config.yml 后再生成世界（原文件保持不动）。</red>"
+
+craftengine:
+  # 未检测到 CraftEngine 时。
+  missing: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <red>CraftEngine 是必需前置，但未检测到；BetterEnd 不可用，Paper/Folia 可能回退原版生成器，请停止服务器并修正后再生成世界。</red>"
+  # 首次释放资源包失败时。
+  install-failed: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <red>未能释放内置的 CraftEngine 资源包，BetterEnd 不可用；Paper/Folia 可能回退原版生成器，请停止服务器并修正后再生成世界。</red>"
+  # 已在内存中让 CraftEngine 改用「启用阶段即时注册资源」的分支（不改动你的 CraftEngine 配置）。
+  immediate-load: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>已让 CraftEngine 在启用阶段即时注册资源，世界生成前方块与物品即可用（仅内存调整，未改动 plugins/CraftEngine/config.yml）。</gray>"
+  # CraftEngine 已经配置为即时注册资源，无需调整。
+  immediate-load-already: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>CraftEngine 已配置为即时注册资源，无需调整。</gray>"
+  # 无法让 CraftEngine 即时注册资源时。
+  immediate-load-failed: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <red>无法让 CraftEngine 即时注册资源，世界生成可能因方块未注册而回退原版生成器；请停止服务器并修正后再生成世界。</red>"
+  # CraftEngine 已启用但必需方块/物品仍未注册时（<missing> 为缺失项列表）。
+  not-ready: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <red>CraftEngine 尚未注册世界生成必需的方块/物品（<missing>），BetterEnd 不可用；Paper/Folia 可能回退原版生成器，请停止服务器并修正后再生成世界。</red>"
+
+
+# ------------------------------------------------------------------------------
+# /betterend reload 的输出。逐项报告，绝不把「需要重启才生效」说成「已生效」，
+# 也绝不把「资源已写到磁盘」说成「CraftEngine 已读取」或「已生成的区块已更新」。
+#
+# 占位符：<keys> 为配置键列表，<old>/<new>/<value> 为倍率，<pack>/<released>/<skipped>/<count>
+# 为资源包数量，<reason> 为失败原因，<version> 为 config-version 世代号，<command> 为命令本身。
+# ------------------------------------------------------------------------------
+command:
+  description: "BetterEnd：配置与消息重载、内置资源补全及状态报告。"
+  # /betterend 不带参数时的用法提示。
+  usage: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>用法：</gray><white>/betterend reload</white><gray> —— 重新读取 config.yml、补全缺失的键、补释放 CraftEngine 资源，并逐项报告哪些改动需要重启。</gray>"
+
+  # /betterend 与 /betterend help 共用的帮助屏，两者渲染完全一致。
+  # 只有这一行带点击事件，且是 suggest_command：点击只把命令填进输入框，不会直接执行。
+  # 不要把它改成 run_command —— reload 会写配置和资源文件，必须由人按下回车。
+  help:
+    # 标题行。
+    header: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>可用命令</gray><dark_gray>（点击命令可直接填入输入框）</dark_gray><gray>：</gray>"
+    # 唯一一条命令行：<command> 为命令本身，点击填入行为由代码统一绑定。
+    row: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <white><command></white> <gray>—— 重新读取 config.yml、补全缺失的键、补释放或升级 CraftEngine 资源包，并逐项报告哪些改动需要重启。</gray>"
+    # 结尾行：说明权限，并明确「写盘 ≠ CE 已读取 ≠ 区块已更新」。
+    footer: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>权限：</gray><white>betterend.command.reload</white><gray>（默认仅管理员）。提醒：资源文件写盘 ≠ CraftEngine 已在内存重新读取 ≠ 已生成的区块会更新；世界生成相关的改动必须重启服务器才生效。</gray>"
+
+  reload:
+    # 已有一轮 reload 正在执行：不并发、不排队，让后来者稍后重试。
+    busy: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <yellow>已有一轮 reload 正在执行，请等它结束后再试；本次未做任何改动。</yellow>"
+    failed: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <red>reload 意外中止：<reason>。</red><gray>已完成的步骤不会自动撤回，请核对控制台记录与资源文件后重试。</gray>"
+    # 开始执行时的一行。
+    header: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>开始重新读取 config.yml……</gray>"
+    # config.yml 不存在，已重新写出内置默认文件（<version> 为内置文件的 config-version）。
+    config-released: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <green>config.yml 不存在，已重新写出内置默认文件</green><gray>（config-version <version>）。</gray>"
+    # 这次补上了缺失的键（<keys> 为键名列表）。用户已设置的值不会被改动。
+    keys-added: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <green>已补全缺失的键</green><gray>（你已有的取值保持不变）：</gray><white><keys></white>"
+    # 没有需要补全的键。
+    keys-none: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>未发现相对上次读取新增的配置键，已按当前文件与内置默认值校验。</gray>"
+    # messages.yml 也重新读取了，新文案已经生效。
+    messages-reloaded: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <green>messages.yml 已重新读取</green><gray>，新文案立即生效。</gray>"
+    # messages.yml 读取失败（<reason>）：沿用上一次成功读取的文案，不谎称已重新加载。
+    messages-failed: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <red>messages.yml 重新读取失败：<reason>。本次仍沿用上一次成功读取的文案。</red>"
+    # 伤害倍率已更新并立即生效（<old> -> <new>）。
+    multiplier: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <green>玩家受到怪物伤害的倍率已生效</green><gray>：</gray><yellow><old></yellow><gray> -> </gray><yellow><new></yellow>"
+    # 伤害倍率没有变化（<value> 为当前生效值）。
+    multiplier-unchanged: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>玩家受到怪物伤害的倍率未变（</gray><yellow><value></yellow><gray>），已在生效中。</gray>"
+    # 资源包目录不存在，做了整目录释放（<pack>、<released>）。
+    pack-installed: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <green>资源包 <pack> 不存在，已整目录释放</green><gray>：写入 </gray><yellow><released></yellow><gray> 个文件。</gray>"
+    # 资源包已存在，只补了缺失文件（<pack>、<released>、<skipped>）。
+    pack-completed: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>资源包 </gray><white><pack></white><gray> 已存在，仅补缺失：新增 </gray><yellow><released></yellow><gray>，跳过 </gray><yellow><skipped></yellow><gray>（已有文件一律不覆盖）。</gray>"
+    # 资源包里有 <count> 个文件被本次构建的新版本替换（<pack>）。替换过就必须让 CE 重新读取。
+    pack-upgraded: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <green>资源包 <pack> 已升级</green><gray>：替换 </gray><yellow><count></yellow><gray> 个本次构建更新的文件。</gray>"
+    # 资源包里有 <count> 个你修改过的文件被保留、未覆盖（<pack>）。
+    pack-kept: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>资源包 </gray><white><pack></white><gray> 保留了 </gray><yellow><count></yellow><gray> 个你修改过的文件，未覆盖。</gray>"
+    # 资源包释放失败（<reason>）。
+    packs-failed: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <red>补释放 CraftEngine 资源包失败：<reason>。请停止服务器并修正后再生成世界。</red>"
+    # 本次确实往资源包写了/替换了文件，但 CraftEngine 还没重新读取：需要它重载资源。
+    ce-reload-required: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <yellow>资源包已有文件写入或更新，但 CraftEngine 尚未重新读取；需要重载 CraftEngine（或重启服务器）后，这些方块与物品才会出现在游戏里。</yellow>"
+    # CraftEngine 内存里仍缺世界生成必需的方块/物品：写盘不会自动被读取，区块也不会改写。
+    ce-not-ready: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <red>CraftEngine 尚未在内存中注册世界生成必需的方块/物品：写到磁盘的资源不会被自动读取，已生成的区块也不会因此改变。请重启服务器后再生成新世界。</red>"
+    # 有仅启动生效的键被改动（<keys> 为键名列表）。绝不谎称已生效。
+    restart-required: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <yellow>以下键已改动，但它们在本次运行中不会生效，需要完整重启服务器：</yellow><white><keys></white>"
+    # 没有任何仅启动生效的键被改动。
+    restart-none: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>没有需要重启才生效的改动。</gray>"
+    # 重新读取后 config.yml 无效：本次不改动任何运行期取值。
+    invalid: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <red>config.yml 当前无效，本次 reload 未应用任何改动，运行中的取值保持不变；请修正后再次执行（原文件未被改动）。原因：<reason></red>"
+    # 读写失败（<reason>）。
+    io-error: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <red>重新读取 config.yml 失败：<reason>。运行中的取值保持不变。</red>"
+    # 全部步骤执行完毕。
+    done: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <green>reload 完成。</green><gray>仅启动生效的键若被改动，已在上方逐项列出。</gray>"

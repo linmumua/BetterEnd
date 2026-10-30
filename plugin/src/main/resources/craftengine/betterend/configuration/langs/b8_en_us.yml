@@ -1,0 +1,272 @@
+# BetterEnd B8-storage -- client-side display names, verbatim from the mod's
+# assets/betterend/lang/en_us.json. Nothing here is prettified.
+#
+# Two sections, both suffixed with the batch id so no two batch lang files collide.
+# They still merge: AbstractPackManager.java:674-683 selects the parser from the text BEFORE
+# '#', so every `lang#...` section reaches TranslationManagerImpl.LangParser (:485-533), whose
+# parseSection (:524-532) calls addClientTranslation -> clientLangData.computeIfAbsent(lang)
+# .addTranslations(map) (:351-368) -- accumulative, never replacing.
+#
+# `block_name:betterend:<id>` is rewritten to block.betterend.<id> by ClientLangData.
+
+lang#b8_items:
+  en_us:
+    # The 10 wood families' furniture
+    item.betterend.dragon_tree_chest: Dragon Tree Chest
+    item.betterend.dragon_tree_barrel: Dragon Tree Barrel
+    item.betterend.dragon_tree_bookshelf: Dragon Tree Bookshelf
+    item.betterend.dragon_tree_crafting_table: Dragon Tree Crafting Table
+    item.betterend.dragon_tree_ladder: Dragon Tree Ladder
+    item.betterend.end_lotus_chest: Endlotus Chest
+    item.betterend.end_lotus_barrel: Endlotus Barrel
+    item.betterend.end_lotus_bookshelf: Endlotus Bookshelf
+    item.betterend.end_lotus_crafting_table: Endlotus Crafting Table
+    item.betterend.end_lotus_ladder: Endlotus Ladder
+    item.betterend.helix_tree_chest: Helix Tree Chest
+    item.betterend.helix_tree_barrel: Helix Tree Barrel
+    item.betterend.helix_tree_bookshelf: Helix Tree Bookshelf
+    item.betterend.helix_tree_crafting_table: Helix Tree Crafting Table
+    item.betterend.helix_tree_ladder: Helix Tree Ladder
+    item.betterend.jellyshroom_chest: Jellyshroom Chest
+    item.betterend.jellyshroom_barrel: Jellyshroom Barrel
+    item.betterend.jellyshroom_bookshelf: Jellyshroom Bookshelf
+    item.betterend.jellyshroom_crafting_table: Jellyshroom Crafting Table
+    item.betterend.jellyshroom_ladder: Jellyshroom Ladder
+    item.betterend.lacugrove_chest: Lacugrove Chest
+    item.betterend.lacugrove_barrel: Lacugrove Barrel
+    item.betterend.lacugrove_bookshelf: Lacugrove Bookshelf
+    item.betterend.lacugrove_crafting_table: Lacugrove Crafting Table
+    item.betterend.lacugrove_ladder: Lacugrove Ladder
+    item.betterend.lucernia_chest: Lucernia Chest
+    item.betterend.lucernia_barrel: Lucernia Barrel
+    item.betterend.lucernia_bookshelf: Lucernia Bookshelf
+    item.betterend.lucernia_crafting_table: Lucernia Crafting Table
+    item.betterend.lucernia_ladder: Lucernia Ladder
+    item.betterend.mossy_glowshroom_chest: Mossy Glowshroom Chest
+    item.betterend.mossy_glowshroom_barrel: Mossy Glowshroom Barrel
+    item.betterend.mossy_glowshroom_bookshelf: Mossy Glowshroom Bookshelf
+    item.betterend.mossy_glowshroom_crafting_table: Mossy Glowshroom Crafting Table
+    item.betterend.mossy_glowshroom_ladder: Mossy Glowshroom Ladder
+    item.betterend.pythadendron_chest: Pythadendron Chest
+    item.betterend.pythadendron_barrel: Pythadendron Barrel
+    item.betterend.pythadendron_bookshelf: Pythadendron Bookshelf
+    item.betterend.pythadendron_crafting_table: Pythadendron Crafting Table
+    item.betterend.pythadendron_ladder: Pythadendron Ladder
+    item.betterend.tenanea_chest: Tenanea Chest
+    item.betterend.tenanea_barrel: Tenanea Barrel
+    item.betterend.tenanea_bookshelf: Tenanea Bookshelf
+    item.betterend.tenanea_crafting_table: Tenanea Crafting Table
+    item.betterend.tenanea_ladder: Tenanea Ladder
+    item.betterend.umbrella_tree_chest: Umbrella Tree Chest
+    item.betterend.umbrella_tree_barrel: Umbrella Tree Barrel
+    item.betterend.umbrella_tree_bookshelf: Umbrella Tree Bookshelf
+    item.betterend.umbrella_tree_crafting_table: Umbrella Tree Crafting Table
+    item.betterend.umbrella_tree_ladder: Umbrella Tree Ladder
+
+    # Pedestals
+    item.betterend.andesite_pedestal: Andesite Pedestal
+    item.betterend.azure_jadestone_pedestal: Azure Jadestone Pedestal
+    item.betterend.diorite_pedestal: Diorite Pedestal
+    item.betterend.flavolite_pedestal: Flavolite Pedestal
+    item.betterend.granite_pedestal: Granite Pedestal
+    item.betterend.purple_pedestal: Purple Pedestal
+    item.betterend.quartz_pedestal: Quartz Pedestal
+    item.betterend.sandy_jadestone_pedestal: Sandy Jadestone Pedestal
+    item.betterend.smaragdant_crystal_pedestal: Smaragdant Pedestal
+    item.betterend.sulphuric_rock_pedestal: Sulphuric Rock Pedestal
+    item.betterend.umbralith_pedestal: Umbralith Pedestal
+    item.betterend.violecite_pedestal: Violecite Pedestal
+    item.betterend.virid_jadestone_pedestal: Virid Jadestone Pedestal
+    item.betterend.eternal_pedestal: Eternal Pedestal
+    item.betterend.infusion_pedestal: Infusion Pedestal
+
+    # Flower pots
+    item.betterend.azure_jadestone_flower_pot: Azure Jadestone Flower Pot
+    item.betterend.end_stone_flower_pot: End Stone Flower Pot
+    item.betterend.flavolite_flower_pot: Flavolite Flower Pot
+    item.betterend.sandy_jadestone_flower_pot: Sandy Jadestone Flower Pot
+    item.betterend.sulphuric_rock_flower_pot: Sulphuric Rock Flower Pot
+    item.betterend.umbralith_flower_pot: Umbralith Flower Pot
+    item.betterend.violecite_flower_pot: Violecite Flower Pot
+    item.betterend.virid_jadestone_flower_pot: Virid Jadestone Flower Pot
+
+    # Hydralux petal blocks
+    item.betterend.hydralux_petal_block: Hydralux Petal Block
+    item.betterend.hydralux_petal_block_white: White Petal Block
+    item.betterend.hydralux_petal_block_orange: Orange Petal Block
+    item.betterend.hydralux_petal_block_magenta: Magenta Petal Block
+    item.betterend.hydralux_petal_block_light_blue: Light Blue Petal Block
+    item.betterend.hydralux_petal_block_yellow: Yellow Petal Block
+    item.betterend.hydralux_petal_block_lime: Lime Petal Block
+    item.betterend.hydralux_petal_block_pink: Pink Petal Block
+    item.betterend.hydralux_petal_block_gray: Gray Petal Block
+    item.betterend.hydralux_petal_block_light_gray: Light Gray Petal Block
+    item.betterend.hydralux_petal_block_cyan: Cyan Petal Block
+    item.betterend.hydralux_petal_block_purple: Purple Petal Block
+    item.betterend.hydralux_petal_block_blue: Blue Petal Block
+    item.betterend.hydralux_petal_block_brown: Brown Petal Block
+    item.betterend.hydralux_petal_block_green: Green Petal Block
+    item.betterend.hydralux_petal_block_red: Red Petal Block
+    item.betterend.hydralux_petal_block_black: Black Petal Block
+
+    # Decorative blocks
+    item.betterend.emerald_ice: Emerald Ice
+    item.betterend.dense_emerald_ice: Dense Emerald Ice
+    item.betterend.ancient_emerald_ice: Ancient Emerald Ice
+    item.betterend.dense_snow: Dense Snow
+    item.betterend.end_stone_brick_cracked: Cracked End Stone Bricks
+    item.betterend.end_stone_brick_weathered: Weathered End Stone Bricks
+    item.betterend.menger_sponge: Menger Sponge
+    item.betterend.menger_sponge_wet: Wet Menger Sponge
+    item.betterend.neon_cactus_block: Neon Cactus Block
+    item.betterend.smaragdant_crystal: Smaragdant Crystal
+    item.betterend.smaragdant_crystal_bricks: Smaragdant Bricks
+    item.betterend.smaragdant_crystal_polished: Polished Smaragdant
+    item.betterend.smaragdant_crystal_tiles: Smaragdant Tiles
+    item.betterend.smaragdant_crystal_pillar: Smaragdant Pillar
+    item.betterend.silk_moth_hive: Silk Moth Hive
+    item.betterend.flavolite_runed: Runed Flavolite
+
+    # Items with no block
+    item.betterend.enchanted_membrane: Enchanted Membrane
+    item.betterend.end_fish_raw: End Fish
+    item.betterend.end_fish_cooked: Cooked End Fish
+    item.betterend.gelatine: Gelatine
+    item.betterend.guidebook: The End for Dummies
+    item.betterend.silk_fiber: Silk Fiber
+    item.betterend.silk_moth_matrix: Silk Moth Matrix
+    item.betterend.music_disc_ender_hollow: §bMusic Disc§r
+    item.betterend.music_disc_endseeker: §bMusic Disc§r
+    item.betterend.music_disc_eo_dracona: §bMusic Disc§r
+    item.betterend.music_disc_grasping_at_stars: §bMusic Disc§r
+    item.betterend.music_disc_moonlit_undercurrents: §bMusic Disc§r
+    item.betterend.music_disc_strange_and_alien: §bMusic Disc§r
+
+    # The 6 music-disc description lines. The manifest keeps these next to their discs; they are
+    # tooltip fragments, not items. b8_misc.yml renders them as the discs' lore, which is the
+    # only place they can appear without a minecraft:jukebox_song registry entry.
+    item.betterend.music_disc_ender_hollow.desc: §5noqwww§r - §fEnder Hollow§r
+    item.betterend.music_disc_endseeker.desc: §5Firel§r - §fEndseeker§r
+    item.betterend.music_disc_eo_dracona.desc: §5Firel§r - §fEo Dracona§r
+    item.betterend.music_disc_grasping_at_stars.desc: §5Firel§r - §fGrasping At Stars§r
+    item.betterend.music_disc_moonlit_undercurrents.desc: §5noqwww§r - §fMoonlit Undercurrents§r
+    item.betterend.music_disc_strange_and_alien.desc: §5Firel§r - §fStrange And Alien§r
+
+lang#b8_blocks:
+  en_us:
+    # The 10 wood families' furniture
+    block_name:betterend:dragon_tree_chest: Dragon Tree Chest
+    block_name:betterend:dragon_tree_barrel: Dragon Tree Barrel
+    block_name:betterend:dragon_tree_bookshelf: Dragon Tree Bookshelf
+    block_name:betterend:dragon_tree_crafting_table: Dragon Tree Crafting Table
+    block_name:betterend:dragon_tree_ladder: Dragon Tree Ladder
+    block_name:betterend:end_lotus_chest: Endlotus Chest
+    block_name:betterend:end_lotus_barrel: Endlotus Barrel
+    block_name:betterend:end_lotus_bookshelf: Endlotus Bookshelf
+    block_name:betterend:end_lotus_crafting_table: Endlotus Crafting Table
+    block_name:betterend:end_lotus_ladder: Endlotus Ladder
+    block_name:betterend:helix_tree_chest: Helix Tree Chest
+    block_name:betterend:helix_tree_barrel: Helix Tree Barrel
+    block_name:betterend:helix_tree_bookshelf: Helix Tree Bookshelf
+    block_name:betterend:helix_tree_crafting_table: Helix Tree Crafting Table
+    block_name:betterend:helix_tree_ladder: Helix Tree Ladder
+    block_name:betterend:jellyshroom_chest: Jellyshroom Chest
+    block_name:betterend:jellyshroom_barrel: Jellyshroom Barrel
+    block_name:betterend:jellyshroom_bookshelf: Jellyshroom Bookshelf
+    block_name:betterend:jellyshroom_crafting_table: Jellyshroom Crafting Table
+    block_name:betterend:jellyshroom_ladder: Jellyshroom Ladder
+    block_name:betterend:lacugrove_chest: Lacugrove Chest
+    block_name:betterend:lacugrove_barrel: Lacugrove Barrel
+    block_name:betterend:lacugrove_bookshelf: Lacugrove Bookshelf
+    block_name:betterend:lacugrove_crafting_table: Lacugrove Crafting Table
+    block_name:betterend:lacugrove_ladder: Lacugrove Ladder
+    block_name:betterend:lucernia_chest: Lucernia Chest
+    block_name:betterend:lucernia_barrel: Lucernia Barrel
+    block_name:betterend:lucernia_bookshelf: Lucernia Bookshelf
+    block_name:betterend:lucernia_crafting_table: Lucernia Crafting Table
+    block_name:betterend:lucernia_ladder: Lucernia Ladder
+    block_name:betterend:mossy_glowshroom_chest: Mossy Glowshroom Chest
+    block_name:betterend:mossy_glowshroom_barrel: Mossy Glowshroom Barrel
+    block_name:betterend:mossy_glowshroom_bookshelf: Mossy Glowshroom Bookshelf
+    block_name:betterend:mossy_glowshroom_crafting_table: Mossy Glowshroom Crafting Table
+    block_name:betterend:mossy_glowshroom_ladder: Mossy Glowshroom Ladder
+    block_name:betterend:pythadendron_chest: Pythadendron Chest
+    block_name:betterend:pythadendron_barrel: Pythadendron Barrel
+    block_name:betterend:pythadendron_bookshelf: Pythadendron Bookshelf
+    block_name:betterend:pythadendron_crafting_table: Pythadendron Crafting Table
+    block_name:betterend:pythadendron_ladder: Pythadendron Ladder
+    block_name:betterend:tenanea_chest: Tenanea Chest
+    block_name:betterend:tenanea_barrel: Tenanea Barrel
+    block_name:betterend:tenanea_bookshelf: Tenanea Bookshelf
+    block_name:betterend:tenanea_crafting_table: Tenanea Crafting Table
+    block_name:betterend:tenanea_ladder: Tenanea Ladder
+    block_name:betterend:umbrella_tree_chest: Umbrella Tree Chest
+    block_name:betterend:umbrella_tree_barrel: Umbrella Tree Barrel
+    block_name:betterend:umbrella_tree_bookshelf: Umbrella Tree Bookshelf
+    block_name:betterend:umbrella_tree_crafting_table: Umbrella Tree Crafting Table
+    block_name:betterend:umbrella_tree_ladder: Umbrella Tree Ladder
+
+    # Pedestals
+    block_name:betterend:andesite_pedestal: Andesite Pedestal
+    block_name:betterend:azure_jadestone_pedestal: Azure Jadestone Pedestal
+    block_name:betterend:diorite_pedestal: Diorite Pedestal
+    block_name:betterend:flavolite_pedestal: Flavolite Pedestal
+    block_name:betterend:granite_pedestal: Granite Pedestal
+    block_name:betterend:purple_pedestal: Purple Pedestal
+    block_name:betterend:quartz_pedestal: Quartz Pedestal
+    block_name:betterend:sandy_jadestone_pedestal: Sandy Jadestone Pedestal
+    block_name:betterend:smaragdant_crystal_pedestal: Smaragdant Pedestal
+    block_name:betterend:sulphuric_rock_pedestal: Sulphuric Rock Pedestal
+    block_name:betterend:umbralith_pedestal: Umbralith Pedestal
+    block_name:betterend:violecite_pedestal: Violecite Pedestal
+    block_name:betterend:virid_jadestone_pedestal: Virid Jadestone Pedestal
+    block_name:betterend:eternal_pedestal: Eternal Pedestal
+    block_name:betterend:infusion_pedestal: Infusion Pedestal
+
+    # Flower pots
+    block_name:betterend:azure_jadestone_flower_pot: Azure Jadestone Flower Pot
+    block_name:betterend:end_stone_flower_pot: End Stone Flower Pot
+    block_name:betterend:flavolite_flower_pot: Flavolite Flower Pot
+    block_name:betterend:sandy_jadestone_flower_pot: Sandy Jadestone Flower Pot
+    block_name:betterend:sulphuric_rock_flower_pot: Sulphuric Rock Flower Pot
+    block_name:betterend:umbralith_flower_pot: Umbralith Flower Pot
+    block_name:betterend:violecite_flower_pot: Violecite Flower Pot
+    block_name:betterend:virid_jadestone_flower_pot: Virid Jadestone Flower Pot
+
+    # Hydralux petal blocks
+    block_name:betterend:hydralux_petal_block: Hydralux Petal Block
+    block_name:betterend:hydralux_petal_block_white: White Petal Block
+    block_name:betterend:hydralux_petal_block_orange: Orange Petal Block
+    block_name:betterend:hydralux_petal_block_magenta: Magenta Petal Block
+    block_name:betterend:hydralux_petal_block_light_blue: Light Blue Petal Block
+    block_name:betterend:hydralux_petal_block_yellow: Yellow Petal Block
+    block_name:betterend:hydralux_petal_block_lime: Lime Petal Block
+    block_name:betterend:hydralux_petal_block_pink: Pink Petal Block
+    block_name:betterend:hydralux_petal_block_gray: Gray Petal Block
+    block_name:betterend:hydralux_petal_block_light_gray: Light Gray Petal Block
+    block_name:betterend:hydralux_petal_block_cyan: Cyan Petal Block
+    block_name:betterend:hydralux_petal_block_purple: Purple Petal Block
+    block_name:betterend:hydralux_petal_block_blue: Blue Petal Block
+    block_name:betterend:hydralux_petal_block_brown: Brown Petal Block
+    block_name:betterend:hydralux_petal_block_green: Green Petal Block
+    block_name:betterend:hydralux_petal_block_red: Red Petal Block
+    block_name:betterend:hydralux_petal_block_black: Black Petal Block
+
+    # Decorative blocks
+    block_name:betterend:emerald_ice: Emerald Ice
+    block_name:betterend:dense_emerald_ice: Dense Emerald Ice
+    block_name:betterend:ancient_emerald_ice: Ancient Emerald Ice
+    block_name:betterend:dense_snow: Dense Snow
+    block_name:betterend:end_stone_brick_cracked: Cracked End Stone Bricks
+    block_name:betterend:end_stone_brick_weathered: Weathered End Stone Bricks
+    block_name:betterend:menger_sponge: Menger Sponge
+    block_name:betterend:menger_sponge_wet: Wet Menger Sponge
+    block_name:betterend:neon_cactus_block: Neon Cactus Block
+    block_name:betterend:smaragdant_crystal: Smaragdant Crystal
+    block_name:betterend:smaragdant_crystal_bricks: Smaragdant Bricks
+    block_name:betterend:smaragdant_crystal_polished: Polished Smaragdant
+    block_name:betterend:smaragdant_crystal_tiles: Smaragdant Tiles
+    block_name:betterend:smaragdant_crystal_pillar: Smaragdant Pillar
+    block_name:betterend:silk_moth_hive: Silk Moth Hive
+    block_name:betterend:flavolite_runed: Runed Flavolite
+

@@ -1,0 +1,86 @@
+# B1 (wood families) client-side localisation -- zh_cn.
+# Simplified Chinese (zh_cn) translation of b1_en_us.yml. Keys, section suffixes and ordering
+# mirror the English file; only human-readable values are translated. Legacy section-sign colour
+# codes are preserved verbatim, and proper nouns (BetterEnd, the music-disc artists) keep their
+# original spelling. Section ids carry a _zh_cn suffix so this file never declares the same
+# `lang#...` id as its English counterpart: AbstractPackManager.java:757-768 picks the parser from
+# the text BEFORE '#', and TranslationManagerImpl.java:524-531 accumulates every section into
+# clientLangData (addClientTranslation, :351-368). The language key must be `zh_cn`, exactly as
+# spelled in internal/lang/processed.json, or addClientTranslation drops it silently (:358-366).
+
+lang#b1_items_zh_cn:
+  zh_cn:
+    # Mossy Glowshroom
+    item.betterend.mossy_glowshroom_log: 苔藓荧光菇原木
+    item.betterend.mossy_glowshroom_stripped_log: 去皮苔藓荧光菇原木
+    item.betterend.mossy_glowshroom_bark: 苔藓荧光菇木头
+    item.betterend.mossy_glowshroom_stripped_bark: 去皮苔藓荧光菇木头
+    item.betterend.mossy_glowshroom_planks: 苔藓荧光菇木板
+    item.betterend.mossy_glowshroom_cap: 苔藓荧光菇菌盖
+    item.betterend.mossy_glowshroom_fur: 苔藓荧光菇绒毛
+    item.betterend.mossy_glowshroom_hymenophore: 苔藓荧光菇子实层
+
+    # Endlotus
+    item.betterend.end_lotus_log: 末地莲原木
+    item.betterend.end_lotus_stripped_log: 去皮末地莲原木
+    item.betterend.end_lotus_bark: 末地莲木头
+    item.betterend.end_lotus_stripped_bark: 去皮末地莲木头
+    item.betterend.end_lotus_planks: 末地莲木板
+    item.betterend.end_lotus_stem: 末地莲茎
+
+    # Umbrella Tree
+    item.betterend.umbrella_tree_log: 伞树原木
+    item.betterend.umbrella_tree_stripped_log: 去皮伞树原木
+    item.betterend.umbrella_tree_bark: 伞树木头
+    item.betterend.umbrella_tree_stripped_bark: 去皮伞树木头
+    item.betterend.umbrella_tree_planks: 伞树木板
+    item.betterend.umbrella_tree_membrane: 伞树膜
+    item.betterend.umbrella_tree_cluster: 伞树簇
+    item.betterend.umbrella_tree_cluster_empty: 空伞树簇
+    item.betterend.umbrella_cluster_juice: 伞树簇汁
+
+    # Jellyshroom
+    item.betterend.jellyshroom_log: 果冻菇原木
+    item.betterend.jellyshroom_stripped_log: 去皮果冻菇原木
+    item.betterend.jellyshroom_bark: 果冻菇木头
+    item.betterend.jellyshroom_stripped_bark: 去皮果冻菇木头
+    item.betterend.jellyshroom_planks: 果冻菇木板
+    item.betterend.jellyshroom_cap_purple: 紫色果冻菇菌盖
+
+lang#b1_blocks_zh_cn:
+  zh_cn:
+    # Mossy Glowshroom
+    block_name:betterend:mossy_glowshroom_log: 苔藓荧光菇原木
+    block_name:betterend:mossy_glowshroom_stripped_log: 去皮苔藓荧光菇原木
+    block_name:betterend:mossy_glowshroom_bark: 苔藓荧光菇木头
+    block_name:betterend:mossy_glowshroom_stripped_bark: 去皮苔藓荧光菇木头
+    block_name:betterend:mossy_glowshroom_planks: 苔藓荧光菇木板
+    block_name:betterend:mossy_glowshroom_cap: 苔藓荧光菇菌盖
+    block_name:betterend:mossy_glowshroom_fur: 苔藓荧光菇绒毛
+    block_name:betterend:mossy_glowshroom_hymenophore: 苔藓荧光菇子实层
+
+    # Endlotus
+    block_name:betterend:end_lotus_log: 末地莲原木
+    block_name:betterend:end_lotus_stripped_log: 去皮末地莲原木
+    block_name:betterend:end_lotus_bark: 末地莲木头
+    block_name:betterend:end_lotus_stripped_bark: 去皮末地莲木头
+    block_name:betterend:end_lotus_planks: 末地莲木板
+    block_name:betterend:end_lotus_stem: 末地莲茎
+
+    # Umbrella Tree
+    block_name:betterend:umbrella_tree_log: 伞树原木
+    block_name:betterend:umbrella_tree_stripped_log: 去皮伞树原木
+    block_name:betterend:umbrella_tree_bark: 伞树木头
+    block_name:betterend:umbrella_tree_stripped_bark: 去皮伞树木头
+    block_name:betterend:umbrella_tree_planks: 伞树木板
+    block_name:betterend:umbrella_tree_membrane: 伞树膜
+    block_name:betterend:umbrella_tree_cluster: 伞树簇
+    block_name:betterend:umbrella_tree_cluster_empty: 空伞树簇
+
+    # Jellyshroom
+    block_name:betterend:jellyshroom_log: 果冻菇原木
+    block_name:betterend:jellyshroom_stripped_log: 去皮果冻菇原木
+    block_name:betterend:jellyshroom_bark: 果冻菇木头
+    block_name:betterend:jellyshroom_stripped_bark: 去皮果冻菇木头
+    block_name:betterend:jellyshroom_planks: 果冻菇木板
+    block_name:betterend:jellyshroom_cap_purple: 紫色果冻菇菌盖

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "mumu:end_shulker_tower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 160,
+    "separation": 16,
+    "salt": 1322633544
+  }
+}

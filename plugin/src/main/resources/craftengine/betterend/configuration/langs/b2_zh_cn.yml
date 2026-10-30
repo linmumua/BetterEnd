@@ -1,0 +1,59 @@
+# B2 (leaves and saplings) client-side localisation -- zh_cn.
+# Simplified Chinese (zh_cn) translation of b2_en_us.yml. Keys, section suffixes and ordering
+# mirror the English file; only human-readable values are translated. Legacy section-sign colour
+# codes are preserved verbatim, and proper nouns (BetterEnd, the music-disc artists) keep their
+# original spelling. Section ids carry a _zh_cn suffix so this file never declares the same
+# `lang#...` id as its English counterpart: AbstractPackManager.java:757-768 picks the parser from
+# the text BEFORE '#', and TranslationManagerImpl.java:524-531 accumulates every section into
+# clientLangData (addClientTranslation, :351-368). The language key must be `zh_cn`, exactly as
+# spelled in internal/lang/processed.json, or addClientTranslation drops it silently (:358-366).
+
+lang#b2_items_zh_cn:
+  zh_cn:
+    # Cube leaves
+    item.betterend.pythadendron_leaves: 蟒根树树叶
+    item.betterend.lacugrove_leaves: 湖沼树树叶
+    item.betterend.dragon_tree_leaves: 龙树树叶
+    item.betterend.tenanea_leaves: 泰纳尼亚树树叶
+    item.betterend.helix_tree_leaves: 螺旋树树叶
+    item.betterend.lucernia_leaves: 月华树树叶
+
+    # Fur leaves
+    item.betterend.tenanea_outer_leaves: 泰纳尼亚树外层树叶
+    item.betterend.lucernia_outer_leaves: 月华树外层树叶
+    item.betterend.glowing_pillar_leaves: 发光柱树叶
+
+    # Saplings
+    item.betterend.mossy_glowshroom_sapling: 苔藓荧光菇树苗
+    item.betterend.pythadendron_sapling: 蟒根树树苗
+    item.betterend.lacugrove_sapling: 湖沼树树苗
+    item.betterend.dragon_tree_sapling: 龙树树苗
+    item.betterend.tenanea_sapling: 泰纳尼亚树树苗
+    item.betterend.helix_tree_sapling: 螺旋树树苗
+    item.betterend.umbrella_tree_sapling: 伞树树苗
+    item.betterend.lucernia_sapling: 月华树树苗
+    item.betterend.hydralux_sapling: 水光莲树苗
+
+lang#b2_blocks_zh_cn:
+  zh_cn:
+    # 'block_name:' is rewritten to block.betterend.<id> by ClientLangData -- byte-identical to the mod's key.
+    block_name:betterend:pythadendron_leaves: 蟒根树树叶
+    block_name:betterend:lacugrove_leaves: 湖沼树树叶
+    block_name:betterend:dragon_tree_leaves: 龙树树叶
+    block_name:betterend:tenanea_leaves: 泰纳尼亚树树叶
+    block_name:betterend:helix_tree_leaves: 螺旋树树叶
+    block_name:betterend:lucernia_leaves: 月华树树叶
+
+    block_name:betterend:tenanea_outer_leaves: 泰纳尼亚树外层树叶
+    block_name:betterend:lucernia_outer_leaves: 月华树外层树叶
+    block_name:betterend:glowing_pillar_leaves: 发光柱树叶
+
+    block_name:betterend:mossy_glowshroom_sapling: 苔藓荧光菇树苗
+    block_name:betterend:pythadendron_sapling: 蟒根树树苗
+    block_name:betterend:lacugrove_sapling: 湖沼树树苗
+    block_name:betterend:dragon_tree_sapling: 龙树树苗
+    block_name:betterend:tenanea_sapling: 泰纳尼亚树树苗
+    block_name:betterend:helix_tree_sapling: 螺旋树树苗
+    block_name:betterend:umbrella_tree_sapling: 伞树树苗
+    block_name:betterend:lucernia_sapling: 月华树树苗
+    block_name:betterend:hydralux_sapling: 水光莲树苗

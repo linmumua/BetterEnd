@@ -1,0 +1,18 @@
+# BetterEnd -- batch B4 (flora-a) seed-crop localisation, en_us.
+# Covers the three crops added by blocks/B4-flora-crops-seeds.yml. Section id carries `b4_seeds`
+# so it never collides with `b4_items` in b4_en_us.yml: every `lang#...` section is merged, not
+# replaced (AbstractPackManager.java:674-683 -> TranslationManagerImpl.java:485-533,
+# addClientTranslation accumulates at :351-368).
+# `item.betterend.<id>` is the key each item's item_name resolves; `block_name:betterend:<id>` is
+# rewritten to block.betterend.<id> by ClientLangData and gives the placed block its name.
+# Naming follows the convention shadow_berry already established in b4_en_us.yml: the crop item is
+# the seed, so the display name is "<plant> Seeds" rather than the raw plant name.
+
+lang#b4_seeds:
+  en_us:
+    item.betterend.amber_root_seed: Amber Root Seeds
+    item.betterend.blossom_berry_seed: Blossom Berry Seeds
+    item.betterend.chorus_mushroom_seed: Chorus Mushroom Seeds
+    block_name:betterend:amber_root_seed: Amber Root Seeds
+    block_name:betterend:blossom_berry_seed: Blossom Berry Seeds
+    block_name:betterend:chorus_mushroom_seed: Chorus Mushroom Seeds

@@ -1,0 +1,127 @@
+# Item-browser categories. Parsed by ItemBrowserManagerImpl.CategoryParser (:105-152):
+# name / all_items / list / icon / priority / lore / hidden / condition(s).
+# The three leaf categories keep `list: []` on purpose -- membership is pushed in from each
+# item's own `category:` key via AbstractItemManager.java:429-432 addExternalCategoryMember,
+# exactly as CE's own tree.yml:33-37 does.
+# <l10n:...> keys are defined server-side in configuration/langs/en_us.yml (translations#categories).
+#
+# ===== 2026-10-30 合并：原 categories/b2,b4,b5,b6,b7,b8.yml 已并入本文件 =====
+# 各批次的叶子分类统一放在下面同一个 `categories:` 映射里（YAML 不允许重复顶层键），
+# 因此不再有任何文件重复声明同一分类 ID；`translations#bN_categories` 段名逐字保留。
+categories:
+  betterend:betterend:
+    priority: 1
+    name: '<!i><white><l10n:category.betterend.name></white>'
+    lore:
+      - '<!i><gray><l10n:category.betterend.lore>'
+    icon: betterend:flavolite
+    list:
+      - '#betterend:stones'
+      - '#betterend:woods'
+      - '#betterend:misc'
+      - '#betterend:foliage'
+      - '#betterend:flora'
+      - '#betterend:growths'
+      - '#betterend:lights'
+      - '#betterend:metals'
+      - '#betterend:furnishings'
+  betterend:stones:
+    name: '<!i><white><l10n:category.betterend.stones></white>'
+    hidden: true
+    icon: betterend:flavolite
+    list: []
+  betterend:woods:
+    name: '<!i><white><l10n:category.betterend.woods></white>'
+    hidden: true
+    icon: betterend:pythadendron_log
+    list: []
+  betterend:misc:
+    name: '<!i><white><l10n:category.betterend.misc></white>'
+    hidden: true
+    icon: betterend:dragon_bone_block
+    list: []
+  # 叶子分类 foliage/flora/growths/lights/metals/furnishings 见下方各组：
+  # 它们的 list 恒为 []，成员关系由各 item 自己的 category: 键推入
+  # （AbstractItemManager.addExternalCategoryMember）。不能在这里重复声明同一 ID。
+
+  # ============ B2 树叶（foliage）============
+  betterend:foliage:
+    name: '<!i><white><l10n:category.betterend.foliage></white>'
+    hidden: true
+    icon: betterend:tenanea_leaves
+    list: []
+
+  # ============ B4 植物（flora）============
+  betterend:flora:
+    name: '<!i><white><l10n:category.betterend.flora></white>'
+    hidden: true
+    icon: betterend:umbrella_moss
+    list: []
+
+  # ============ B5 生长物（growths）============
+  betterend:growths:
+    name: '<!i><white><l10n:category.betterend.growths></white>'
+    hidden: true
+    icon: betterend:aurora_crystal
+    list: []
+
+  # ============ B6 灯具（lights）============
+  betterend:lights:
+    name: '<!i><white><l10n:category.betterend.lights></white>'
+    hidden: true
+    icon: betterend:iron_bulb_lantern
+    list: []
+
+  # ============ B7 金属（metals）============
+  betterend:metals:
+    name: '<!i><white><l10n:category.betterend.metals></white>'
+    hidden: true
+    icon: betterend:terminite_block
+    list: []
+
+  # ============ B8 家具（furnishings）============
+  betterend:furnishings:
+    name: '<!i><white><l10n:category.betterend.furnishings></white>'
+    hidden: true
+    icon: betterend:dragon_tree_chest
+    list: []
+
+# ============ 各批次分类的服务端名称（<l10n:...>）============
+# 段名 `translations#<后缀>` 的后缀逐字保留：AbstractPackManager 只取 '#' 前的文本选解析器，
+# TranslationManagerImpl 按段累加，后缀变了就会静默覆盖。
+
+# ---- 来源 categories/b2.yml ----
+translations#b2_categories:
+  en_us:
+    category.betterend.foliage: BetterEnd Foliage
+
+# ---- 来源 categories/b4.yml ----
+translations#b4_categories:
+  en_us:
+    category.betterend.flora: Flora
+
+# ---- 来源 categories/b5.yml ----
+# Server-side name for the <l10n:...> key above. Batch-suffixed section name so it merges with the
+# live translations#categories rather than colliding with it (TranslationManagerImpl.java:415-482).
+translations#b5_categories:
+  en_us:
+    category.betterend.growths: BetterEnd Growths
+
+# ---- 来源 categories/b6.yml ----
+# Server-side name for the <l10n:...> key above. A separate TranslationParser section
+# (TranslationManagerImpl.java:415-482), suffixed b6 so it cannot collide with another batch.
+translations#b6_categories:
+  en_us:
+    category.betterend.lights: BetterEnd Lights
+
+# ---- 来源 categories/b7.yml ----
+# Server-side name for the category label above. TranslationParser,
+# TranslationManagerImpl.java:415-482; suffixed per batch so no two batch files collide.
+translations#b7_categories:
+  en_us:
+    category.betterend.metals: BetterEnd Metals
+
+# ---- 来源 categories/b8.yml ----
+translations#b8_categories:
+  en_us:
+    category.betterend.furnishings: BetterEnd Furnishings

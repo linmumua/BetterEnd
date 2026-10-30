@@ -1,0 +1,7 @@
+{
+  "parent": "betterend:block/chest_item",
+  "textures": {
+    "texture": "betterend:entity/chest/mossy_glowshroom_chest",
+    "particle": "betterend:block/mossy_glowshroom_planks"
+  }
+}

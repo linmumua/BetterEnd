@@ -1,0 +1,85 @@
+# B9 (advancement titles and descriptions) -- zh_cn.
+# Simplified Chinese (zh_cn) translation of b9_en_us.yml. Keys, section suffixes and ordering
+# mirror the English file; only human-readable values are translated. Legacy section-sign colour
+# codes are preserved verbatim, and proper nouns (BetterEnd, the music-disc artists) keep their
+# original spelling. Section ids carry a _zh_cn suffix so this file never declares the same
+# `lang#...` id as its English counterpart: AbstractPackManager.java:757-768 picks the parser from
+# the text BEFORE '#', and TranslationManagerImpl.java:524-531 accumulates every section into
+# clientLangData (addClientTranslation, :351-368). The language key must be `zh_cn`, exactly as
+# spelled in internal/lang/processed.json, or addClientTranslation drops it silently (:358-366).
+
+lang#b9_advancements_zh_cn:
+  zh_cn:
+    # The two every player earns
+    advancements.betterend.root.title: "BetterEnd"
+    advancements.betterend.root.description: "进入一个末地更美好的世界"
+    advancements.betterend.enter_end.title: "直面虚空"
+    advancements.betterend.enter_end.description: "探索 BetterEnd"
+
+    # Eternal portal -- gated off until the structure is ported
+    advancements.betterend.portal.title: "踏上永恒之路"
+    advancements.betterend.portal.description: "发现一座失落于永恒之中的传送门"
+    advancements.betterend.portal_on.title: "永恒之光"
+    advancements.betterend.portal_on.description: "点亮一座永恒传送门"
+    advancements.betterend.portal_travel.title: "永恒之道"
+    advancements.betterend.portal_travel.description: "沿古老之路旅行，并使用永恒传送门"
+
+    # Biomes and the village
+    advancements.betterend.all_the_biomes.title: "新的终章"
+    advancements.betterend.all_the_biomes.description: "造访全部 BetterEnd 生物群系"
+    advancements.betterend.village.title: "乡野"
+    advancements.betterend.village.description: "进入末地中的村庄"
+
+    # Elytras, infusion, smithing templates
+    advancements.betterend.all_elytras.title: "空中表演"
+    advancements.betterend.all_elytras.description: "集齐所有鞘翅变种"
+    advancements.betterend.infusion.title: "古老仪式"
+    advancements.betterend.infusion.description: "获得一个注魔基座"
+    advancements.betterend.infusion_finished.title: "无尽魔法"
+    advancements.betterend.infusion_finished.description: "在注魔仪式完成时身处附近"
+    advancements.betterend.all_the_templates.title: "末地铁匠"
+    advancements.betterend.all_the_templates.description: "找到全部锻造模板"
+
+    # Hammers and anvils
+    advancements.betterend.hammer.title: "千锤百炼"
+    advancements.betterend.hammer.description: "获得一把锤子，任意锤子均可"
+    advancements.betterend.thallasium_anvil.title: "海蓝金属锻造"
+    advancements.betterend.thallasium_anvil.description: "合成一个海蓝金属铁砧"
+    advancements.betterend.terminite_anvil.title: "终结金属锻造"
+    advancements.betterend.terminite_anvil.description: "合成一个终结金属铁砧"
+    advancements.betterend.aeternium_anvil.title: "锻造之终"
+    advancements.betterend.aeternium_anvil.description: "合成一个永恒合金铁砧"
+
+    # Thallasium
+    advancements.betterend.thallasium_plate.title: "海蓝金属镀板"
+    advancements.betterend.thallasium_plate.description: "在铁砧上锻造一块海蓝金属板"
+    advancements.betterend.thallasium_tool_head.title: "迈向海蓝金属"
+    advancements.betterend.thallasium_tool_head.description: "找到或合成一个海蓝金属工具头"
+    advancements.betterend.thallasium_tool.title: "海蓝金属工具"
+    advancements.betterend.thallasium_tool.description: "组装一件海蓝金属工具或剑"
+    advancements.betterend.thallasium_armor.title: "身披海蓝金属"
+    advancements.betterend.thallasium_armor.description: "获得任意一件海蓝金属盔甲"
+
+    # Terminite
+    advancements.betterend.terminite_plate.title: "终结金属镀板"
+    advancements.betterend.terminite_plate.description: "在铁砧上锻造一块终结金属板"
+    advancements.betterend.terminite_tool_head.title: "超越终结金属"
+    advancements.betterend.terminite_tool_head.description: "找到或合成一个终结金属工具头"
+    advancements.betterend.terminite_tool.title: "终结金属工具"
+    advancements.betterend.terminite_tool.description: "组装一件终结金属工具或剑"
+    advancements.betterend.terminite_armor.title: "终结金属之光"
+    advancements.betterend.terminite_armor.description: "获得任意一件终结金属盔甲"
+
+    # Aeternium
+    advancements.betterend.aeternium_hammer_head.title: "锤中至尊"
+    advancements.betterend.aeternium_hammer_head.description: "合成一个永恒合金锤头"
+    advancements.betterend.aeternium_hammer.title: "一把好锤"
+    advancements.betterend.aeternium_hammer.description: "组装一把永恒合金锤"
+    advancements.betterend.aeternium_plate.title: "坚韧镀层"
+    advancements.betterend.aeternium_plate.description: "锻造一块永恒合金板"
+    advancements.betterend.aeternium_tool_head.title: "工具之王"
+    advancements.betterend.aeternium_tool_head.description: "找到或合成一个永恒合金工具头"
+    advancements.betterend.aeternium_tool.title: "永恒合金组装"
+    advancements.betterend.aeternium_tool.description: "组装一件永恒合金工具或剑"
+    advancements.betterend.aeternium_armor.title: "坚不可摧"
+    advancements.betterend.aeternium_armor.description: "获得任意一件永恒合金盔甲"

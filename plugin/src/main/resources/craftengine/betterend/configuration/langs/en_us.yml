@@ -1,0 +1,261 @@
+# BetterEnd client-side localisation.
+# `lang#...` sections are baked into the generated resource pack as assets/minecraft/lang/en_us.json
+# (TranslationManagerImpl.java:485-533). Keys under `lang#items` are referenced from every item as
+# data.item_name: '<!i><white><lang:item.betterend.<id>></white>'.
+# The `block_name:` prefix under `lang#blocks` is rewritten to block.betterend.<id> by
+# ClientLangData.java:14-59 -- byte-identical to the original mod's key.
+# Names are verbatim from the mod's assets/betterend/lang/en_us.json. Do not prettify.
+
+lang#items:
+  en_us:
+    # Flavolite
+    item.betterend.flavolite: Flavolite
+    item.betterend.flavolite_polished: Polished Flavolite
+    item.betterend.flavolite_tiles: Flavolite Tiles
+    item.betterend.flavolite_brick: Flavolite Bricks
+    item.betterend.flavolite_pillar: Flavolite Pillar
+
+    # Violecite
+    item.betterend.violecite: Violecite
+    item.betterend.violecite_polished: Polished Violecite
+    item.betterend.violecite_tiles: Violecite Tiles
+    item.betterend.violecite_brick: Violecite Bricks
+    item.betterend.violecite_pillar: Violecite Pillar
+
+    # Sulphuric Rock
+    item.betterend.sulphuric_rock: Sulphuric Rock
+    item.betterend.sulphuric_rock_polished: Sulphuric Rock Polished
+    item.betterend.sulphuric_rock_tiles: Sulphuric Rock Tiles
+    item.betterend.sulphuric_rock_brick: Sulphuric Rock Bricks
+    item.betterend.sulphuric_rock_pillar: Sulphuric Rock Pillar
+
+    # Virid Jadestone
+    item.betterend.virid_jadestone: Virid Jadestone
+    item.betterend.virid_jadestone_polished: Virid Jadestone Polished
+    item.betterend.virid_jadestone_tiles: Virid Jadestone Tiles
+    item.betterend.virid_jadestone_brick: Virid Jadestone Bricks
+    item.betterend.virid_jadestone_pillar: Virid Jadestone Pillar
+
+    # Azure Jadestone
+    item.betterend.azure_jadestone: Azure Jadestone
+    item.betterend.azure_jadestone_polished: Azure Jadestone Polished
+    item.betterend.azure_jadestone_tiles: Azure Jadestone Tiles
+    item.betterend.azure_jadestone_brick: Azure Jadestone Bricks
+    item.betterend.azure_jadestone_pillar: Azure Jadestone Pillar
+
+    # Sandy Jadestone
+    item.betterend.sandy_jadestone: Sandy Jadestone
+    item.betterend.sandy_jadestone_polished: Sandy Jadestone Polished
+    item.betterend.sandy_jadestone_tiles: Sandy Jadestone Tiles
+    item.betterend.sandy_jadestone_brick: Sandy Jadestone Bricks
+    item.betterend.sandy_jadestone_pillar: Sandy Jadestone Pillar
+
+    # Umbralith
+    item.betterend.umbralith: Umbralith
+    item.betterend.umbralith_polished: Umbralith Polished
+    item.betterend.umbralith_tiles: Umbralith Tiles
+    item.betterend.umbralith_brick: Umbralith Bricks
+    item.betterend.umbralith_pillar: Umbralith Pillar
+
+    # Pythadendron
+    item.betterend.pythadendron_log: Pythadendron Log
+    item.betterend.pythadendron_stripped_log: Stripped Pythadendron Log
+    item.betterend.pythadendron_bark: Pythadendron Wood
+    item.betterend.pythadendron_stripped_bark: Stripped Pythadendron Wood
+    item.betterend.pythadendron_planks: Pythadendron Planks
+
+    # Lacugrove
+    item.betterend.lacugrove_log: Lacugrove Log
+    item.betterend.lacugrove_stripped_log: Stripped Lacugrove Log
+    item.betterend.lacugrove_bark: Lacugrove Wood
+    item.betterend.lacugrove_stripped_bark: Stripped Lacugrove Wood
+    item.betterend.lacugrove_planks: Lacugrove Planks
+
+    # Dragon Tree
+    item.betterend.dragon_tree_log: Dragon Tree Log
+    item.betterend.dragon_tree_stripped_log: Stripped Dragon Tree Log
+    item.betterend.dragon_tree_bark: Dragon Tree Wood
+    item.betterend.dragon_tree_stripped_bark: Stripped Dragon Tree Wood
+    item.betterend.dragon_tree_planks: Dragon Tree Planks
+
+    # Tenanea
+    item.betterend.tenanea_log: Tenanea Log
+    item.betterend.tenanea_stripped_log: Stripped Tenanea Log
+    item.betterend.tenanea_bark: Tenanea Wood
+    item.betterend.tenanea_stripped_bark: Stripped Tenanea Wood
+    item.betterend.tenanea_planks: Tenanea Planks
+
+    # Helix Tree
+    item.betterend.helix_tree_log: Helix Tree Log
+    item.betterend.helix_tree_stripped_log: Stripped Helix Tree Log
+    item.betterend.helix_tree_bark: Helix Tree Wood
+    item.betterend.helix_tree_stripped_bark: Stripped Helix Tree Wood
+    item.betterend.helix_tree_planks: Helix Tree Planks
+
+    # Lucernia
+    item.betterend.lucernia_log: Lucernia Log
+    item.betterend.lucernia_stripped_log: Stripped Lucernia Log
+    item.betterend.lucernia_bark: Lucernia Wood
+    item.betterend.lucernia_stripped_bark: Stripped Lucernia Wood
+    item.betterend.lucernia_planks: Lucernia Planks
+
+    # Misc blocks
+    item.betterend.mossy_obsidian: Mossy Obsidian
+    item.betterend.mossy_dragon_bone: Mossy Dragon Bone
+    item.betterend.brimstone: Brimstone
+    item.betterend.missing_tile: Missing Tile
+    item.betterend.endstone_dust: End Stone Dust
+    item.betterend.dragon_bone_block: Dragon Bone Block
+    item.betterend.ender_ore: Ender Ore
+    item.betterend.amber_ore: Amber Ore
+    item.betterend.thallasium_ore: Thallasium Ore
+
+    # Plain items
+    item.betterend.ender_shard: Ender Shard
+    item.betterend.raw_amber: Raw Amber
+    item.betterend.thallasium_raw: Raw Thallasium
+
+    # Smithing-template tooltips. items/B7-metals.yml rebuilds the vanilla smithing-template
+    # tooltip in data.lore because the 8 templates now ride minecraft:paper (a real
+    # SmithingTemplateItem hardcodes the netherite text on the item class, uncoverridable).
+    # Strings verbatim from the mod's item.betterend.smithing_template.<upgrade>.* keys.
+    # The three title lines the layout also needs -- item.minecraft.smithing_template,
+    # .applies_to, .ingredients -- are deliberately NOT declared: the vanilla client already
+    # ships them, and re-declaring a minecraft: key here would override it pack-wide.
+    item.betterend.smithing_template.thallasium_upgrade.applies_to: Stick
+    item.betterend.smithing_template.thallasium_upgrade.ingredients: Thallasium Ingots
+    item.betterend.smithing_template.terminite_upgrade.applies_to: Stick or Thallasium Anvil
+    item.betterend.smithing_template.terminite_upgrade.ingredients: Terminite Ingots
+    item.betterend.smithing_template.aeternium_upgrade.applies_to: Elytra or Terminite Anvils
+    item.betterend.smithing_template.aeternium_upgrade.ingredients: Aeternium Ingots
+    item.betterend.smithing_template.netherite_upgrade.applies_to: Diamond Hammer
+    item.betterend.smithing_template.netherite_upgrade.ingredients: Netherite Ingots
+    item.betterend.smithing_template.plate_upgrade.applies_to: Terminite Armor
+    item.betterend.smithing_template.plate_upgrade.ingredients: Forged Aeternium Plates
+    item.betterend.smithing_template.handle_attachment.applies_to: Thallasium or Terminite Tool Heads
+    item.betterend.smithing_template.handle_attachment.ingredients: Sticks
+    item.betterend.smithing_template.leather_handle_attachment.applies_to: Aeternium Tool Heads
+    item.betterend.smithing_template.leather_handle_attachment.ingredients: Leather Wrapped Sticks
+    item.betterend.smithing_template.tool_assembly.applies_to: Sword Blades
+    item.betterend.smithing_template.tool_assembly.ingredients: Sword Handles
+
+lang#blocks:
+  en_us:
+    # Flavolite
+    block_name:betterend:flavolite: Flavolite
+    block_name:betterend:flavolite_polished: Polished Flavolite
+    block_name:betterend:flavolite_tiles: Flavolite Tiles
+    block_name:betterend:flavolite_brick: Flavolite Bricks
+    block_name:betterend:flavolite_pillar: Flavolite Pillar
+
+    # Violecite
+    block_name:betterend:violecite: Violecite
+    block_name:betterend:violecite_polished: Polished Violecite
+    block_name:betterend:violecite_tiles: Violecite Tiles
+    block_name:betterend:violecite_brick: Violecite Bricks
+    block_name:betterend:violecite_pillar: Violecite Pillar
+
+    # Sulphuric Rock
+    block_name:betterend:sulphuric_rock: Sulphuric Rock
+    block_name:betterend:sulphuric_rock_polished: Sulphuric Rock Polished
+    block_name:betterend:sulphuric_rock_tiles: Sulphuric Rock Tiles
+    block_name:betterend:sulphuric_rock_brick: Sulphuric Rock Bricks
+    block_name:betterend:sulphuric_rock_pillar: Sulphuric Rock Pillar
+
+    # Virid Jadestone
+    block_name:betterend:virid_jadestone: Virid Jadestone
+    block_name:betterend:virid_jadestone_polished: Virid Jadestone Polished
+    block_name:betterend:virid_jadestone_tiles: Virid Jadestone Tiles
+    block_name:betterend:virid_jadestone_brick: Virid Jadestone Bricks
+    block_name:betterend:virid_jadestone_pillar: Virid Jadestone Pillar
+
+    # Azure Jadestone
+    block_name:betterend:azure_jadestone: Azure Jadestone
+    block_name:betterend:azure_jadestone_polished: Azure Jadestone Polished
+    block_name:betterend:azure_jadestone_tiles: Azure Jadestone Tiles
+    block_name:betterend:azure_jadestone_brick: Azure Jadestone Bricks
+    block_name:betterend:azure_jadestone_pillar: Azure Jadestone Pillar
+
+    # Sandy Jadestone
+    block_name:betterend:sandy_jadestone: Sandy Jadestone
+    block_name:betterend:sandy_jadestone_polished: Sandy Jadestone Polished
+    block_name:betterend:sandy_jadestone_tiles: Sandy Jadestone Tiles
+    block_name:betterend:sandy_jadestone_brick: Sandy Jadestone Bricks
+    block_name:betterend:sandy_jadestone_pillar: Sandy Jadestone Pillar
+
+    # Umbralith
+    block_name:betterend:umbralith: Umbralith
+    block_name:betterend:umbralith_polished: Umbralith Polished
+    block_name:betterend:umbralith_tiles: Umbralith Tiles
+    block_name:betterend:umbralith_brick: Umbralith Bricks
+    block_name:betterend:umbralith_pillar: Umbralith Pillar
+
+    # Pythadendron
+    block_name:betterend:pythadendron_log: Pythadendron Log
+    block_name:betterend:pythadendron_stripped_log: Stripped Pythadendron Log
+    block_name:betterend:pythadendron_bark: Pythadendron Wood
+    block_name:betterend:pythadendron_stripped_bark: Stripped Pythadendron Wood
+    block_name:betterend:pythadendron_planks: Pythadendron Planks
+
+    # Lacugrove
+    block_name:betterend:lacugrove_log: Lacugrove Log
+    block_name:betterend:lacugrove_stripped_log: Stripped Lacugrove Log
+    block_name:betterend:lacugrove_bark: Lacugrove Wood
+    block_name:betterend:lacugrove_stripped_bark: Stripped Lacugrove Wood
+    block_name:betterend:lacugrove_planks: Lacugrove Planks
+
+    # Dragon Tree
+    block_name:betterend:dragon_tree_log: Dragon Tree Log
+    block_name:betterend:dragon_tree_stripped_log: Stripped Dragon Tree Log
+    block_name:betterend:dragon_tree_bark: Dragon Tree Wood
+    block_name:betterend:dragon_tree_stripped_bark: Stripped Dragon Tree Wood
+    block_name:betterend:dragon_tree_planks: Dragon Tree Planks
+
+    # Tenanea
+    block_name:betterend:tenanea_log: Tenanea Log
+    block_name:betterend:tenanea_stripped_log: Stripped Tenanea Log
+    block_name:betterend:tenanea_bark: Tenanea Wood
+    block_name:betterend:tenanea_stripped_bark: Stripped Tenanea Wood
+    block_name:betterend:tenanea_planks: Tenanea Planks
+
+    # Helix Tree
+    block_name:betterend:helix_tree_log: Helix Tree Log
+    block_name:betterend:helix_tree_stripped_log: Stripped Helix Tree Log
+    block_name:betterend:helix_tree_bark: Helix Tree Wood
+    block_name:betterend:helix_tree_stripped_bark: Stripped Helix Tree Wood
+    block_name:betterend:helix_tree_planks: Helix Tree Planks
+
+    # Lucernia
+    block_name:betterend:lucernia_log: Lucernia Log
+    block_name:betterend:lucernia_stripped_log: Stripped Lucernia Log
+    block_name:betterend:lucernia_bark: Lucernia Wood
+    block_name:betterend:lucernia_stripped_bark: Stripped Lucernia Wood
+    block_name:betterend:lucernia_planks: Lucernia Planks
+
+    # Misc blocks
+    block_name:betterend:mossy_obsidian: Mossy Obsidian
+    block_name:betterend:mossy_dragon_bone: Mossy Dragon Bone
+    block_name:betterend:brimstone: Brimstone
+    block_name:betterend:missing_tile: Missing Tile
+    block_name:betterend:endstone_dust: End Stone Dust
+    block_name:betterend:dragon_bone_block: Dragon Bone Block
+    block_name:betterend:ender_ore: Ender Ore
+    block_name:betterend:amber_ore: Amber Ore
+    block_name:betterend:thallasium_ore: Thallasium Ore
+
+# Server-side only (TranslationParser, TranslationManagerImpl.java:415-482); never written to the
+# resource pack. Resolved by <l10n:...> in categories.yml.
+translations#categories:
+  en_us:
+    category.betterend.name: BetterEnd
+    category.betterend.lore: Blocks and items from the BetterEnd mod
+    category.betterend.stones: BetterEnd Stones
+    category.betterend.woods: BetterEnd Woods
+    category.betterend.misc: BetterEnd Misc
+    category.betterend.foliage: BetterEnd Foliage
+    category.betterend.openable: BetterEnd Openable
+    category.betterend.flora: BetterEnd Flora
+    category.betterend.growths: BetterEnd Growths
+    category.betterend.lights: BetterEnd Lights
+    category.betterend.metals: BetterEnd Metals
+    category.betterend.furnishings: BetterEnd Furnishings

@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "mumu:end_dungeon_tower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 160,
+    "separation": 16,
+    "salt": 1054309675,
+    "frequency": 0.1
+  }
+}
