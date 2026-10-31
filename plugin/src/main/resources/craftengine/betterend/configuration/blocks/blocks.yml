@@ -1878,9 +1878,21 @@ config_factory#b8_wood_furniture:
         result:
           id: betterend:${wood}_crafting_table
           count: 1
-# NO BARREL RECIPE. <f>_barrel.json needs betterend:<f>_slab as key S, and slabs are unportable
-# in this pass (one whole vanilla slab block per custom slab; the pool has 5 donors for 33 slabs).
-# Inventing a slab-free barrel recipe would outlive the fix that makes slabs possible.
+      # 上游 <f>_barrel.json 的 S 键是 betterend:<f>_slab，但本移植没有自定义台阶（状态池不够），
+      # 所以 S 用原版木台阶标签代替，形状与原版木桶一致。
+      betterend:${wood}_barrel:
+        type: shaped
+        group: barrel
+        pattern:
+          - 'PSP'
+          - 'P P'
+          - 'PSP'
+        ingredients:
+          'P': betterend:${wood}_planks
+          'S': '#minecraft:wooden_slabs'
+        result:
+          id: betterend:${wood}_barrel
+          count: 1
 #
 # UNPORTABLE IN EVERY FAMILY, one line each (10 x 6 = 60 ids, incl. the 3 lucernia_jellyshroom
 # seats recorded in b8_misc.yml):
@@ -2438,7 +2450,12 @@ items:
     category: betterend:woods
     data:
       item_name: '<!i><white><lang:item.betterend.umbrella_tree_membrane></white>'
-    model: betterend:block/umbrella_tree_membrane
+    model:
+      path: betterend:block/umbrella_tree_membrane
+      generation:
+        parent: minecraft:block/cube_all
+        textures:
+          all: betterend:block/umbrella_tree_membrane_0
     behavior:
       type: block_item
       block: betterend:umbrella_tree_membrane
