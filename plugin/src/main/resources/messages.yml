@@ -8,7 +8,7 @@
 #
 # 3：新增 /betterend help 的可点击命令行，以及 reload 的 messages.yml、CraftEngine 就绪状态与
 #    资源包升级/保留提示。旧键全部保留，你改过的文案不受影响。
-config-version: 3
+config-version: 4
 
 # 通用前缀：勾选你想要的前缀写法，直接拼进每条消息即可（MiniMessage 不嵌套自定义标签）。
 prefix: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> "
