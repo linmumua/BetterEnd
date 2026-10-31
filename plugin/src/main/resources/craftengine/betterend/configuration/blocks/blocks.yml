@@ -1235,77 +1235,107 @@ config_factory#b8_pedestals:
   instances:
     - ped: andesite_pedestal
       ped_model: andesite_pedestal_default
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 1.5
       ped_resistance: 6.0
       ped_map_color: stone
     - ped: azure_jadestone_pedestal
       ped_model: azure_jadestone_pedestal_default
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 3.0
       ped_resistance: 9.0
       ped_map_color: color_light_blue
     - ped: diorite_pedestal
       ped_model: diorite_pedestal_default
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 1.5
       ped_resistance: 6.0
       ped_map_color: quartz
     - ped: flavolite_pedestal
       ped_model: flavolite_pedestal_default
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 3.0
       ped_resistance: 9.0
       ped_map_color: sand
     - ped: granite_pedestal
       ped_model: granite_pedestal_default
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 1.5
       ped_resistance: 6.0
       ped_map_color: dirt
     - ped: purple_pedestal
       ped_model: purple_pedestal_default
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 1.5
       ped_resistance: 6.0
       ped_map_color: color_magenta
     - ped: quartz_pedestal
       ped_model: quartz_pedestal_default
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 0.8
       ped_resistance: 0.8
       ped_map_color: quartz
     - ped: sandy_jadestone_pedestal
       ped_model: sandy_jadestone_pedestal_default
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 3.0
       ped_resistance: 9.0
       ped_map_color: color_yellow
     - ped: smaragdant_crystal_pedestal
       ped_model: smaragdant_crystal_pedestal_default
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 1.0
       ped_resistance: 1.0
       ped_map_color: color_green
     - ped: sulphuric_rock_pedestal
       ped_model: sulphuric_rock_pedestal_default
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 3.0
       ped_resistance: 9.0
       ped_map_color: color_brown
     - ped: umbralith_pedestal
       ped_model: umbralith_pedestal_default
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 3.0
       ped_resistance: 9.0
       ped_map_color: deepslate
     - ped: violecite_pedestal
       ped_model: violecite_pedestal_default
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 3.0
       ped_resistance: 9.0
       ped_map_color: color_purple
     - ped: virid_jadestone_pedestal
       ped_model: virid_jadestone_pedestal_default
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 3.0
       ped_resistance: 9.0
       ped_map_color: color_green
     # eternal_pedestal: 7 random rune meshes x active/inactive in the mod; ships as inactive #1.
     - ped: eternal_pedestal
       ped_model: eternal_pedestal_default_1
+      ped_dy: 0.5
+      ped_top: 0.9375
       ped_hardness: 1.5
       ped_resistance: 6.0
       ped_map_color: stone
     - ped: infusion_pedestal
       ped_model: infusion_pedestal_default
+      ped_dy: 0.5625
+      ped_top: 1.0625
       ped_hardness: 1.5
       ped_resistance: 6.0
       ped_map_color: stone
@@ -1317,40 +1347,88 @@ config_factory#b8_pedestals:
           item_name: '<!i><white><lang:item.betterend.${ped}></white>'
         model: betterend:block/${ped_model}
         behavior:
-          type: block_item
-          block: betterend:${ped}
-    blocks:
-      betterend:${ped}:
-        behavior:
-          type: display_item_block
-          position: 0.5,0.95,0.5
-          has_signal: true
-          sounds:
-            put: minecraft:block.stone.place
-            take: minecraft:block.stone.hit
-        settings:
-          template:
-            - default:sound/stone
-            - default:settings/transparent_1x1x1
-          merges:
-            # Each pedestal copies its own family's stone (SlotFromDefinition ->
-            # StoneMaterial/VanillaStoneSet base-property copy), so hardness, resistance and
-            # map colour are per-instance, not one shared guess. The 7 BetterEnd families are
-            # 3.0/9.0, matching the live pack's stone_sets.yml.
-            hardness: ${ped_hardness}
-            resistance: ${ped_resistance}
-            instrument: basedrum
-            map_color: ${ped_map_color}
-            correct_tools: ['#minecraft:pickaxes']
-            required_break_power: 1
-            tags: [minecraft:mineable/pickaxe, minecraft:dragon_immune] # ponytail: over-tags the vanilla-stone instances too (mod tags only the 7 BetterEnd families, StoneMaterial.java:50). Per-instance ${dragon} arg if that ever matters.
-        loot:
-          template: default:loot_table/self
-        state:
-          auto_state: solid
-          model: betterend:block/${ped_model}
-
-
+          type: furniture_item
+          rules:
+            ground:
+              rotation: EIGHT
+              alignment: center
+          furniture:
+            # 基座要"能放物品展示"，这是它和普通装饰方块的核心区别。
+            # `display_item_furniture` 收 item_position（相对家具原点），
+            # 0,0.875,0 = 模型顶面正中心（模型 y 范围实测 0~0.875）。
+            behaviors:
+              - type: display_item_furniture
+                data_key: "craftengine:display_item"
+                sounds:
+                  put: minecraft:block.stone.place
+                  take: minecraft:block.stone.hit
+                variants:
+                  ground:
+                    item_position: 0,${ped_top},0
+                    hitboxes:
+                      - type: interaction
+                        position: 0,0.875,0
+                        width: 1.0
+                        height: 0.2
+                        can_use_item_on: true
+                        interactive: true
+            settings:
+              item: betterend:${ped}
+              hit_times: 1
+              sounds:
+                break: minecraft:block.stone.break
+                place: minecraft:block.stone.place
+                hit: minecraft:block.stone.hit
+            variants:
+              ground:
+                elements:
+                  # translation = 模型高度/2：CE 的物品展示实体把模型几何中心对齐原点，
+                  # 不抬就会有一半埋进地里（和 BN 火盆同一个坑）。
+                  - item: betterend:${ped}
+                    translation: 0,${ped_dy},0
+                    display_transform: none
+                    billboard: fixed
+                hitboxes:
+                  # 基座碰撞是 1 x 0.875 x 1。shulker 的宽 = scale、高 = scale*(1+peek/100)，
+                  # 单个给不出"1 宽 0.875 高"，所以用 4 个 scale=0.5 / peek=75 的拼 2x2：
+                  # 每个 0.5 见方、0.5*(1+0.75)=0.875 高，合起来正好 1x0.875x1。
+                  - type: shulker
+                    position: -0.25,0,-0.25
+                    direction: up
+                    peek: 75
+                    scale: 0.5
+                    blocks_building: true
+                    interactive: false
+                    invisible: true
+                  - type: shulker
+                    position: 0.25,0,-0.25
+                    direction: up
+                    peek: 75
+                    scale: 0.5
+                    blocks_building: true
+                    interactive: false
+                    invisible: true
+                  - type: shulker
+                    position: -0.25,0,0.25
+                    direction: up
+                    peek: 75
+                    scale: 0.5
+                    blocks_building: true
+                    interactive: false
+                    invisible: true
+                  - type: shulker
+                    position: 0.25,0,0.25
+                    direction: up
+                    peek: 75
+                    scale: 0.5
+                    blocks_building: true
+                    interactive: false
+                    invisible: true
+            loot:
+              pools:
+                - rolls: 1
+                  entries:
+                    - type: furniture_item
 config_factory#b8_flower_pots:
   instances:
     - pot: azure_jadestone_flower_pot
@@ -1663,16 +1741,6 @@ config_factory#b8_wood_furniture:
         behavior:
           type: block_item
           block: betterend:${wood}_barrel
-      betterend:${wood}_bookshelf:
-        category: betterend:furnishings
-        settings:
-          fuel_time: 300
-        data:
-          item_name: '<!i><white><lang:item.betterend.${wood}_bookshelf></white>'
-        model: betterend:block/${wood}_bookshelf
-        behavior:
-          type: block_item
-          block: betterend:${wood}_bookshelf
       betterend:${wood}_crafting_table:
         category: betterend:furnishings
         settings:
@@ -1683,16 +1751,6 @@ config_factory#b8_wood_furniture:
         behavior:
           type: block_item
           block: betterend:${wood}_crafting_table
-      betterend:${wood}_ladder:
-        category: betterend:furnishings
-        settings:
-          fuel_time: 300
-        data:
-          item_name: '<!i><white><lang:item.betterend.${wood}_ladder></white>'
-        model: betterend:block/${wood}_ladder
-        behavior:
-          type: block_item
-          block: betterend:${wood}_ladder
     blocks:
       # ---- BARREL ---------------------------------------------------------------
       # Mod blockstate is facing(6) x open(2). The open model only swaps the top texture of a
@@ -1767,18 +1825,6 @@ config_factory#b8_wood_furniture:
       # cube_column: end == planks, side == the shelf texture. One solid state.
       # Enchanting power comes from a vanilla block tag that a custom block cannot join, so
       # these are decorative and craftable, nothing more.
-      betterend:${wood}_bookshelf:
-        settings:
-          template: default:settings/planks
-          merges:
-            hardness: 1.5
-            resistance: 1.5
-            map_color: ${planks_map_color}
-        loot:
-          template: default:loot_table/self
-        state:
-          auto_state: solid
-          model: betterend:block/${wood}_bookshelf
       # ---- CRAFTING TABLE -------------------------------------------------------
       # No crafting-table behavior exists; open_window is the documented route.
       # CommonFunctions.java:25 registers `open_window`; GuiType.java:3-11 lists CRAFTING.
@@ -1820,71 +1866,7 @@ config_factory#b8_wood_furniture:
       # (trapdoor family, half) group of 4 facings, from the non-waxed/waxed copper trapdoors that
       # internal/mappings.yml:2117+ frees onto their powered=false twins. No AutoStateGroup holds
       # them and no pack on this server claims them.
-      betterend:${wood}_ladder:
-        settings:
-          template:
-            - default:sound/wood
-            - default:settings/transparent_1x1x1
-          merges:
-            hardness: 0.4
-            resistance: 0.4
-            instrument: bass
-            burnable: true
-            burn_chance: 5
-            fire_spread_chance: 20
-            map_color: ${planks_map_color}
-            push_reaction: destroy
-            tags: [minecraft:mineable/axe]
-        loot:
-          template: default:loot_table/self
-        state:
-          properties:
-            facing:
-              type: 4-direction
-              default: north
-          appearances:
-            north:
-              state: ${ld_north}
-              model: betterend:block/${wood}_ladder
-            east:
-              state: ${ld_east}
-              model:
-                path: betterend:block/${wood}_ladder
-                y: 90
-            south:
-              state: ${ld_south}
-              model:
-                path: betterend:block/${wood}_ladder
-                y: 180
-            west:
-              state: ${ld_west}
-              model:
-                path: betterend:block/${wood}_ladder
-                y: 270
-          variants:
-            facing=north:
-              appearance: north
-            facing=east:
-              appearance: east
-            facing=south:
-              appearance: south
-            facing=west:
-              appearance: west
     recipes:
-      betterend:${wood}_bookshelf:
-        type: shaped
-        category: building
-        group: bookshelf
-        pattern:
-          - '###'
-          - 'PPP'
-          - '###'
-        ingredients:
-          '#': betterend:${wood}_planks
-          P: minecraft:book
-        result:
-          id: betterend:${wood}_bookshelf
-          count: 1
       betterend:${wood}_crafting_table:
         type: shaped
         group: crafting_table
@@ -1896,19 +1878,6 @@ config_factory#b8_wood_furniture:
         result:
           id: betterend:${wood}_crafting_table
           count: 1
-      betterend:${wood}_ladder:
-        type: shaped
-        group: ladder
-        pattern:
-          - 'I I'
-          - 'I#I'
-          - 'I I'
-        ingredients:
-          '#': betterend:${wood}_planks
-          I: minecraft:stick
-        result:
-          id: betterend:${wood}_ladder
-          count: 3
 # NO BARREL RECIPE. <f>_barrel.json needs betterend:<f>_slab as key S, and slabs are unportable
 # in this pass (one whole vanilla slab block per custom slab; the pool has 5 donors for 33 slabs).
 # Inventing a slab-free barrel recipe would outlive the fix that makes slabs possible.
@@ -3832,61 +3801,6 @@ items:
     data:
       item_name: '<!i><white><lang:item.betterend.silk_moth_matrix></white>'
     texture: betterend:item/silk_moth_matrix
-  # --- music discs -----------------------------------------------------------
-  # DECORATIVE. A playable disc needs an entry in the minecraft:jukebox_song registry, which is
-  # datapack territory and outside anything CE configures; the plugin ships no ogg either. These
-  # are the correct items with the correct names and the mod's own artist/title line as lore, and
-  # they do nothing in a jukebox. The 6 `.desc` lang keys the manifest asks us to keep live in
-  # b8_en_us.yml next to the disc names and are what that lore resolves.
-  betterend:music_disc_ender_hollow:
-    category: betterend:furnishings
-    data:
-      max_stack_size: 1
-      item_name: '<!i><white><lang:item.betterend.music_disc_ender_hollow></white>'
-      lore:
-        - '<!i><gray><lang:item.betterend.music_disc_ender_hollow.desc>'
-    texture: betterend:item/music_disc_ender_hollow
-  betterend:music_disc_endseeker:
-    category: betterend:furnishings
-    data:
-      max_stack_size: 1
-      item_name: '<!i><white><lang:item.betterend.music_disc_endseeker></white>'
-      lore:
-        - '<!i><gray><lang:item.betterend.music_disc_endseeker.desc>'
-    texture: betterend:item/music_disc_endseeker
-  betterend:music_disc_eo_dracona:
-    category: betterend:furnishings
-    data:
-      max_stack_size: 1
-      item_name: '<!i><white><lang:item.betterend.music_disc_eo_dracona></white>'
-      lore:
-        - '<!i><gray><lang:item.betterend.music_disc_eo_dracona.desc>'
-    texture: betterend:item/music_disc_eo_dracona
-  betterend:music_disc_grasping_at_stars:
-    category: betterend:furnishings
-    data:
-      max_stack_size: 1
-      item_name: '<!i><white><lang:item.betterend.music_disc_grasping_at_stars></white>'
-      lore:
-        - '<!i><gray><lang:item.betterend.music_disc_grasping_at_stars.desc>'
-    texture: betterend:item/music_disc_grasping_at_stars
-  betterend:music_disc_moonlit_undercurrents:
-    category: betterend:furnishings
-    data:
-      max_stack_size: 1
-      item_name: '<!i><white><lang:item.betterend.music_disc_moonlit_undercurrents></white>'
-      lore:
-        - '<!i><gray><lang:item.betterend.music_disc_moonlit_undercurrents.desc>'
-    texture: betterend:item/music_disc_moonlit_undercurrents
-  betterend:music_disc_strange_and_alien:
-    category: betterend:furnishings
-    data:
-      max_stack_size: 1
-      item_name: '<!i><white><lang:item.betterend.music_disc_strange_and_alien></white>'
-      lore:
-        - '<!i><gray><lang:item.betterend.music_disc_strange_and_alien.desc>'
-    texture: betterend:item/music_disc_strange_and_alien
-
   # --------- 来源：B8-storage-petals.yml ---------
   betterend:hydralux_petal_block:
     category: betterend:furnishings
