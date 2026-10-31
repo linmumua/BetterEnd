@@ -293,17 +293,18 @@ public final class BetterEndPlugin extends JavaPlugin {
 
     /** {@code /betterend upgrade}：本版实际可用与不可用的入口，逐条说清（不含任何未实现的暗示）。 */
     private void upgradeHelp(CommandSender sender) {
-        ((Audience) sender).sendMessage(Component.text("旧世界处理入口（本版）："));
-        ((Audience) sender).sendMessage(Component.text("  /betterend upgrade preview —— 只读：旧/新布局高度、"
-                + "影响范围、玩家改动冲突、备份位置与确认 token；两端服务未接线时逐项报拒绝理由。"));
-        ((Audience) sender).sendMessage(Component.text("  /betterend upgrade remove —— 中央旧楼清理预览：只回滚"
-                + "布局匹配且有原始快照的装饰格；门家具、井口净空、四晶座、实体与玩家改动全部保留。"));
-        ((Audience) sender).sendMessage(Component.text("  /betterend upgrade remove confirm <token> —— 按预览执行；"
-                + "token 由服务重算比对，冲突或快照不符就一格不写。"));
-        ((Audience) sender).sendMessage(Component.text("本版不支持：/betterend upgrade apply（两端服务未就绪）与 "
-                + "/betterend upgrade reanchor（中心楼施工已停用）；两者都不会写世界。"));
-        ((Audience) sender).sendMessage(Component.text("本版不构造中心楼服务、不注册建筑四晶座："
-                + "原版祭坛与半径 3 的四晶复活保持原样。"));
+        ((Audience) sender).sendMessage(texts().get("command.upgrade-help.header"));
+        ((Audience) sender).sendMessage(texts().get("command.upgrade-help.preview"));
+        ((Audience) sender).sendMessage(texts().get("command.upgrade-help.remove-preview"));
+        ((Audience) sender).sendMessage(texts().get("command.upgrade-help.remove-confirm"));
+        ((Audience) sender).sendMessage(texts().get("command.upgrade-help.unsupported"));
+        ((Audience) sender).sendMessage(texts().get("command.upgrade-help.reason"));
+        ((Audience) sender).sendMessage(texts().get("command.upgrade-help.reason-altar"));
+        ((Audience) sender).sendMessage(texts().get("command.upgrade-help.reason-filled"));
+        ((Audience) sender).sendMessage(texts().get("command.upgrade-help.reason-manual"));
+        ((Audience) sender).sendMessage(texts().get("command.upgrade-help.reason-manual-cont"));
+        ((Audience) sender).sendMessage(texts().get("command.upgrade-help.doc-ref"));
+        ((Audience) sender).sendMessage(texts().get("command.upgrade-help.eta"));
     }
 
     /**

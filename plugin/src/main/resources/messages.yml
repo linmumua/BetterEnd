@@ -61,6 +61,33 @@ command:
     # 结尾行：说明权限，并明确「写盘 ≠ CE 已读取 ≠ 区块已更新」。
     footer: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>权限：</gray><white>betterend.command.reload</white><gray>（默认仅管理员）。提醒：资源文件写盘 ≠ CraftEngine 已在内存重新读取 ≠ 已生成的区块会更新；世界生成相关的改动必须重启服务器才生效。</gray>"
 
+  # /betterend upgrade 系列命令帮助（13 条消息，用于 BE 不支持双端升级的当前版本）
+  upgrade-help:
+    # 标题行：「旧世界处理入口（本版）」
+    header: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <white>旧世界处理入口（本版）：</white>"
+    # preview 命令：只读预览旧/新布局高度、祭坛坐标
+    preview: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>  </gray><white>/betterend upgrade preview</white><gray> —— 只读：旧/新布局高度、祭坛坐标。</gray>"
+    # remove 命令：中央旧楼清理预览
+    remove-preview: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>  </gray><white>/betterend upgrade remove</white><gray> —— 中央旧楼清理预览：只回滚「挖过的空气」。</gray>"
+    # remove confirm 命令：按预览执行，锁玩家 2 小时
+    remove-confirm: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>  </gray><white>/betterend upgrade remove confirm &lt;token&gt;</white><gray> —— 按预览执行；锁玩家 2 小时。</gray>"
+    # 本版不支持的命令：apply（两端服务未就绪）与 wipe（危险）
+    unsupported: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <yellow>本版不支持：</yellow><white>/betterend upgrade apply</white><yellow>（两端服务未就绪）与 </yellow><white>wipe</white><yellow>（危险）。</yellow>"
+    # 本版不构造中心楼服务、不注册建筑四晶座的原因说明
+    reason: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>本版不构造中心楼服务、不注册建筑四晶座：</gray>"
+    # 原因 1：用户明确「保留原版祭坛」
+    reason-altar: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>  ① 用户明确「保留原版祭坛」；</gray>"
+    # 原因 2：插件不清理出生岛，老玩家已填充资源楼
+    reason-filled: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>  ② 插件不清理出生岛，老玩家已填充资源楼；</gray>"
+    # 原因 3：重新登岛的玩家必须手工清老楼
+    reason-manual: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>  ③ 重新登岛的玩家必须手工清老楼（挖过的</gray><white>空气</white><gray>由 upgrade remove 批处理，</gray>"
+    # 原因 3 续行：上面改回玄武岩，下面由运维用创造手清）。
+    reason-manual-cont: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>    上面改回玄武岩，下面由运维用创造手清）。</gray>"
+    # 文档提示：细节见对话记录 2025-01-31 末地原版兼容线索（要求二：旧/新高度差）
+    doc-ref: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <gray>文档：细节见对话记录 </gray><white>2025-01-31 末地原版兼容线索</white><gray>（要求二：旧/新高度差）。</gray>"
+    # 补丁合并提示：预计 1~2 周内会合并补丁并重启，届时另行通知。
+    eta: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <yellow>补丁合并提示：</yellow><gray>预计 1~2 周内会合并补丁并重启，届时另行通知。</gray>"
+
   reload:
     # 已有一轮 reload 正在执行：不并发、不排队，让后来者稍后重试。
     busy: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <yellow>已有一轮 reload 正在执行，请等它结束后再试；本次未做任何改动。</yellow>"
