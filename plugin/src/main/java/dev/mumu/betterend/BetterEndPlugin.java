@@ -195,7 +195,7 @@ public final class BetterEndPlugin extends JavaPlugin {
 
         registerCommands();
 
-        getComponentLogger().info(texts().get("plugin.enabled"));
+        getComponentLogger().info(texts().get("console.enabled"));
     }
 
     /**

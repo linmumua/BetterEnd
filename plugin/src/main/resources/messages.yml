@@ -8,14 +8,15 @@
 #
 # 3：新增 /betterend help 的可点击命令行，以及 reload 的 messages.yml、CraftEngine 就绪状态与
 #    资源包升级/保留提示。旧键全部保留，你改过的文案不受影响。
-config-version: 4
+# 5：启用提示移到 console.enabled 并去掉重复前缀（控制台已有 [BetterEnd]）；plugin.enabled 不再读取。
+config-version: 5
 
 # 通用前缀：勾选你想要的前缀写法，直接拼进每条消息即可（MiniMessage 不嵌套自定义标签）。
 prefix: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> "
 
-plugin:
+console:
   # 插件启用成功时打印到控制台。
-  enabled: "<gradient:#7cf0ff:#8a7cff><bold>BetterEnd</bold></gradient> <dark_gray>»</dark_gray> <green>已启用</green><gray>：</gray><white>末地地形、群系、植被与树木、DnT 城堡已就绪。</white>"
+  enabled: "<green>已启用</green><gray>：末地地形、群系、植被、DnT 城堡</gray>"
 
 config:
   # config.yml 无效（类型错误 / 解析失败）时：插件不启用。
